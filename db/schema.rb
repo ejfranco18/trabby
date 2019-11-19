@@ -10,10 +10,81 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_154008) do
+ActiveRecord::Schema.define(version: 2019_11_18_144847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string "start_time"
+    t.string "end_time"
+    t.bigint "plan_id"
+    t.bigint "place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_activities_on_place_id"
+    t.index ["plan_id"], name: "index_activities_on_plan_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.string "country"
+    t.string "continent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "images"
+    t.text "description"
+    t.string "opening_hours"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "duration"
+    t.string "link"
+    t.string "type"
+    t.bigint "city_id"
+    t.bigint "price_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_places_on_category_id"
+    t.index ["city_id"], name: "index_places_on_city_id"
+    t.index ["price_id"], name: "index_places_on_price_id"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_plans_on_user_id"
+  end
+
+  create_table "preferences", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "category_ids", default: [], array: true
+    t.integer "type_ids", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_preferences_on_user_id"
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.integer "value"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +94,18 @@ ActiveRecord::Schema.define(version: 2019_11_18_154008) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activities", "places"
+  add_foreign_key "activities", "plans"
+  add_foreign_key "places", "categories"
+  add_foreign_key "places", "cities"
+  add_foreign_key "places", "prices"
+  add_foreign_key "plans", "users"
+  add_foreign_key "preferences", "users"
 end
