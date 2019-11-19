@@ -1,0 +1,12 @@
+ <%= simple_form_for(@place) do |f| %>
+
+              <%= f.input :name %>
+              <%= f.input :address %>
+              <%= f.input :images %>
+              <%= f.input :description %>
+              <%= f.input :opening_hours %>
+              <%= f.input :duration %>
+              <%= f.input :type %>
+          <div class="input btn"><%= f.button :submit, "New" %></div>
+          </div>
+  <% end %>

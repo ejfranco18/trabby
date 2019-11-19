@@ -1,0 +1,20 @@
+<h1>Activities#show</h1>
+<p>Find me in app/views/activities/show.html.erb</p>
+
+    <ul>
+      <li><%= @activity.start_time %></li>
+      <li><%= @activity.end_time  %></li>
+    </ul>
+
+
+<%= link_to activities_path(@activity) do %>
+<div class ="btn btn-flat">Back</div>
+<% end %>
+
+<%= link_to edit_activity_path(@activity) do %>
+<div class ="btn btn-flat">Edit</div>
+<% end %>
+
+<%= link_to activity_path(@activity) do %>
+<div class ="btn btn-flat">Delete</div>
+<% end %>

@@ -1,0 +1,24 @@
+<h1>Plans#show</h1>
+<p>Find me in app/views/plans/show.html.erb</p>
+
+  <ul>
+      <li><%= @plan.start_date %></li>
+      <li><%= @plan.end_date  %></li>
+    </ul>
+
+
+<%= link_to plans_path(@plan) do%>
+<div class ="btn btn-flat">Back</div>
+<% end %>
+
+<%= link_to edit_plan_path(@plan) do %>
+<div class ="btn btn-flat">Edit</div>
+<% end %>
+
+<%= link_to plan_path(@plan) do %>
+<div class ="btn btn-flat">Delete</div>
+<% end %>
+
+<%= link_to new_plan_path(@plan) do%>
+<div class ="btn btn-flat">New</div>
+<% end %>
