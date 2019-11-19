@@ -1,0 +1,12 @@
+<h2>Foursquare place</h2>
+<p><%= @place["name"] %></p>
+<p>Address: <%= @place["location"]["address"] %></p>
+<p>Phone: <%= @place["contact"]["phone"] %></p>
+<p>Rating: <%= @place["rating"]%></p>
+<p>Categories
+  <ul>
+  <% @place["categories"].each do |categorie| %>
+   <li><%= categorie["shortName"] %></li>
+  <% end %>
+</ul></p>
+<p><img src="<%= @place["bestPhoto"]["prefix"] + "300x500" + @place["bestPhoto"]["suffix"]%>" alt=""></p>
