@@ -1,0 +1,28 @@
+<h1>Places#show</h1>
+<p>Find me in app/views/places/show.html.erb</p>
+
+    <ul>
+      <li><%= @place.name %></li>
+      <li><%= @place.address  %></li>
+      <li><%= @place.opening_hours %></li>
+      <li><%= @place.description  %></li>
+      <li><%= @place.duration %></li>
+
+    </ul>
+
+
+<%= link_to places_path(@place) do %>
+<div class ="btn btn-flat">Back</div>
+<% end %>
+
+<%= link_to edit_place_path(@place) do%>
+<div class ="btn btn-flat">Edit</div>
+<% end %>
+
+<%= link_to place_path(@place) do%>
+<div class ="btn btn-flat">Delete</div>
+<% end %>
+
+<%= link_to new_place_path(@place) do%>
+<div class ="btn btn-flat">New</div>
+<% end %>
