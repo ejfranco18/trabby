@@ -1,6 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+
   <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+    <%= image_tag "https://res.cloudinary.com/dc40q0fon/image/upload/v1574160988/Trabby_ievekp.png" %>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,26 +11,56 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        <div class="panel-body">
+
+        <!-- The overlay -->
+          <div id="overlay">
+            <button class="btn btn-primary">sign up</button>
           </div>
-        </li>
+
+        <!-- Only the menu -->
+          <button class="button_class" type="button">
+            <span class="first_span_class">
+                <!-- The path gives the three bars -->
+                <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-0f084ffde1637b39">
+                  <path d="M2 13V11H22V13H2ZM2 19V17H22V19H2ZM2 7V5H22V7H2Z"></path>
+                </svg>
+                <span>Menu</span>
+              </span>
+            </span>
+          </button>
+
+        </div>
+
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% end %>
+        <!-- Log in -->
+          <button class="button_class" type="button">
+              <span class="first_span_class">
+                  <!-- The path gives the house button -->
+                  <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-0f084ffde1637b39"><path d="M3 10L5 8.44444V5H9.42857L12 3L21 10V21H3V10ZM14 19H19V10.9782L12 5.53372L5 10.9782V19H10V14H14V19Z"></path></svg>
+                    <path d="M2 13V11H22V13H2ZM2 19V17H22V19H2ZM2 7V5H22V7H2Z"></path>
+                  </svg>
+                  <span><%= link_to "Log in", new_user_session_path%></span>
+                </span>
+              </span>
+            </button>
+
+        <!-- Menu -->
+          <button class="button_class" type="button">
+            <span class="first_span_class">
+                <!-- The path gives the three bars -->
+                <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-0f084ffde1637b39">
+                  <path d="M2 13V11H22V13H2ZM2 19V17H22V19H2ZM2 7V5H22V7H2Z"></path>
+                </svg>
+                <span>Menu</span>
+              </span>
+            </span>
+          </button>
+        <% end %>
+
     </ul>
   </div>
+
 </div>
