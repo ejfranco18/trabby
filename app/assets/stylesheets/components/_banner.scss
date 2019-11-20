@@ -1,7 +1,23 @@
-.banner {
-  background-size: cover;
-  background-position: center;
-  padding: 150px 0;
+
+.banner{
+  padding: 140px;
+  background-image: url(https://res.cloudinary.com/dc40q0fon/image/upload/v1574178039/city_image_zm1nc5.jpg);
+  background-size:cover;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 2px 2px #343a40;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 
