@@ -9,7 +9,9 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
+
     if @plan.save
+      ActivityGenerator.new(plan).create_activities
       redirect_to plan_path(@plan)
     else
       render :new
