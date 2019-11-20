@@ -1,6 +1,13 @@
-.btn{
-color:white;
-padding:10px 30px;
-background-color:#00CCBC;
-margin-top:10%;
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #127AC5;
+  transition: background 0.3s ease;
+}
+
+.btn-flat:hover {
+  background: #195e91;
+  color: white;
 }
