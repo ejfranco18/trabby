@@ -1,34 +1,38 @@
 require 'test_helper'
 
-class PlacesControllerTest < ActionDispatch::IntegrationTest
-
+class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get places_index_url
+    get activities_index_url
     assert_response :success
   end
 
   test "should get show" do
-    get places_show_url
+    get activities_show_url
     assert_response :success
   end
 
   test "should get new" do
-    get places_new_url
+    get activities_new_url
     assert_response :success
   end
 
   test "should get create" do
-    get places_create_url
+    get activities_create_url
     assert_response :success
   end
 
   test "should get edit" do
-    get places_edit_url
+    get activities_edit_url
     assert_response :success
   end
 
   test "should get update" do
-    get places_update_url
+    get activities_update_url
+    assert_response :success
+  end
+
+  test "should get destroy" do
+    get activities_destroy_url
     assert_response :success
   end
 

@@ -1,0 +1,33 @@
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.left-image-first {
+  margin-right: 10px;
+  width: 38%;
+}
+
+.right-image-first {
+  margin-left: 10px;
+  width: 62%;
+}
+
+.left-image-second {
+  margin-right: 10px;
+  width: 62%;
+}
+
+.right-image-second {
+  margin-left: 10px;
+  width: 38%;
+}

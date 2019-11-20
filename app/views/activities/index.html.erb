@@ -1,0 +1,14 @@
+<h1>Activities#index</h1>
+<p>Find me in app/views/activities/index.html.erb</p>
+
+<% @activities.each do |activity| %>
+    <h2><%= activity.place.name %></h2>
+    <h2><%= activity.place.address %></h2>
+    <h2><%= activity.place.opening_hours %></h2>
+    <h2><%= activity.place.description %></h2>
+    <h2><%= activity.place.duration %></h2>
+
+<% end %>
+
+
+
