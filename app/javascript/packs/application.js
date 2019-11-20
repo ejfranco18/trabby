@@ -5,6 +5,8 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 import { on } from '../plugins/init_overlay';
 import { off } from '../plugins/init_overlay';
 import { closeCard } from '../plugins/init_closeTripCard';
+import "../plugins/category_choice";
+import "../plugins/flatpickr"
 
 initMapbox();
 initAutocomplete();
