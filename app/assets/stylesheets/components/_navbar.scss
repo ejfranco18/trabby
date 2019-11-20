@@ -1,6 +1,9 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: $my-black;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0px 1px 8px #444444;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +11,35 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 120px;
+}
+
+.button_class {
+  margin-right: 100px;
+  background: #fff;
+  border-radius: 4px;
+  display: flex;
+  cursor: pointer;
+  padding: 8px 16px;
+  line-height: 24px;
+  border: 1px solid #e8ebeb;
+  transition-timing-function: ease-out;
+}
+
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+img{
+  margin-left: 100px;
 }
