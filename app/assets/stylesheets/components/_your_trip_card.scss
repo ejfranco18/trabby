@@ -1,0 +1,39 @@
+.init_card_places {
+  display: flex;
+  justify-content: center;
+}
+
+.your_trip_card{
+  transition: opacity 1s ease-out;
+  width: 80%;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 0;
+  position: relative;
+
+  a {
+    position: absolute;
+    top: 0;
+    right: 6px;
+  }
+
+  p {
+    color: black;
+    font-size: 16px;
+    font-weight: normal;
+    text-shadow: none;
+    opacity: 1;
+  }
+
+  .btn {
+    border-radius: 5px;
+    padding: 15px 25px;
+  }
+}

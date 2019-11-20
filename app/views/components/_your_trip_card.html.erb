@@ -1,0 +1,15 @@
+<div class="places_card">
+  <div class="your_trip_card card card-outline-info">
+    <h2>Tell us about your trip</h2>
+    <p>You will see personalised ideas from other travellers like you.</p>
+
+    <% if current_user %>
+      <button class ="btn btn-success" >Plan your trip!</button>
+    <% else %>
+      <button class ="btn btn-primary" >Get started - Sign up!</button>
+    <% end %>
+    <a data-dismiss="alert" aria-label="Close" id="close_card">
+      <i class="fas fa-times"></i>
+    </a>
+  </div>
+</div>

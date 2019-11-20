@@ -5,20 +5,48 @@ class PlacesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
+    google_api = "AIzaSyADMdTpy9a1w-yrwByS6ARg_1MzF4zBRmM"
     @client_id = "YJ4CF523S31MTRIMRSDI5QV5RCIT0DKKF5QLYOFZ5I0S5DU1"
     @client_secret = "PIT2ZXNNQD4UK5RAWB5W3BTQD1FYQDYUG2HV4KCPO5BRZJ2U"
     @v = "20190425"
+
+
 
     if params[:query].present?
       # by location
       coordinates = Geocoder.search(params[:query])
       location = "#{coordinates.first.coordinates[0]},#{coordinates.first.coordinates[1]}"
       # url = "https://api.foursquare.com/v2/venues/search?client_id=#{@client_id }&client_secret=#{@client_secret}&v=#{@v}&ll=#{location}&radius=200"
-      url = "https://api.foursquare.com/v2/venues/explore?client_id=#{@client_id }&client_secret=#{@client_secret}&v=#{@v}&ll=#{location}&limit=10"
+      url = "https://api.foursquare.com/v2/venues/explore?client_id=#{@client_id }&client_secret=#{@client_secret}&v=#{@v}&ll=#{location}&limit=8"
       request = open(url).read
       response = JSON.parse(request)
       # @places = response["response"]["venues"]
       @places = response["response"]["groups"].first["items"]
+      @city = City.where(name: params[:query].split(',').first).first
+
+      @picked_places = []
+
+      @places.each do |place|
+        name = place["venue"]["name"]
+        city = place["venue"]["location"]["city"]
+
+        url_google_search = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=#{name} #{city}&inputtype=textquery&fields=photos&key=#{google_api}"
+        request_google = URI.parse(URI.escape(url_google_search)).read
+        response_google = JSON.parse(request_google)
+
+        if response_google["candidates"][0]["photos"][0]["photo_reference"].nil?
+          @image = ""
+        else
+          @test = response_google["candidates"][0]["photos"][0]["photo_reference"]
+          @image = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{@test}&key=#{google_api}"
+        end
+
+
+
+        @picked_places << {json: place, image: @image}
+      end
+
+
     else
       url = "https://api.foursquare.com/v2/venues/search?client_id=#{@client_id }&client_secret=#{@client_secret}&v=#{@v}&ll=40.7099,-73.9622&radius=200"
       request = open(url).read
@@ -54,6 +82,7 @@ class PlacesController < ApplicationController
     request = open(url).read
     response = JSON.parse(request)
     @place = response["response"]["venue"]
+  end
 
   def create
     @place = Place.new(place_params)
