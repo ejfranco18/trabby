@@ -7,6 +7,8 @@ class PlacesController < ApplicationController
   def index
     @v = "20190425"
 
+
+
     if params[:query].present?
       # by location
       coordinates = Geocoder.search(params[:query])
@@ -75,7 +77,10 @@ class PlacesController < ApplicationController
     request = open(url).read
     response = JSON.parse(request)
     @place = response["response"]["venue"]
-
+    @markers = [{
+      lat: @place["location"]["lat"],
+      lng: @place["location"]["lng"]
+    }]
   end
 
   def create

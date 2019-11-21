@@ -1,12 +1,15 @@
-<div class="container place_info_wrapper">
-
+<div class="container">
+<h1><%= @place["name"] %></h1>
+<div class="place_info_wrapper">
   <div class="place_main_info">
-    <h1><%= @place["name"] %></h1>
-   <p>Address: <%= @place["location"]["address"] %></p>
-    <p>Phone: <%= @place["contact"]["phone"] %></p>
-    <p>Rating: <%= @place["rating"]%></p>
-    <p>Url: <a href="<%= @place['url']%>"><%= @place["url"]%></a></p>
-    <p>Categories
+  <% if @place["description"] %>
+    <p><%= @place["description"] %></p>
+  <% end %>
+   <p><span class="title">Address: </span><%= @place["location"]["address"] %></p>
+    <p><span class="title">Phone: </span><%= @place["contact"]["phone"] %></p>
+    <p><span class="title">Rating: </span><%= @place["rating"]%></p>
+    <p><span class="title">Url: </span><a href="<%= @place['url']%>"><%= @place["url"]%></a></p>
+    <p><span class="title">Categories: </span>
       <ul>
       <% @place["categories"].each do |categorie| %>
        <li><%= categorie["shortName"] %></li>
@@ -18,3 +21,12 @@
     <img src="<%= @place['bestPhoto']['prefix'] + '300x500' + @place['bestPhoto']['suffix']%>" alt="">
   </div>
 </div>
+</div>
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
+

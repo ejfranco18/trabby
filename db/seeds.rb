@@ -38,7 +38,3 @@ categories.each do |type|
   Category.create!(category: type)
 end
 
-categories = ['Exhibit', 'Museum', 'Performing Arts', 'Zoo', 'Bakery', 'Bistro', 'Restaurant', 'Spanish Restaurant', 'Bar', 'Night Club', 'Palace', 'Park']
-categories.each do |type|
-  Category.create!(category: type)
-end
