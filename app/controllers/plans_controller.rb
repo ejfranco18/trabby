@@ -9,9 +9,9 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
-
+    @plan.user = current_user
     if @plan.save
-      ActivityGenerator.new(plan).create_activities
+      ActivityGenerator.new(@plan).create_activities
       redirect_to plan_path(@plan)
     else
       render :new
@@ -31,6 +31,6 @@ class PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:start_date, :end_date)
+    params.require(:plan).permit(:start_date, :end_date, :user_id, :city_id, search_items: [])
   end
 end

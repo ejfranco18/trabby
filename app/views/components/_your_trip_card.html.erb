@@ -4,9 +4,13 @@
     <p>You will see personalised ideas from other travellers like you.</p>
 
     <% if current_user %>
-      <button class ="btn btn-success" >Plan your trip!</button>
+      <%=link_to new_plan_path(city: :query), method: :get do %>
+        <div class="container"></div><button class ="btn btn-success" >Plan your trip!</button><div></div>
+      <% end %>
     <% else %>
-      <button class ="btn btn-primary" >Get started - Sign up!</button>
+      <div class="col-md-4 text-center">
+        <button class ="btn btn-primary center-block" >Get started - Sign up!</button>
+      </div>
     <% end %>
     <a data-dismiss="alert" aria-label="Close" id="close_card">
       <i class="fas fa-times"></i>
