@@ -3,16 +3,17 @@
     display: -webkit-box;
     -webkit-box-align: center;
     -webkit-box-pack: justify;
-    padding: 0px 50px;
+    padding: 50px 50px;
     color: white;
     width: 100%;
-    position: fixed;
     bottom: 0;
     bottom: 0pt;
     left: 0pt;
     background-attachment: scroll;
     background-position: 0% 0%;
-    height: 126px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .footer-links {
@@ -47,3 +48,33 @@
     color: #E5E5E5;
   }
 }
+
+.footer_cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
+  justify-items: center;
+  margin-bottom: 20px;
+}
+
+.footer_card {
+  background-color: rgba(100,100,100,0.5);
+  height: 200px;
+  width: 300px;
+  text-align: center;
+  padding: 30px;
+}
+
+.footer_card a{
+  color:white;
+
+
+}
+.footer_social {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
