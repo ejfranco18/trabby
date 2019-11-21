@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_162607) do
+ActiveRecord::Schema.define(version: 2019_11_21_164438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,12 @@ ActiveRecord::Schema.define(version: 2019_11_20_162607) do
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "request_caches", force: :cascade do |t|
+    t.string "url", null: false
+    t.json "response", default: {}
+    t.index ["url"], name: "index_request_caches_on_url", unique: true
   end
 
   create_table "users", force: :cascade do |t|
