@@ -32,3 +32,16 @@ input.btn{
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     background-color: #0e0000;
 }
+
+label.category-choice.active {
+    background: #24292E;
+    color: white;
+    opacity: 1;
+}
+
+.form-post .btn {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+    background-color: #1edd88;
+}
