@@ -33,8 +33,8 @@ Place.destroy_all
 # City.create!(name:"Seoul", country:"South Korea", continent: "Asia", image: "https://images.unsplash.com/photo-1536315238512-4c8cebdaaf93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3156&q=80")
 # City.create!(name:"Brussels", country:"Belgium", continent: "Europe", image: "https://images.unsplash.com/photo-1559113202-c916b8e44373?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80")
 
-categories = ['Exhibit', 'Museum', 'Performing Arts', 'Zoo', 'Bakery', 'Bistro', 'Restaurant', 'Spanish Restaurant', 'Bar', 'Night Club', 'Palace', 'Park']
-categories.each do |type|
-  Category.create!(category: type)
+categories = [['Exhibit', '56aa371be4b08b9a8d573532'], ['Museum', '4bf58dd8d48988d181941735'], ['Performing Arts', '4bf58dd8d48988d1f2931735'], ['Zoo', '4bf58dd8d48988d17b941735'], ['Bakery', '4bf58dd8d48988d16a941735'], ['Bistro', '52e81612bcbc57f1066b79f1'], ['Restaurant', '4bf58dd8d48988d1c4941735'], ['Spanish Restaurant', '4bf58dd8d48988d150941735'], ['Bar', '4bf58dd8d48988d116941735'], ['Night Club', '4bf58dd8d48988d11f941735'], ['Palace', '52e81612bcbc57f1066b7a14'], ['Park', '4bf58dd8d48988d163941735']]
+categories.each do |category|
+  Category.create!(category: category[0], foursquare_category_id: category[1])
 end
 
