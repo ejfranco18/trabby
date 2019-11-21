@@ -5,9 +5,6 @@ class PlacesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    google_api = "AIzaSyADMdTpy9a1w-yrwByS6ARg_1MzF4zBRmM"
-    @client_id = "YJ4CF523S31MTRIMRSDI5QV5RCIT0DKKF5QLYOFZ5I0S5DU1"
-    @client_secret = "PIT2ZXNNQD4UK5RAWB5W3BTQD1FYQDYUG2HV4KCPO5BRZJ2U"
     @v = "20190425"
 
 
