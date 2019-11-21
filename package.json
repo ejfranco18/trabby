@@ -5,6 +5,10 @@
     "@rails/webpacker": "^4.2.0",
     "bootstrap": "^4.3.1",
     "flatpickr": "^4.6.3",
+<<<<<<< HEAD
+=======
+    "flickity": "^2.2.1",
+>>>>>>> df7c677102c7042af9bfefd657fa6f99e31de614
     "jquery": "^3.4.1",
     "mapbox-gl": "^1.5.0",
     "places.js": "^1.17.0",
