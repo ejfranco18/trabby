@@ -1,3 +1,5 @@
+<div class="sign-in">
+  <p id ="logo"><%= image_tag "https://res.cloudinary.com/dc40q0fon/image/upload/v1574160988/Trabby_ievekp.png" %></p>
 <h2>Log in</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -16,5 +18,7 @@
     <%= f.button :submit, "Log in" %>
   </div>
 <% end %>
-
+<br>
 <%= render "devise/shared/links" %>
+</div>
+
