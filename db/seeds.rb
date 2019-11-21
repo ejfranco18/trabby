@@ -31,6 +31,8 @@ Place.destroy_all
 # City.create!(name:"Berlin", country:"Germany", continent: "Europe", image: "https://images.unsplash.com/photo-1528728329032-2972f65dfb3f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80")
 # City.create!(name:"Ljubljana", country:"Slovenia", continent: "Europe", image: "https://images.unsplash.com/photo-1560552515-c526e4ee969a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80")
 # City.create!(name:"New York", country:"United States", continent: "North America", image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80")
+# City.create!(name:"Seoul", country:"South Korea", continent: "Asia", image: "https://images.unsplash.com/photo-1536315238512-4c8cebdaaf93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3156&q=80")
+# City.create!(name:"Brussels", country:"Belgium", continent: "Europe", image: "https://images.unsplash.com/photo-1559113202-c916b8e44373?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80")
 
 categories = ['Exhibit', 'Museum', 'Performing Arts', 'Zoo', 'Bakery', 'Bistro', 'Restaurant', 'Spanish Restaurant', 'Bar', 'Night Club', 'Palace', 'Park']
 categories.each do |type|

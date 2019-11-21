@@ -17,7 +17,7 @@ class PlacesController < ApplicationController
       coordinates = Geocoder.search(params[:query])
       location = "#{coordinates.first.coordinates[0]},#{coordinates.first.coordinates[1]}"
       # url = "https://api.foursquare.com/v2/venues/search?client_id=#{@client_id }&client_secret=#{@client_secret}&v=#{@v}&ll=#{location}&radius=200"
-      url = "https://api.foursquare.com/v2/venues/explore?client_id=#{@client_id }&client_secret=#{@client_secret}&v=#{@v}&ll=#{location}&limit=8"
+      url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&ll=#{location}&limit=8"
       request = open(url).read
       response = JSON.parse(request)
       # @places = response["response"]["venues"]
@@ -30,25 +30,25 @@ class PlacesController < ApplicationController
         name = place["venue"]["name"]
         city = place["venue"]["location"]["city"]
 
-        url_google_search = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=#{name} #{city}&inputtype=textquery&fields=photos&key=#{google_api}"
-        request_google = URI.parse(URI.escape(url_google_search)).read
-        response_google = JSON.parse(request_google)
 
-        if response_google["candidates"][0]["photos"][0]["photo_reference"].nil?
-          @image = ""
-        else
-          @test = response_google["candidates"][0]["photos"][0]["photo_reference"]
-          @image = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{@test}&key=#{google_api}"
-        end
+        # request_google = URI.parse(URI.escape(url_google_search)).read
+        # response_google = JSON.parse(request_google)
+
+        # if response_google["candidates"][0]["photos"][0]["photo_reference"].nil?
+        #   @image = ""
+        # else
+        #   @reference = response_google["candidates"][0]["photos"][0]["photo_reference"]
+        #   @image = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{@reference}&key=#{ENV['GOOGLE_KEY']}"
+        # end
 
 
 
-        @picked_places << {json: place, image: @image}
+        @picked_places << {json: place, image: ""}
       end
 
 
     else
-      url = "https://api.foursquare.com/v2/venues/search?client_id=#{@client_id }&client_secret=#{@client_secret}&v=#{@v}&ll=40.7099,-73.9622&radius=200"
+      url = "https://api.foursquare.com/v2/venues/search?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&ll=40.7099,-73.9622&radius=200"
       request = open(url).read
       response = JSON.parse(request)
       # @places = response["response"]["venues"]
@@ -74,14 +74,13 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @client_id = "YJ4CF523S31MTRIMRSDI5QV5RCIT0DKKF5QLYOFZ5I0S5DU1"
-    @client_secret = "PIT2ZXNNQD4UK5RAWB5W3BTQD1FYQDYUG2HV4KCPO5BRZJ2U"
     @v = "20190425"
 
-    url = "https://api.foursquare.com/v2/venues/#{params[:id]}?client_id=#{@client_id}&client_secret=#{@client_secret}&v=#{@v}"
+    url = "https://api.foursquare.com/v2/venues/#{params[:id]}?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}"
     request = open(url).read
     response = JSON.parse(request)
     @place = response["response"]["venue"]
+
   end
 
   def create
