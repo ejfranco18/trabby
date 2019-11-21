@@ -18,6 +18,13 @@
     <img src="<%= @place['bestPhoto']['prefix'] + '300x500' + @place['bestPhoto']['suffix']%>" alt="">
   </div>
 </div>
+      <div
+        id="map_detail"
+        style="width: 100%;
+        height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
 
 
 
