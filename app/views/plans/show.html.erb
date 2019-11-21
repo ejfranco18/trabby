@@ -1,10 +1,63 @@
-<h1>Plans#show</h1>
+<h3>Your Plans</h3>
 <p>Find me in app/views/plans/show.html.erb</p>
 
-  <ul>
-      <li><%= @plan.start_date %></li>
-      <li><%= @plan.end_date  %></li>
-    </ul>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Time</th>
+      <th scope="col"><%= @plan.start_date %></th>
+      <th scope="col"><%= @plan.end_date  %></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">09.00 - 09.30</th>
+      <td>Breakfast</td>
+      <td>Breakfast</td>
+
+    </tr>
+    <tr>
+      <th scope="row">10 - 12.30</th>
+      <td>here activity.name</td>
+      <td>Thornton</td>
+
+    </tr>
+    <tr>
+      <th scope="row">13.00 - 14.30</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+
+    </tr>
+    <tr>
+      <th scope="row">15.00 - 18.00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+
+    </tr>
+    <tr>
+      <th scope="row">18.00 - 19.00</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+
+    </tr>
+    <tr>
+      <th scope="row">19.30 - 21.00</th>
+      <td>Dinner</td>
+      <td>Dinner</td>
+
+    </tr>
+    <tr>
+      <th scope="row">21.00 + </th>
+      <td>Larry</td>
+      <td>the Bird</td>
+
+    </tr>
+  </tbody>
+</table>
+
+
+
 
 
 <%= link_to plans_path(@plan) do%>
