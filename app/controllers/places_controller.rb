@@ -77,14 +77,10 @@ class PlacesController < ApplicationController
     request = open(url).read
     response = JSON.parse(request)
     @place = response["response"]["venue"]
-    raise
-    # @markers = @places.map do |place|
-    # {
-    #     lat: place["venue"]["location"]["lat"],
-    #     lng: place["venue"]["location"]["lng"]
-    # }
-  end
-
+    @markers = [{
+      lat: @place["location"]["lat"],
+      lng: @place["location"]["lng"]
+    }]
   end
 
   def create
