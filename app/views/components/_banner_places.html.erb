@@ -1,4 +1,4 @@
-<div class="banner_places" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @city.image %>);">
+<div class="banner_places" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @city.image ? @city.image : 'https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1387&q=80' %>);">
   <div class="wrapper_city_banner">
     <h1><%= @city.name %></h1>
   </div>

@@ -1,4 +1,4 @@
-
+<%= render 'components/loader' %>
 <%= render 'components/banner' %>
 <%= link_to "create plan", new_plan_path(city: 'Paris') %>
 <div class="container p-3">
@@ -9,17 +9,17 @@
     <% style = ["left-image-first","right-image-first","left-image-second","right-image-second"] %>
     <% if counter == 1 || counter == 3 %>
       <div class="d-flex justify-content-between mb-4">
-        <div class=<%= style[counter-1] %>>
-          <%= link_to places_path(query: city.name) do %>
+        <div class= "<%= style[counter-1] %>">
+          <%= link_to places_path(query: city.name), class: "animTrigger" do %>
             <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= city.image %>)">
                 <%= city.name %>
             </div>
           <% end %>
         </div>
     <% else %>
-        <div class=<%= style[counter-1]%>>
-          <%= link_to places_path(query: city.name) do %>
-            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= city.image %>)">
+        <div class="<%= style[counter-1]%>">
+          <%= link_to places_path(query: city.name), class: "animTrigger" do %>
+            <div class="card-category animTrigger" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= city.image %>)">
                 <%= city.name %>
             </div>
           <% end %>

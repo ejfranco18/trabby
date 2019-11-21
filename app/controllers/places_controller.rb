@@ -6,28 +6,24 @@ class PlacesController < ApplicationController
 
   def index
     @v = "20190425"
-
-
-
     if params[:query].present?
       # by location
       coordinates = Geocoder.search(params[:query])
       location = "#{coordinates.first.coordinates[0]},#{coordinates.first.coordinates[1]}"
       # url = "https://api.foursquare.com/v2/venues/search?client_id=#{@client_id }&client_secret=#{@client_secret}&v=#{@v}&ll=#{location}&radius=200"
       url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&ll=#{location}&limit=8"
+
+      request = nil
       request = open(url).read
+
       response = JSON.parse(request)
-      # @places = response["response"]["venues"]
       @places = response["response"]["groups"].first["items"]
       @city = City.where(name: params[:query].split(',').first).first
-
       @picked_places = []
-
       @places.each do |place|
         name = place["venue"]["name"]
         city = place["venue"]["location"]["city"]
-
-
+        # url_google_search = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=#{name + ' ' + city}&inputtype=textquery&fields=photos&key=#{ENV['GOOGLE_KEY']}"
         # request_google = URI.parse(URI.escape(url_google_search)).read
         # response_google = JSON.parse(request_google)
 
@@ -37,19 +33,31 @@ class PlacesController < ApplicationController
         #   @reference = response_google["candidates"][0]["photos"][0]["photo_reference"]
         #   @image = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{@reference}&key=#{ENV['GOOGLE_KEY']}"
         # end
-
-
-
         @picked_places << {json: place, image: ""}
       end
-
-
     else
-      url = "https://api.foursquare.com/v2/venues/search?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&ll=40.7099,-73.9622&radius=200"
+      near = "40.4165,-3.70256"
+      url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&ll=#{near}&limit=8"
       request = open(url).read
       response = JSON.parse(request)
       # @places = response["response"]["venues"]
-      @places = response
+      @places = response["response"]["groups"].first["items"]
+      @picked_places = []
+      @places.each do |place|
+        name = place["venue"]["name"]
+        city = place["venue"]["location"]["city"]
+        # url_google_search = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=#{name + ' ' + city}&inputtype=textquery&fields=photos&key=#{ENV['GOOGLE_KEY']}"
+        # request_google = URI.parse(URI.escape(url_google_search)).read
+        # response_google = JSON.parse(request_google)
+
+        # if response_google["candidates"][0]["photos"][0]["photo_reference"].nil?
+        #   @image = ""
+        # else
+        #   @reference = response_google["candidates"][0]["photos"][0]["photo_reference"]
+        #   @image = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{@reference}&key=#{ENV['GOOGLE_KEY']}"
+        # end
+        @picked_places << {json: place, image: ""}
+      end
     end
 
     # by word

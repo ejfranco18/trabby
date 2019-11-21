@@ -3,6 +3,5 @@ class PagesController < ApplicationController
 
   def home
     @cities = City.all
-    @imagen = helpers.asset_url('loading.gif')
   end
 end
