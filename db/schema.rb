@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_162607) do
+ActiveRecord::Schema.define(version: 2019_11_21_175162) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,13 +55,12 @@ ActiveRecord::Schema.define(version: 2019_11_20_162607) do
     t.string "link"
     t.string "type"
     t.bigint "city_id"
-    t.bigint "price_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "rating"
     t.index ["category_id"], name: "index_places_on_category_id"
     t.index ["city_id"], name: "index_places_on_city_id"
-    t.index ["price_id"], name: "index_places_on_price_id"
   end
 
   create_table "plans", force: :cascade do |t|
@@ -84,6 +83,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_162607) do
     t.index ["user_id"], name: "index_preferences_on_user_id"
   end
 
+<<<<<<< HEAD
   create_table "prices", force: :cascade do |t|
     t.integer "value"
     t.date "date"
@@ -91,6 +91,14 @@ ActiveRecord::Schema.define(version: 2019_11_20_162607) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "request_caches", force: :cascade do |t|
+    t.string "url", null: false
+    t.json "response", default: {}
+    t.index ["url"], name: "index_request_caches_on_url", unique: true
+  end
+
+=======
+>>>>>>> master
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -110,7 +118,6 @@ ActiveRecord::Schema.define(version: 2019_11_20_162607) do
   add_foreign_key "activities", "plans"
   add_foreign_key "places", "categories"
   add_foreign_key "places", "cities"
-  add_foreign_key "places", "prices"
   add_foreign_key "plans", "users"
   add_foreign_key "preferences", "users"
 end
