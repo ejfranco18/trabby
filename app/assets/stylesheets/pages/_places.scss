@@ -1,0 +1,61 @@
+.container_places {
+  padding-top: 50px;
+  margin-bottom: 50px;
+  width: 100%;
+  padding: 50px 80px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.side_places_data {
+  width: 30%;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.main_places_data {
+  width: 70%;
+}
+
+.filter_places {
+  width: 100%;
+  height: 40%;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.info {
+  margin: 50px 0;
+  p{
+    color: black;
+  }
+}
+
+.places {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.card-place {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-align: center;
+  padding: 20px;
+}
