@@ -15,7 +15,7 @@
     <%= render 'components/your_trip_card' %>
 
     <div class="info">
-      <h3><%= @city.name %></h3>
+      <h3><%= params[:query].present? ? @city.name : "Discover places in your area" %></h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, minima dolorum provident pariatur ullam quam officia
         dipisci ipsa sapiente a quibusdam consequatur suscipit iusto esse illum velit harum enim aut. Lorem ipsum dolor sit amet,
         consectetur adipisicing elit. Eveniet, minima dolorum provident pariatur ullam quam officia adipisci ipsa sapiente a
@@ -23,9 +23,9 @@
     </div>
     <div class="places">
     <% @picked_places.each do |place| %>
-      <%= link_to place_path(place[:json]["venue"]["id"]) do %>
+      <%= link_to place_path(place[:json]["id"]) do %>
         <div class="card-place" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= place[:image] %>)">
-          <%= place[:json]["venue"]["name"] %>
+          <%= place[:json]["name"] %>
         </div>
       <% end %>
     <% end %>

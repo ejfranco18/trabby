@@ -1,5 +1,5 @@
-<div class="banner_places" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @city.image %>);">
+<div class="banner_places" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= params[:query].present? ? @city.image : 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80'%>);">
   <div class="wrapper_city_banner">
-    <h1><%= @city.name %></h1>
+    <h1><%= @city.name if params[:query].present? %></h1>
   </div>
 </div>

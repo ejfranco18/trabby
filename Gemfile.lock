@@ -78,7 +78,10 @@ GEM
     geocoder (1.5.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+<<<<<<< HEAD
+=======
     hashdiff (1.0.0)
+>>>>>>> master
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -164,7 +167,10 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+<<<<<<< HEAD
+=======
     safe_yaml (1.0.5)
+>>>>>>> master
     sassc (2.2.1)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
