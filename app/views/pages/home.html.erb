@@ -1,170 +1,114 @@
 <%= render 'components/banner' %>
-
 <%= link_to "create plan", new_plan_path(city: 'Paris') %>
-
 <div class="container p-3">
   <h1 class="center">Cities to visit</h1>
-  <!-- First Row -->
-<div class="d-flex justify-content-between mb-4">
-  <div class="left-image-first">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1523270805298-a339734e463e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)">
-      Venice
-    </div>
-  </div>
-  <div class="right-image-first">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&auto=format&fit=crop&w=1952&q=80)">
-      Paris
-    </div>
-  </div>
+  <% counter = 0 %>
+  <% @cities.each do |city| %>
+    <% counter == 4 ? counter = 1 : counter += 1  %>
+    <% style = ["left-image-first","right-image-first","left-image-second","right-image-second"] %>
+    <% if counter == 1 || counter == 3 %>
+      <div class="d-flex justify-content-between mb-4">
+        <div class=<%= style[counter-1] %>>
+          <%= link_to places_path(query: city.name) do %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= city.image %>)">
+                <%= city.name %>
+            </div>
+          <% end %>
+        </div>
+    <% else %>
+        <div class=<%= style[counter-1]%>>
+          <%= link_to places_path(query: city.name) do %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= city.image %>)">
+                <%= city.name %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>
-
-<!-- Second Row -->
-<div class="d-flex justify-content-between mb-4">
-  <div class="left-image-second">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1505761671935-60b3a7427bad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80)">
-      London
-    </div>
-  </div>
-  <div class="right-image-second">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1503970999490-4404449dc349?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1569&q=80)">
-      Rome
-    </div>
-  </div>
-</div>
-<!-- Copy paste more of first and second row to add more cities -->
-<!-- Third Row -->
-<div class="d-flex justify-content-between mb-4">
-  <div class="left-image-first">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1560704194-8afbc567d52f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80)">
-      Barcelona
-    </div>
-  </div>
-  <div class="right-image-first">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1459679749680-18eb1eb37418?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80)">
-      Amsterdam
-    </div>
-  </div>
-</div>
-<!-- Fourth Row -->
-<div class="d-flex justify-content-between mb-4">
-  <div class="left-image-second">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1541849546-216549ae216d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80)">
-      Prague
-    </div>
-  </div>
-</div>
-
-</div>
-<!-- Already put in container with heading -->
 
 <div class="pink-container">
-
-      <h1 class="center">Activities loved by you, organized with us</h1>
-
-        <div class="container p-3">
-
-          <div id="card-1">
-            <div class="cards-1">
-              <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1482245294234-b3f2f8d5f1a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1660&q=80);">
-                </div>
-
-              <h4>Museum</h4>
-              <p>Museums ensure understanding for various groups and cultures.
-              They promote better understanding of our collective heritage and foster dialogue,
-              curiosity and self-reflection. Museums are both necessary and relevant today.</p>
-            </div>
-            <div id="card-1">
-            <div class="cards-1">
-              <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1560184611-5b5749138c3c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1487&q=80);">
-                </div>
-
-              <h4>Opera</h4>
-              <p>“Opera can make us see, feel and hear the World differently.”</p>
-            </div>
-          </div>
-
-            <div id="card-1">
-            <div class="cards-1">
-              <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);">
-                </div>
-
-              <h4>Concert</h4>
-              <p>Concerts are performing live. They are seeing your audience;
-              they are feeling the passion that is put into the music. None of these things are attainable through listening to an mp3.
-              Music allows us to connect with people; concerts allow us so connect with people intimately.</p>
-            </div>
-          </div>
-
-          <div id="card-1">
-            <div class="cards-1">
-              <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);">
-                </div>
-
-              <h4>Sport</h4>
-              <p>Catch every spectacular play and game-winning drive from the Football, Basketball, Rugby and more.</p>
-            </div>
-          </div>
-
-          <div id="card-1">
-            <div class="cards-1">
-              <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1598&q=80);">
-                </div>
-
-              <h4>Ballet</h4>
-              <p>Ballet is so much more than a performance on stage.</p>
-            </div>
-          </div>
-
-          <div id="card-1">
-            <div class="cards-1">
-              <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1513491714241-33805f8ff175?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);">
-                </div>
-
-              <h4>Bar</h4>
-              <p>Connect, relax, wind down, have fun, meet people, look at people, root for their team together, break up the
-              monotony of life, stay in touch with your friends !</p>
-            </div>
-          </div>
-
-          <div id="card-1">
-            <div class="cards-1">
-              <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1564694202728-17dd7584bd58?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80);">
-                </div>
-
-              <h4>Visit the city</h4>
-              <p>There are some more unknown places you shouldn't miss!</p>
-            </div>
-          </div>
-
-          <div id="card-1">
-            <div class="cards-1">
-              <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80);">
-                </div>
-
-              <h4>Food</h4>
-              <p>Have the best food experiences with locals in the city.</p>
-            </div>
-          </div>
-
-          <div id="card-1">
-            <div class="cards-1">
-              <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1532452119098-a3650b3c46d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);">
-                </div>
-
-              <h4>Night club</h4>
-              <p>A place to unwind from your daily routines!</p>
-            </div>
-          </div>
-          </div>
-
+  <h1 class="center">Activities loved by you, organized with us</h1>
+  <div class="container p-3">
+    <div class="card-row">
+      <div class="cards-1">
+        <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1482245294234-b3f2f8d5f1a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1660&q=80);">
         </div>
-
+        <h4>Museum</h4>
+        <p>Museums ensure understanding for various groups and cultures.
+        They promote better understanding of our collective heritage and foster dialogue,
+        curiosity and self-reflection. Museums are both necessary and relevant today.</p>
+      </div>
+      <div class="cards-1">
+        <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1560184611-5b5749138c3c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1487&q=80);">
         </div>
-
-        <div class="white-container">
-            <div class="center">
-                <h1>Try the Trabby app that makes your planning super simple</h1>
-                <p>So many trips, so little time. Let Trabby help you!</p>
-                <a class="btn btn-flat" href="#">Sign up!</a>
-            </div>
+        <h4>Opera</h4>
+        <p>“Opera can make us see, feel and hear the World differently.”</p>
+      </div>
+      <div class="cards-1">
+        <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);">
         </div>
+        <h4>Concert</h4>
+        <p>Concerts are performing live. They are seeing your audience;
+        they are feeling the passion that is put into the music. None of these things are attainable through listening to an mp3.
+        Music allows us to connect with people; concerts allow us so connect with people intimately.</p>
+      </div>
+    </div>
+
+    <div class="card-row">
+      <div class="cards-1">
+        <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);">
+        </div>
+        <h4>Sport</h4>
+        <p>Catch every spectacular play and game-winning drive from the Football, Basketball, Rugby and more.</p>
+      </div>
+      <div class="cards-1">
+        <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1598&q=80);">
+        </div>
+        <h4>Ballet</h4>
+        <p>Ballet is so much more than a performance on stage.</p>
+      </div>
+      <div id="card-row">
+        <div class="cards-1">
+          <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1513491714241-33805f8ff175?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);">
+          </div>
+          <h4>Bar</h4>
+          <p>Connect, relax, wind down, have fun, meet people, look at people, root for their team together, break up the
+          monotony of life, stay in touch with your friends !</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-row">
+      <div class="cards-1">
+        <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1564694202728-17dd7584bd58?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80);">
+        </div>
+        <h4>Visit the city</h4>
+        <p>There are some more unknown places you shouldn't miss!</p>
+      </div>
+      <div class="cards-1">
+        <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80);">
+        </div>
+        <h4>Food</h4>
+        <p>Have the best food experiences with locals in the city.</p>
+      </div>
+      <div class="cards-1">
+        <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1532452119098-a3650b3c46d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);">
+        </div>
+        <h4>Night club</h4>
+        <p>A place to unwind from your daily routines!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="white-container">
+  <div class="center">
+      <h1>Try the Trabby app that makes your planning super simple</h1>
+      <p>So many trips, so little time. Let Trabby help you!</p>
+      <a class="btn btn-flat" href="#">Sign up!</a>
+  </div>
+</div>
+
+

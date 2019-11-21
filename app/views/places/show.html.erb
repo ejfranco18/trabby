@@ -1,12 +1,23 @@
-<h2>Foursquare place</h2>
-<p><%= @place["name"] %></p>
-<p>Address: <%= @place["location"]["address"] %></p>
-<p>Phone: <%= @place["contact"]["phone"] %></p>
-<p>Rating: <%= @place["rating"]%></p>
-<p>Categories
-  <ul>
-  <% @place["categories"].each do |categorie| %>
-   <li><%= categorie["shortName"] %></li>
-  <% end %>
-</ul></p>
-<p><img src="<%= @place["bestPhoto"]["prefix"] + "300x500" + @place["bestPhoto"]["suffix"]%>" alt=""></p>
+<div class="container place_info_wrapper">
+
+  <div class="place_main_info">
+    <h1><%= @place["name"] %></h1>
+   <p>Address: <%= @place["location"]["address"] %></p>
+    <p>Phone: <%= @place["contact"]["phone"] %></p>
+    <p>Rating: <%= @place["rating"]%></p>
+    <p>Url: <a href="<%= @place['url']%>"><%= @place["url"]%></a></p>
+    <p>Categories
+      <ul>
+      <% @place["categories"].each do |categorie| %>
+       <li><%= categorie["shortName"] %></li>
+      <% end %>
+      </ul>
+    </p>
+  </div>
+  <div class="place_side_info">
+    <img src="<%= @place['bestPhoto']['prefix'] + '300x500' + @place['bestPhoto']['suffix']%>" alt="">
+  </div>
+</div>
+
+
+
