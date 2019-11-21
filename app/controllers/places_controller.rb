@@ -85,6 +85,8 @@ class PlacesController < ApplicationController
     # }
   end
 
+  end
+
   def create
     @place = Place.new(place_params)
     if @place.save
