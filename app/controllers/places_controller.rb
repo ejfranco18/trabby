@@ -3,7 +3,6 @@ class PlacesController < ApplicationController
 
   def index
     @v = "20190425"
-
     if params[:query].present?
       coordinates = Geocoder.search(params[:query])
       location = "#{coordinates.first.coordinates[0]},#{coordinates.first.coordinates[1]}"
@@ -53,7 +52,6 @@ class PlacesController < ApplicationController
 
       @picked_places << {json: place, image: ""}
     end
-
     end
 
     # by word

@@ -9,24 +9,31 @@ import { off } from '../plugins/init_overlay';
 import { closeCard } from '../plugins/init_closeTripCard';
 import "../plugins/category_choice";
 import "../plugins/flatpickr"
-
-
-// import { load } from '../plugins/loader';
+import { load } from '../plugins/loader';
 
 initAutocomplete();
+initMapbox();
+const animForm = document.querySelector("#animTrigger");
 
-// const animForm = document.querySelector("#animTrigger");
+animForm.addEventListener("submit", (event) => {
+  event.preventDefault()
+  load();
+  setTimeout((event) => {
+    animForm.submit();
+  }, 2000)
+})
 
-// animForm.addEventListener("submit", (event) => {
+// const animLink = document.querySelector(".animTrigger");
+
+// animLink.addEventListener("click", (event) => {
 //   event.preventDefault()
 //   load();
 //   setTimeout((event) => {
-//     animForm.submit();
-//   }, 3000)
+//     animLink.click();
+//   }, 2000)
 // })
 
 
-initMapbox();
 closeCard();
 on();
 off();
