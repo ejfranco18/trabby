@@ -10,14 +10,9 @@ align-items: center;
 
 .cards-1{
 width: 353px;
-height: 168px;
-left: 160px;
-top: 1821px;
-
-
 }
 
-#card-1{
+.card-row{
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 10px;

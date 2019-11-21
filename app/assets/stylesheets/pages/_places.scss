@@ -5,6 +5,7 @@
   padding: 50px 80px;
   display: flex;
   justify-content: center;
+  margin-bottom: 50px;
 }
 
 .side_places_data {
@@ -17,6 +18,16 @@
 
 .main_places_data {
   width: 70%;
+}
+
+.filter_places {
+  width: 100%;
+  height: 40%;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .info {
@@ -46,4 +57,5 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   text-align: center;
+  padding: 20px;
 }
