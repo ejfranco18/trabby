@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2019_11_20_162607) do
     t.string "continent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
+    t.text "description"
   end
 
   create_table "places", force: :cascade do |t|

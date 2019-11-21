@@ -7,4 +7,11 @@ const initAutocomplete = () => {
   }
 };
 
+
+const load = () => {
+  window.onload = function(){ document.getElementById("loading").style.display = "none" }
+
+}
+
 export { initAutocomplete };
+export { load };

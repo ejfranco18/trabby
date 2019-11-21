@@ -1,18 +1,14 @@
 .footer {
-    background: #24292E;
-    display: -webkit-box;
-    -webkit-box-align: center;
-    -webkit-box-pack: justify;
-    padding: 0px 50px;
-    color: white;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    bottom: 0pt;
-    left: 0pt;
-    background-attachment: scroll;
-    background-position: 0% 0%;
-    height: 126px;
+  background: #24292E;
+  display: -webkit-box;
+  -webkit-box-align: center;
+  -webkit-box-pack: justify;
+  padding: 0px 50px;
+  color: white;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  height: 126px;
 }
 
 .footer-links {
