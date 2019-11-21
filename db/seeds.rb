@@ -22,7 +22,6 @@ Place.destroy_all
 # place1 = Place.create!(name: "Great Place", address: "somehwere in Madrid", images:"https://unsplash.com/photos/WBGjg0DsO_g", description:"amazing to spend your day", opening_hours: "10 am", latitude: 40.416775, longitude: -3.703790, duration: 3, link:"", type: "", city_id: 1, price_id: 1, category_id: 1)
 # activity1 = Activity.create!(start_time:"10.30", end_time:"12.30", place_id:1, plan_id:1)
 
-
 # City.create!(name:"Madrid", country:"Spain", continent: "Europe", image: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80")
 # City.create!(name:"Stockholm", country:"Sweden", continent: "Europe", image: "https://images.unsplash.com/photo-1509356843151-3e7d96241e11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80")
 # City.create!(name:"Oslo", country:"Norway", continent: "Europe", image: "https://images.unsplash.com/photo-1433757741270-94a3bcadc2f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3369&q=80")

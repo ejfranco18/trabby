@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^4.2.0",
+    "bodymovin": "^4.13.0",
     "bootstrap": "^4.3.1",
     "flatpickr": "^4.6.3",
     "flickity": "^2.2.1",
