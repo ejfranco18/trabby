@@ -1,28 +1,23 @@
 <div class="container">
-
   <div class="form-post">
-
     <h1>New plan</h1>
     <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
       <%= simple_form_for(@plan) do |f| %>
-        <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-        <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <div class="row">
+            <!-- Inject categories here -->
+            <div class="category-choices">
+              <% Category.all.each do |element| %>
+                <input class="hidden" type="checkbox" value="<%= element.id %>" name="plan[search_items][]" id="plan_search_items_<%= element.id %>">
+                <label class="category-choice" for="plan_search_items_<%= element.id %>">
+                  <%= element.category %>
+                </label>
+              <% end %>
+            </div>
+      </div>
+      <%= f.submit "Save your plan", class: "btn btn-primary"  %>
+      <% end %>
     </div>
-
-    <div class="row">
-          <!-- Inject categories here -->
-          <div class="category-choices">
-            <% Category.all.each do |element| %>
-              <input class="hidden" type="checkbox" value="<%= element.id %>" name="plan[search_items][]" id="plan_search_items_<%= element.id %>">
-              <label class="category-choice" for="plan_search_items_<%= element.id %>">
-                <%= element.category %>
-              </label>
-            <% end %>
-          </div>
-          <%= f.submit "Save your plan", class: "btn btn-primary"  %>
-        <% end %>
-    </div>
-
   </div>
-
 </div>
