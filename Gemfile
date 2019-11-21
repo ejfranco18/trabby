@@ -23,7 +23,6 @@ group :development do
 end
 
 group :development, :test do
-  gem 'vcr'
   gem 'webmock'
   gem 'pry-byebug'
   gem 'pry-rails'

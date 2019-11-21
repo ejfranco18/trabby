@@ -37,22 +37,17 @@ class ActivityGenerator
     # "https://api.foursquare.com/v2/venues/explore?client_id=XYTCZF5R0UVQKNJ0M2HLG3TYNG2IXAS1GPGFFS10W0BIWU3E&client_secret=UDHJGXEO3CPQT5MO3S2UZT5C0Q2YGQPRROFPNGVZNYXAI4C3&v=20190425&near=Madrid&radius=5000&limit=8&categoryId=52e81612bcbc57f1066b7a14"
     items = []
 
-    VCR.use_cassette("foursquare_list_#{location}_#{category_id}") do
-      response = RestClient.get(url)
-      json = JSON.parse(response.body, symbolize_names: true)
-      groups = json.dig(:response, :groups)
-      items = groups.first[:items]
-    end
+    response = RestClient.get(url)
+    json = JSON.parse(response.body, symbolize_names: true)
+    groups = json.dig(:response, :groups)
+    items = groups.first[:items]
 
     items.each do |item|
       # puts item.dig(:venue, :id)
       venue_id = item.dig(:venue, :id)
       url2 = "https://api.foursquare.com/v2/venues/#{venue_id}?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{v}"
       response = nil
-
-      VCR.use_cassette("foursquare_details_#{venue_id}") do
-        response = RestClient.get(url2)
-      end
+      response = RestClient.get(url2)
 
       json = JSON.parse(response.body, symbolize_names: true)
       venue = json.dig(:response, :venue)
