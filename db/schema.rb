@@ -83,22 +83,12 @@ ActiveRecord::Schema.define(version: 2019_11_21_175162) do
     t.index ["user_id"], name: "index_preferences_on_user_id"
   end
 
-<<<<<<< HEAD
-  create_table "prices", force: :cascade do |t|
-    t.integer "value"
-    t.date "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "request_caches", force: :cascade do |t|
     t.string "url", null: false
     t.json "response", default: {}
     t.index ["url"], name: "index_request_caches_on_url", unique: true
   end
 
-=======
->>>>>>> master
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
