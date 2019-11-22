@@ -9,6 +9,7 @@ class PlansController < ApplicationController
   end
 
   def create
+    @resource = User.new
     @plan = Plan.new(plan_params)
     @plan.user = current_user
     if @plan.save

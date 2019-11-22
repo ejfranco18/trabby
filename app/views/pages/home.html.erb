@@ -1,7 +1,7 @@
 <%= render 'components/loader' %>
 <%= render 'components/banner' %>
 <div class="container p-3">
-  <h1 class="center">Cities to visit</h1>
+  <h1 class="center" id="trigger1">Cities to visit</h1>
   <% counter = 0 %>
   <% @cities.each do |city| %>
     <% counter == 4 ? counter = 1 : counter += 1  %>
