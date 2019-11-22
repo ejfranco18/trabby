@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @cities = City.all
+    @resource = User.new
   end
 end
