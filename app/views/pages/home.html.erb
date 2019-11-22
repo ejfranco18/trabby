@@ -1,6 +1,5 @@
 <%= render 'components/loader' %>
 <%= render 'components/banner' %>
-<%= link_to "create plan", new_plan_path(city: 'Paris') %>
 <div class="container p-3">
   <h1 class="center">Cities to visit</h1>
   <% counter = 0 %>
@@ -104,18 +103,22 @@
   </div>
 </div>
 
-<div class="white-container">
-  <div class="center">
-      <h1>Try the Trabby app that makes your planning super simple</h1>
-      <p>So many trips, so little time. Let Trabby help you!</p>
-            <button class="btn btn-flat" type="button">
-              <span class="first_span_class">
-                    <path d="M2 13V11H22V13H2ZM2 19V17H22V19H2ZM2 7V5H22V7H2Z"></path>
-                  </svg>
-                  <span><%= link_to "Sign up!", new_user_session_path%></span>
-                </span>
-              </span>
-            </button>
+
+      <% if user_signed_in? %>
+      <% else %>
+      <div class="white-container">
+        <div class="center">
+            <h1>Try the Trabby app that makes your planning super simple</h1>
+            <p>So many trips, so little time. Let Trabby help you!</p>
+                  <button class="btn btn-flat" type="button">
+                    <span class="first_span_class">
+                          <path d="M2 13V11H22V13H2ZM2 19V17H22V19H2ZM2 7V5H22V7H2Z"></path>
+                        </svg>
+                        <span><%= link_to "Sign up!", new_user_session_path%></span>
+                      </span>
+                    </span>
+                  </button>
+      <% end %>
 
   </div>
 </div>
