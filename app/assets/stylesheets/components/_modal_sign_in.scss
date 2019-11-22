@@ -2,8 +2,8 @@
   .modal.right .modal-dialog {
 
     margin: auto;
-    width: 320px;
-    height: 100%;
+    width: 400px;
+    height: 1000px;
     transform: translate3d(25%, 0, 0);
   }
 
@@ -20,7 +20,7 @@
 
 /*Right*/
   .modal.right.fade .modal-dialog {
-    right: -320px;
+    right: -400px;
     -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
        -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
          -o-transition: opacity 0.3s linear, right 0.3s ease-out;
@@ -29,7 +29,7 @@
 
   .modal.right.fade.in .modal-dialog {
     // right: 0;
-    right: 30%;
+    right: 0;
   }
 
 /* ----- MODAL STYLE ----- */
