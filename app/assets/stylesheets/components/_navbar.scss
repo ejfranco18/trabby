@@ -26,6 +26,7 @@
   transition-timing-function: ease-out;
 }
 
+
 #overlay {
   position: fixed; /* Sit on top of the page content */
   display: none; /* Hidden by default */
@@ -42,4 +43,9 @@
 
 img{
   margin-left: 100px;
+}
+
+a:hover{
+  text-decoration: none;
+  color:#B7EAE6;
 }

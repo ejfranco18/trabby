@@ -10,7 +10,18 @@
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  filter: none;
+  -webkit-filter: grayscale(0%);
 }
+
+.card-category:hover{
+  filter: gray;
+  -webkit-filter: grayscale(100%);
+  -webkit-transition: all .6s ease;
+  -webkit-backface-visibility: hidden;
+}
+
+
 
 .left-image-first {
   margin-right: 10px;

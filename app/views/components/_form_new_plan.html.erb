@@ -5,6 +5,7 @@
       <%= simple_form_for(@plan) do |f| %>
           <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
           <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.hidden_field :city_id, value: City.find_by(name: params[:city])&.id %>
       <div class="row">
             <!-- Inject categories here -->
             <div class="category-choices">
