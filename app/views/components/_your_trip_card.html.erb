@@ -4,7 +4,7 @@
     <p>You will see personalised ideas from other travellers like you.</p>
 
     <% if current_user %>
-      <%=link_to new_plan_path(city: :query), method: :get do %>
+      <%=link_to new_plan_path(city: params[:query]), method: :get do %>
         <div class="container"></div><button class ="btn btn-success" >Plan your trip!</button><div></div>
       <% end %>
     <% else %>

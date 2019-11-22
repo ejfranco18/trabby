@@ -10,7 +10,6 @@ User.destroy_all
 Activity.destroy_all
 Plan.destroy_all
 City.destroy_all
-Price.destroy_all
 Category.destroy_all
 Place.destroy_all
 
