@@ -27,13 +27,29 @@ class ActivityGenerator
       ['Museum', '4bf58dd8d48988d181941735'],
       ['Zoo', '4bf58dd8d48988d17b941735']
     ]
-    slot_3 = [['Restaurant', '4bf58dd8d48988d1c4941735'], ['Spanish Restaurant', '4bf58dd8d48988d150941735']]
-    slot_4 = [['Exhibit', '56aa371be4b08b9a8d573532'], ['Museum', '4bf58dd8d48988d181941735'], ['Palace', '52e81612bcbc57f1066b7a14']]
-    slot_5 = [['Park', '4bf58dd8d48988d163941735']]
-    slot_6 = [['Restaurant', '4bf58dd8d48988d1c4941735'], ['Spanish Restaurant', '4bf58dd8d48988d150941735']]
-    slot_7 = [['Performing Arts', '4bf58dd8d48988d1f2931735'], ['Bar', '4bf58dd8d48988d116941735']]
-    slot_8 = [['Night Club', '4bf58dd8d48988d11f941735']]
-
+    slot_3 = [
+      ['Restaurant', '4bf58dd8d48988d1c4941735'],
+      ['Spanish Restaurant', '4bf58dd8d48988d150941735']
+    ]
+    slot_4 = [
+      ['Exhibit', '56aa371be4b08b9a8d573532'],
+      ['Museum', '4bf58dd8d48988d181941735'],
+      ['Palace', '52e81612bcbc57f1066b7a14']
+    ]
+    slot_5 = [
+      ['Park', '4bf58dd8d48988d163941735']
+    ]
+    slot_6 = [
+      ['Restaurant', '4bf58dd8d48988d1c4941735'],
+      ['Spanish Restaurant', '4bf58dd8d48988d150941735']
+    ]
+    slot_7 = [
+      ['Performing Arts', '4bf58dd8d48988d1f2931735'],
+      ['Bar', '4bf58dd8d48988d116941735']
+    ]
+    slot_8 = [
+      ['Night Club', '4bf58dd8d48988d11f941735']
+    ]
 
     day_slots = [slot_1, slot_2, slot_3, slot_4, slot_5, slot_6, slot_7, slot_8]
 
@@ -43,10 +59,18 @@ class ActivityGenerator
 
     pp plan_days
 
+    count = {}
+    plan_days.each do |day|
+      day.each do |slot|
+        count[slot.last] ||= 0
+        count[slot.last] += 1
+      end
+    end
+
+    pp count
+
     return
 
-    # Activity - remove start_time, end_time, create_at and updated_at.
-    # Add slot and date
     duration.times do |index|
       date = @plan.start_date + index.days
 
