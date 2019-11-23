@@ -1,12 +1,13 @@
 class ActivityGenerator
   def initialize(plan)
     @plan = plan
+    @city = City.find(@plan.city_id)
   end
 
   # def activity_ranking
   # end
 
-  def create_activities
+  def select_activities
     v = "20190425"
     location = City.find(@plan.city_id).name
     duration = (@plan.end_date - @plan.start_date).to_i
@@ -69,25 +70,37 @@ class ActivityGenerator
 
     pp count
 
-    return
-
-    duration.times do |index|
-      date = @plan.start_date + index.days
-
-      day_slots.each_with_index do |slot, index|
-        category = best_category_for_slot(slot, category_ids)
-
-        place = foursquare_best_place(category)
-
-        #Activity.create!(slot: index + 1, plan: @plan, place: "", date: date)
+    count.each_pair do |activity, times|
+      category_instance_id = Category.find_by(foursquare_category_id: activity).id
+      unless Place.find_by(category_id: category_instance_id, city_id: @plan.city_id).present?
+        create_places(category_id)
+      end
+      ranked_places = Place.where(category_id: category_instance_id, city_id: @plan.city_id).sort_by { |place| place.rating }
+      times.times do |time|
+        create_activity(,,ranked_places[time])
+        # how to give it the right slot and date? (iterate through slots and days of plan)
       end
     end
 
+    return
+
+
+
+    # duration.times do |index|
+    #   date = @plan.start_date + index.days
+    #   pp date
+
+    #   day_slots.each_with_index do |slot, index|
+    #     category = best_category_for_slot(slot, category_ids)
+
+    #     place = foursquare_best_place(category)
+
+    #     #Activity.create!(slot: index + 1, plan: @plan, place: "", date: date)
+    #   end
+    # end
+
     category_id = '52e81612bcbc57f1066b7a14'
 
-    bakery = 0
-    bistro = 0
-    act1 = bakery + bistro
 
     # until duration == act1 do
     #   if
@@ -114,6 +127,11 @@ class ActivityGenerator
 
     # ranked_places = Place.sort_by { |place| place.rating }
     # category_instance = Category.find_by(foursquare_category_id: category_id)
+  end
+
+  def create_activity(slot, day, place)
+    activity = Activity.new(plan_id: @plan.id, place_id: place.id, slot: slot, date: day)
+    activity.save
   end
 
   def categories_for_a_day(slots, category_ids)
@@ -163,5 +181,6 @@ class ActivityGenerator
   #     categoryid = Category.find_by(foursquare_category_id: category_id).id
   #     new_place = Place.new(name: name, address: address, images: image, opening_hours: opening_hours, latitude: latitude, longitude: longitude, city_id: city_id, category_id: categoryid, rating: rating, description: description)
   #     new_place.save!
+  #   end
   # end
 end
