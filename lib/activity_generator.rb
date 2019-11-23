@@ -95,8 +95,6 @@ class ActivityGenerator
 
 
 
-
-
     # if Place.find_by(category_id: 11, city_id: 1).present?
     #   create_places(category_id)
     # else
