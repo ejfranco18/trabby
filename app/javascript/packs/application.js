@@ -10,6 +10,7 @@ import "../plugins/category_choice";
 import "../plugins/flatpickr"
 import { load } from '../plugins/loader';
 import { initSortable } from '../plugins/init_sortable';
+import { TxtType } from '../plugins/typewriterEffect';
 
 const showModal = () => {
   $('#myModal').on('shown.bs.modal', function () {
@@ -44,3 +45,5 @@ closeCard();
 
 initSortable();
 const list = document.querySelector("#activities");
+
+TxtType();
