@@ -13,7 +13,7 @@ class PlansController < ApplicationController
     @resource = User.new
     @plan = Plan.new(plan_params)
     @plan.user = current_user
-    if @plan.save!
+    if @plan.save
       ActivityGenerator.new(@plan).create_activities
       redirect_to plan_path(@plan)
     else
