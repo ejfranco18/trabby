@@ -1,11 +1,12 @@
 class PlansController < ApplicationController
   def show
     @plan = Plan.find(params[:id])
-
+    @resource = User.new
   end
 
   def new
     @plan = Plan.new
+    @resource = User.new
   end
 
   def create
