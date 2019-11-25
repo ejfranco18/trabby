@@ -54,7 +54,8 @@ puts ""
 
 puts "About to create plans"
 puts ""
-plan1 = Plan.create!(start_date: "2019-11-30", end_date: "2019-12-01", user_id: "1", city_id: "1", search_items: [1,2,3])
+
+plan1 = Plan.create!(start_date: "2019-12-01", end_date: "2019-12-03", user_id: "1", city_id: "1", search_items: [1,2,3])
 plan2 = Plan.create!(start_date: "2019-12-02", end_date: "2019-12-05", user_id: "1", city_id: "2", search_items: [1,2,3])
 plan3 = Plan.create!(start_date: "2019-12-03", end_date: "2019-12-06", user_id: "2", city_id: "3", search_items: [1,2,3])
 plan4 = Plan.create!(start_date: "2019-12-04", end_date: "2019-12-07", user_id: "2", city_id: "4", search_items: [1,2,3])
@@ -65,6 +66,7 @@ puts ""
 
 puts "About to create places"
 puts ""
+
 place1 = Place.create!(
   name: "Levadura Madre",
   address: "C. San Joaquín, 4",
@@ -79,6 +81,7 @@ place1 = Place.create!(
   city_id: 1,
   category_id: 5,
   rating: 8.7)
+place1 = Place.create!(name: "Levadura Madre", address: "C. San Joaquín, 4", images: "https://fastly.4sqi.net/img/general/720x434/227_GM4YoO7O4p_xUu9R3tRQLvIREkuIKN8x3I38hlbMXlI.jpg", description: [], opening_hours: "{\"days\"=>\"Today\", \"includesToday\"=>true, \"open\"=>[{\"renderedTime\"=>\"8:00 AM–8:00 PM\"}], \"segments\"=>[]}", latitude: -29.9184877, longitude: -71.242809098302, duration: nil, link: nil, type: nil, city_id: 1, category_id: 5, rating: 8.7)
 place2 = Place.create!(
   name: "celicioso",
   address: "Calle del Barquillo 19",
@@ -297,6 +300,7 @@ place16 = Place.create!(
   rating: 8.7)
 puts "Places created!!!!!!!!!!!"
 puts ""
+puts "Places created!!!!!!!!!!!"
 puts ""
 puts ""
 
@@ -318,6 +322,15 @@ activity13 = Activity.create!(plan_id: "1", place_id: "13", slot: "5", date: "20
 activity14 = Activity.create!(plan_id: "1", place_id: "14", slot: "6", date: "2019-12-01")
 activity15 = Activity.create!(plan_id: "1", place_id: "15", slot: "7", date: "2019-12-01")
 activity16 = Activity.create!(plan_id: "1", place_id: "16", slot: "8", date: "2019-12-01")
+puts "Plans created!!!!!!!!!!"
+puts ""
+
+puts "About to create activities"
+puts ""
+activity1 = Activity.create!(plan_id: "1", place_id: "1", slot: "1", date: "2019-11-13")
+activity2 = Activity.create!(plan_id: "1", place_id: "2", slot: "2", date: "2019-11-13")
+activity3 = Activity.create!(plan_id: "1", place_id: "3", slot: "3", date: "2019-11-13")
+activity4 = Activity.create!(plan_id: "1", place_id: "3", slot: "4", date: "2019-11-13")
 puts "Plans created!!!!!!!!!!"
 puts ""
 puts ""

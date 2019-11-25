@@ -19,6 +19,68 @@
       <% number_of_days = (@plan[:end_date].mjd - @plan[:start_date].mjd) + 1 %>
       <% add_one_day = 0 %>
 
+      <!-- Day 1 -->
+      <div class="col-lg-6">
+        <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
+          <div class="card-body">
+
+
+            <div class="weather">
+              <h4 class="weather-text"><%=  @plan_weather_temp %></h4>
+              <img src="<%= @plan_weather_img %>" alt="Weather Icon">
+            </div>
+
+
+
+            <h5 class="card-title text-muted text-uppercase text-center">Saturday 30 November</h5>
+
+            <hr>
+
+            <ul class="fa-ul" id="activitiesDay1">
+              <li>
+
+                <div class="container" style="background: #fff; border-radius: 5px;">
+                  <div>
+                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Musée du Louvre</h2>
+                      <p style="font-size: 12px;line-height: 14px;color: #000000;">The Louvre Museum is the world's largest art museum and a historic monument in Paris, France. In 2018, the Louvre was the world's most visited art museum, receiving 10.2 million visitors.</p>
+                    </div>
+                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">Rue de Rivoli , 75001 Paris</h2>
+                </div>
+              </li>
+
+              <li>
+                <div class="container" style="background: #fff; border-radius: 5px;">
+                  <div>
+                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Pizza Hut</h2>
+                      <p style="font-size: 12px;line-height: 14px;color: #000000;">Pizza Hut is an American restaurant chain and international franchise. The company is known for its Italian-American cuisine menu, including pizza and pasta, as well as side dishes and desserts.</p>
+                    </div>
+                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">29 Boulevard des Italiens, 75002 Paris</h2>
+                </div>
+              </li>
+
+              <li>
+                <div class="container" style="background: #fff; border-radius: 5px;">
+                  <div>
+                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Opéra de Paris</h2>
+                      <p style="font-size: 12px;line-height: 14px;color: #000000;">The Paris Opera is the primary opera and ballet company of France. It was founded in 1669 by Louis XIV as the Académie d'Opéra.</p>
+                    </div>
+                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">86 Rue de Provence, 75009 Paris</h2>
+                </div>
+              </li>
+
+              <li>
+                <div class="container" style="background: #fff; border-radius: 5px;">
+                  <div>
+                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">La Bellevilloise</h2>
+                      <p style="font-size: 12px;line-height: 14px;color: #000000;">Arts & cultural centre for exhibitions, film screenings, concerts & events, with a bright cafe.</p>
+                    </div>
+                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">19-21 Rue Boyer, 75020 Paris</h2>
+                </div>
+              </li>
+
+            </ul>
+
+
       <% until number_of_days == 0%>
         <!-- Day -->
           <div class="col-lg-6">
@@ -61,7 +123,7 @@
 </section>
 
 
-<h1 class="center">Add an event</h1>
+<h3 class="center">Add an event</h3>
 
 <ul class="fa-ul" id="activitiesAddAnEvent">
 
