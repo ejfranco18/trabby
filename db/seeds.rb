@@ -54,11 +54,62 @@ puts ""
 
 puts "About to create plans"
 puts ""
-plan1 = Plan.create!(start_date: "2019-11-13", end_date: "2019-11-13", user_id: "1", city_id: "1", search_items: [1,2,3])
-plan2 = Plan.create(start_date: "2019-11-13", end_date: "2019-11-13", user_id: "1", city_id: "2", search_items: [1,2,3])
-plan3 = Plan.create(start_date: "2019-11-13", end_date: "2019-11-13", user_id: "2", city_id: "3", search_items: [1,2,3])
-plan4 = Plan.create(start_date: "2019-11-13", end_date: "2019-11-13", user_id: "2", city_id: "4", search_items: [1,2,3])
-puts "Plans created"
+plan1 = Plan.create!(start_date: "2019-12-01", end_date: "2019-12-03", user_id: "1", city_id: "1", search_items: [1,2,3])
+plan2 = Plan.create!(start_date: "2019-12-02", end_date: "2019-12-05", user_id: "1", city_id: "2", search_items: [1,2,3])
+plan3 = Plan.create!(start_date: "2019-12-03", end_date: "2019-12-06", user_id: "2", city_id: "3", search_items: [1,2,3])
+plan4 = Plan.create!(start_date: "2019-12-04", end_date: "2019-12-07", user_id: "2", city_id: "4", search_items: [1,2,3])
+puts "Plans created!!!!!!!!!!!!!!!"
 puts ""
 puts ""
 puts ""
+
+puts "About to create places"
+puts ""
+place1 = Place.create!(name: "Levadura Madre", address: "C. San Joaquín, 4", images: "https://fastly.4sqi.net/img/general/720x434/227_GM4YoO7O4p_xUu9R3tRQLvIREkuIKN8x3I38hlbMXlI.jpg", description: [], opening_hours: "{\"days\"=>\"Today\", \"includesToday\"=>true, \"open\"=>[{\"renderedTime\"=>\"8:00 AM–8:00 PM\"}], \"segments\"=>[]}", latitude: -29.9184877, longitude: -71.242809098302, duration: nil, link: nil, type: nil, city_id: 1, category_id: 5, rating: 8.7)
+place2 = Place.create!(
+  name: "celicioso",
+  address: "Calle del Barquillo 19",
+  images: "https://fastly.4sqi.net/img/general/720x434/217386639_PZvKGFGEnoLpot9zSIoMyeF1miK_nhAN_lrP8UFKuRs.jpg",
+  description:
+   ["Esta Lista incluye la mayoria de lugares que he visitado, tambien incluye sitios que me faltan por visitar que creo que son de interes. Entre ellos Lugares publicos, plaza, restaurantes, mercados etc"],
+  opening_hours:
+   "{\"days\"=>\"Today\", \"includesToday\"=>true, \"open\"=>[{\"renderedTime\"=>\"10:00 AM–3:00 PM\"}, {\"renderedTime\"=>\"5:00 PM–10:00 PM\"}], \"segments\"=>[]}",
+  latitude: 40.4220636,
+  longitude: -3.6956952,
+  duration: nil,
+  link: nil,
+  type: nil,
+  city_id: 1,
+  category_id: 5,
+  rating: 8.7)
+place3 = Place.create!(name: "El Horno de San Onofre",
+  address: "C. San Onofre, 3",
+  images: "https://fastly.4sqi.net/img/general/720x434/npPk8PA4wzUr-51InOyqhfLCBaT7AMMdtjuw7y7HjFo.jpg",
+  description:
+   ["From a \"Madrileña\" to the rest of the world ;)\n\nYou can also follow The best shopping @Madrid to discover cool shops around the city.\nhttps://es.foursquare.com/martasmth/list/the-best-shopping--madrid"],
+  opening_hours:
+   "{\"days\"=>\"Today\", \"includesToday\"=>true, \"open\"=>[{\"renderedTime\"=>\"9:00 AM–11:00 AM\"}, {\"renderedTime\"=>\"2:00 PM–10:00 PM\"}], \"segments\"=>[]}",
+  latitude: 38.8707875,
+  longitude: -6.96836396175555,
+  duration: nil,
+  link: nil,
+  type: nil,
+  city_id: 1,
+  category_id: 5,
+  rating: 8.7)
+puts "Places created!!!!!!!!!!!"
+puts ""
+puts ""
+puts ""
+
+puts "About to create activities"
+puts ""
+activity1 = Activity.create!(plan_id: "1", place_id: "1", slot: "1", date: "2019-11-13")
+activity2 = Activity.create!(plan_id: "1", place_id: "2", slot: "2", date: "2019-11-13")
+activity3 = Activity.create!(plan_id: "1", place_id: "3", slot: "3", date: "2019-11-13")
+activity4 = Activity.create!(plan_id: "1", place_id: "3", slot: "4", date: "2019-11-13")
+puts "Plans created!!!!!!!!!!"
+puts ""
+puts ""
+puts ""
+

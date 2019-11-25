@@ -9,7 +9,9 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 import "../plugins/category_choice";
 import "../plugins/flatpickr"
 import { load } from '../plugins/loader';
-import { initSortable } from '../plugins/init_sortable';
+import { initSortableDay1 } from '../plugins/init_sortable';
+import { initSortableDay2 } from '../plugins/init_sortable';
+import { initSortableAddAnEvent } from '../plugins/init_sortable';
 import { TxtType } from '../plugins/typewriterEffect';
 
 
@@ -23,6 +25,9 @@ const showModal = () => {
 initAutocomplete();
 initMapbox();
 const animForm = document.querySelector("#animTrigger");
+initSortableDay1();
+initSortableDay2();
+initSortableAddAnEvent();
 
 animForm.addEventListener("submit", (event) => {
   event.preventDefault()
@@ -41,6 +46,7 @@ animForm.addEventListener("submit", (event) => {
 //     animLink.click();
 //   }, 2000)
 // })
+
 
 initSortable();
 const list = document.querySelector("#activities");
