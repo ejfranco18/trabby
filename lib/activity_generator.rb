@@ -7,7 +7,6 @@ class ActivityGenerator
   end
 
   def select_activities
-    location = City.find(@plan.city_id).name
     duration = (@plan.end_date - @plan.start_date).to_i
 
     category_ids = @plan.categories.pluck(:foursquare_category_id)
@@ -62,15 +61,18 @@ class ActivityGenerator
         count[slot.last] ||= []
         category = Category.find_by(foursquare_category_id: slot.last)
 
-
-        if !Place.exists?(category: category, city_id: @plan.city_id)
-          create_places(slot.last)
-        end
+        # if !Place.exists?(category: category, city_id: @plan.city_id)
+        #   create_places(slot.last)
+        # end
 
         place = Place.where(category: category, city_id: @plan.city_id).where.not(id: count[slot.last]).first
         count[slot.last] << place
       end
     end
+
+    p count
+
+    return
 
     plan_days.each_with_index do |day, index|
       date = @plan.start_date + index.days
@@ -153,40 +155,41 @@ class ActivityGenerator
     slot.sample
   end
 
-  def create_places(category_id)
-    city_id = @plan.city_id
-    location = City.find(@plan.city_id).name
-    url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&near=#{location}&radius=5000&limit=8&categoryId=#{category_id}"
-    items = []
-    json = RequestCache.get(url)
-    groups = json.dig(:response, :groups)
-    items = groups.first[:items]
-    items.each do |item|
-      venue_id = item.dig(:venue, :id)
-      url2 = "https://api.foursquare.com/v2/venues/#{venue_id}?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}"
-      json = RequestCache.get(url2)
+  # def create_places(category_id)
+  #   city_id = @plan.city_id
+  #   location = City.find(@plan.city_id).name
+  #   url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&near=#{location}&radius=5000&limit=8&categoryId=#{category_id}"
+  #   items = []
+  #   json = RequestCache.get(url)
+  #   groups = json.dig(:response, :groups)
+  #   items = groups.first[:items]
 
-      venue = json.dig(:response, :venue)
-      name = venue[:name]
-      address = venue.dig(:location, :address)
-      image = "#{venue.dig(:photos, :groups).first[:items].first[:prefix]}720x434#{venue.dig(:photos, :groups).first[:items].first[:suffix]}"
-      rating = venue[:rating]
-      description = []
-      venue.dig(:listed, :groups)[0][:items].each do |x|
-        if x[:description].present?
-          description << x[:description]
-        end
-      end
-      if venue.dig(:popular, :timeframes).present?
-        opening_hours = venue.dig(:popular, :timeframes).first
-      else
-        opening_hours = ""
-      end
-      latitude = venue.dig(:location, :labeledLatLngs).first[:lat]
-      longitude = venue.dig(:location, :labeledLatLngs).first[:lng]
-      categoryid = Category.find_by(foursquare_category_id: category_id).id
-      new_place = Place.new(name: name, address: address, images: image, opening_hours: opening_hours, latitude: latitude, longitude: longitude, city_id: city_id, category_id: categoryid, rating: rating, description: description)
-      new_place.save!
-    end
-  end
+  #   items.each do |item|
+  #     venue_id = item.dig(:venue, :id)
+  #     url2 = "https://api.foursquare.com/v2/venues/#{venue_id}?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}"
+  #     json = RequestCache.get(url2)
+
+  #     venue = json.dig(:response, :venue)
+  #     name = venue[:name]
+  #     address = venue.dig(:location, :address)
+  #     image = "#{venue.dig(:photos, :groups).first[:items].first[:prefix]}720x434#{venue.dig(:photos, :groups).first[:items].first[:suffix]}"
+  #     rating = venue[:rating]
+  #     description = []
+  #     venue.dig(:listed, :groups)[0][:items].each do |x|
+  #       if x[:description].present?
+  #         description << x[:description]
+  #       end
+  #     end
+  #     if venue.dig(:popular, :timeframes).present?
+  #       opening_hours = venue.dig(:popular, :timeframes).first
+  #     else
+  #       opening_hours = ""
+  #     end
+  #     latitude = venue.dig(:location, :labeledLatLngs).first[:lat]
+  #     longitude = venue.dig(:location, :labeledLatLngs).first[:lng]
+  #     categoryid = Category.find_by(foursquare_category_id: category_id).id
+  #     new_place = Place.new(name: name, address: address, images: image, opening_hours: opening_hours, latitude: latitude, longitude: longitude, city_id: city_id, category_id: categoryid, rating: rating, description: description)
+  #     new_place.save!
+  #   end
+  # end
 end
