@@ -1,28 +1,32 @@
-<div class="container">
+<section class="py-5">
 
-  <div class="container center" style="height: 100px;">
-    <div class="btn btn-flat">
-      Export to Calendar
+    <!-- Export buttons -->
+    <div class="container center" style="height: 100px;">
+      <div class="btn btn-flat">
+        Export to Calendar
+      </div>
+      <div class="btn btn-flat" style="background: #00CCBC;">
+        Export to E-mail
+      </div>
     </div>
-    <div class="btn btn-flat" style="background: #00CCBC;">
-      Export to E-mail
-    </div>
-  </div>
 
-
-<section class="pricing py-5">
   <div class="container">
+
+
+    <br>
+
     <div class="row">
       <!-- Day 1 -->
       <div class="col-lg-6">
-        <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;
-">
+        <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
           <div class="card-body">
             <h5 class="card-title text-muted text-uppercase text-center">Saturday 30 November</h5>
-            <hr>
-            <ul class="fa-ul">
 
-              <li id="activities">
+            <hr>
+
+            <ul class="fa-ul" id="activitiesDay1">
+              <li>
+
                 <div class="container" style="background: #fff; border-radius: 5px;">
                   <div>
                     <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Musée du Louvre</h2>
@@ -32,9 +36,7 @@
                 </div>
               </li>
 
-              <br>
-
-              <li id="activities">
+              <li>
                 <div class="container" style="background: #fff; border-radius: 5px;">
                   <div>
                     <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Pizza Hut</h2>
@@ -44,9 +46,7 @@
                 </div>
               </li>
 
-              <br>
-
-              <li id="activities">
+              <li>
                 <div class="container" style="background: #fff; border-radius: 5px;">
                   <div>
                     <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Opéra de Paris</h2>
@@ -56,9 +56,7 @@
                 </div>
               </li>
 
-              <br>
-
-              <li id="activities">
+              <li>
                 <div class="container" style="background: #fff; border-radius: 5px;">
                   <div>
                     <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">La Bellevilloise</h2>
@@ -67,20 +65,21 @@
                     <h2 style="font-size: 12px;line-height: 14px;color: #000000;">19-21 Rue Boyer, 75020 Paris</h2>
                 </div>
               </li>
-              <br>
+
             </ul>
+
           </div>
         </div>
       </div>
       <!-- Day 2 -->
       <div class="col-lg-6">
-        <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;
-">
+        <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
           <div class="card-body">
             <h5 class="card-title text-muted text-uppercase text-center">Sunday 1 December</h5>
-            <hr>
-            <ul class="fa-ul">
 
+            <hr>
+
+            <ul class="fa-ul" id="activitiesDay2">
               <li>
                 <div class="container" style="background: #fff; border-radius: 5px;">
                   <div>
@@ -91,20 +90,15 @@
                 </div>
               </li>
 
-              <br>
-
               <li>
                 <div class="container" style="background: #fff; border-radius: 5px;">
                   <div>
-                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Le Poulpry
-</h2>
+                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Le Poulpry</h2>
                       <p style="font-size: 12px;line-height: 14px;color: #000000;">Great french cuisine!</p>
                     </div>
                     <h2 style="font-size: 12px;line-height: 14px;color: #000000;">12 Rue de Poitiers, 75007 Paris</h2>
                 </div>
               </li>
-
-              <br>
 
               <li>
                 <div class="container" style="background: #fff; border-radius: 5px;">
@@ -116,8 +110,6 @@
                 </div>
               </li>
 
-              <br>
-
               <li>
                 <div class="container" style="background: #fff; border-radius: 5px;">
                   <div>
@@ -127,61 +119,57 @@
                     <h2 style="font-size: 12px;line-height: 14px;color: #000000;">2 Rue Cambon, 75001 Paris</h2>
                 </div>
               </li>
-              <br>
+
             </ul>
-          </div>
-        </div>
-      </div>
-
-
+    <!-- Day 2 over-->
     </div>
   </div>
 </section>
-</div>
 
 
 <h1 class="center">Add an event</h1>
-<div class="row">
-  <div class="category-choices">
-      <input class="hidden" type="checkbox" style="font-family: Roboto;font-style: normal;font-weight: bold;font-size: 14px;line-height: 16px;display: flex;align-items: center;text-align: center;">
-      <label class="category-choice">
-        Petit Palais
-      </label>
-  </div>
-  <div class="category-choices">
-      <input class="hidden" type="checkbox" style="font-family: Roboto;font-style: normal;font-weight: bold;font-size: 14px;line-height: 16px;display: flex;align-items: center;text-align: center;">
-      <label class="category-choice">
-        Centre Pompidou
-      </label>
-  </div>
-  <div class="category-choices">
-      <input class="hidden" type="checkbox" style="font-family: Roboto;font-style: normal;font-weight: bold;font-size: 14px;line-height: 16px;display: flex;align-items: center;text-align: center;">
-      <label class="category-choice">
-        Grand Palais
-      </label>
-  </div>
-  <div class="category-choices">
-      <input class="hidden" type="checkbox" style="font-family: Roboto;font-style: normal;font-weight: bold;font-size: 14px;line-height: 16px;display: flex;align-items: center;text-align: center;">
-      <label class="category-choice">
-        Musée Grévin
-      </label>
-  </div>
-  <div class="category-choices">
-      <input class="hidden" type="checkbox" style="font-family: Roboto;font-style: normal;font-weight: bold;font-size: 14px;line-height: 16px;display: flex;align-items: center;text-align: center;">
-      <label class="category-choice">
-        Musée Carnavalet
-      </label>
-  </div>
-  <div class="category-choices">
-      <input class="hidden" type="checkbox" style="font-family: Roboto;font-style: normal;font-weight: bold;font-size: 14px;line-height: 16px;display: flex;align-items: center;text-align: center;">
-      <label class="category-choice">
-        Musée Rodin
-      </label>
-  </div>
-  <div class="category-choices">
-      <input class="hidden" type="checkbox" style="font-family: Roboto;font-style: normal;font-weight: bold;font-size: 14px;line-height: 16px;display: flex;align-items: center;text-align: center;">
-      <label class="category-choice">
-        Musée des arts décoratifs
-      </label>
-  </div>
-</div>
+
+<ul class="fa-ul" id="activitiesAddAnEvent">
+
+  <li>
+    <div class="container" style="background: #fff; border-radius: 5px;">
+      <div>
+        <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">La Bellevilloise</h2>
+          <p style="font-size: 12px;line-height: 14px;color: #000000;">Arts & cultural centre for exhibitions, film screenings, concerts & events, with a bright cafe.</p>
+        </div>
+        <h2 style="font-size: 12px;line-height: 14px;color: #000000;">19-21 Rue Boyer, 75020 Paris</h2>
+     </div>
+  </li>
+
+  <li>
+    <div class="container" style="background: #fff; border-radius: 5px;">
+      <div>
+        <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">La Bellevilloise</h2>
+          <p style="font-size: 12px;line-height: 14px;color: #000000;">Arts & cultural centre for exhibitions, film screenings, concerts & events, with a bright cafe.</p>
+        </div>
+        <h2 style="font-size: 12px;line-height: 14px;color: #000000;">19-21 Rue Boyer, 75020 Paris</h2>
+     </div>
+  </li>
+
+  <li>
+    <div class="container" style="background: #fff; border-radius: 5px;">
+      <div>
+        <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">La Bellevilloise</h2>
+          <p style="font-size: 12px;line-height: 14px;color: #000000;">Arts & cultural centre for exhibitions, film screenings, concerts & events, with a bright cafe.</p>
+        </div>
+        <h2 style="font-size: 12px;line-height: 14px;color: #000000;">19-21 Rue Boyer, 75020 Paris</h2>
+     </div>
+  </li>
+
+  <li>
+    <div class="container" style="background: #fff; border-radius: 5px;">
+      <div>
+        <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">La Bellevilloise</h2>
+          <p style="font-size: 12px;line-height: 14px;color: #000000;">Arts & cultural centre for exhibitions, film screenings, concerts & events, with a bright cafe.</p>
+        </div>
+        <h2 style="font-size: 12px;line-height: 14px;color: #000000;">19-21 Rue Boyer, 75020 Paris</h2>
+     </div>
+  </li>
+
+</ul>
+
