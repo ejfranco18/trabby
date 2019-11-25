@@ -3,7 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :plans
   has_many :activities, through: :plans
-  has_many :preferences
+  has_one :preference, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  accepts_nested_attributes_for :preference
 end

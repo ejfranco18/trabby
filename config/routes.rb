@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :places
   resources :plans
   resources :activities
+  resources :users, only: [:show, :update]
 end
