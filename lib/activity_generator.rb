@@ -62,7 +62,6 @@ class ActivityGenerator
         count[slot.last] ||= []
         category = Category.find_by(foursquare_category_id: slot.last)
 
-
         if !Place.exists?(category: category, city_id: @plan.city_id)
           create_places(slot.last)
         end
@@ -182,8 +181,13 @@ class ActivityGenerator
       else
         opening_hours = ""
       end
-      latitude = venue.dig(:location, :labeledLatLngs).first[:lat]
-      longitude = venue.dig(:location, :labeledLatLngs).first[:lng]
+      if venue.dig(:location, :labeledLatLngs).first[:lat].present?
+        latitude = venue.dig(:location, :labeledLatLngs).first[:lat]
+        longitude = venue.dig(:location, :labeledLatLngs).first[:lng]
+      else
+        latitude = ""
+        longitude = ""
+      end
       categoryid = Category.find_by(foursquare_category_id: category_id).id
       new_place = Place.new(name: name, address: address, images: image, opening_hours: opening_hours, latitude: latitude, longitude: longitude, city_id: city_id, category_id: categoryid, rating: rating, description: description)
       new_place.save!
