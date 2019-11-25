@@ -169,7 +169,11 @@ class ActivityGenerator
       name = venue[:name]
       address = venue.dig(:location, :address)
       image = "#{venue.dig(:photos, :groups).first[:items].first[:prefix]}720x434#{venue.dig(:photos, :groups).first[:items].first[:suffix]}"
-      rating = venue[:rating]
+      if venue[:rating].present?
+        rating = venue[:rating]
+      else
+        rating = 1
+      end
       description = []
       venue.dig(:listed, :groups)[0][:items].each do |x|
         if x[:description].present?
