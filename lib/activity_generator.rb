@@ -1,14 +1,12 @@
 class ActivityGenerator
   def initialize(plan)
     @plan = plan
+    # @plan = Plan.last # only for testing
     @city = City.find(@plan.city_id)
+    @v = "20190425"
   end
 
-  # def activity_ranking
-  # end
-
   def select_activities
-    v = "20190425"
     location = City.find(@plan.city_id).name
     duration = (@plan.end_date - @plan.start_date).to_i
 
@@ -58,33 +56,49 @@ class ActivityGenerator
       categories_for_a_day(day_slots, category_ids)
     end
 
-    pp plan_days
-
     count = {}
     plan_days.each do |day|
       day.each do |slot|
-        count[slot.last] ||= 0
-        count[slot.last] += 1
+        count[slot.last] ||= []
+        category = Category.find_by(foursquare_category_id: slot.last)
+
+
+        if !Place.exists?(category: category, city_id: @plan.city_id)
+          create_places(slot.last)
+        end
+
+        place = Place.where(category: category, city_id: @plan.city_id).where.not(id: count[slot.last]).first
+        count[slot.last] << place
       end
     end
 
-    pp count
+    plan_days.each_with_index do |day, index|
+      date = @plan.start_date + index.days
+      puts "Adding activities for #{date}...."
 
-    count.each_pair do |activity, times|
-      category_instance_id = Category.find_by(foursquare_category_id: activity).id
-      unless Place.find_by(category_id: category_instance_id, city_id: @plan.city_id).present?
-        create_places(category_id)
-      end
-      ranked_places = Place.where(category_id: category_instance_id, city_id: @plan.city_id).sort_by { |place| place.rating }
-      times.times do |time|
-        create_activity(,,ranked_places[time])
-        # how to give it the right slot and date? (iterate through slots and days of plan)
+      day.each_with_index do |slot, slot_index|
+        puts "Adding activity for slot #{slot_index} > #{slot}"
+        place = count[slot.last].sort_by!(&:rating).shift
+
+        @plan.activities.build(date: date, place: place, slot: slot_index)
       end
     end
 
-    return
+    @plan.save
 
+    # count.each_pair do |activity, times|
+    #   category_instance_id = Category.find_by(foursquare_category_id: activity).id
+    #   unless Place.find_by(category_id: category_instance_id, city_id: @plan.city_id).present?
+    #     create_places(category_id)
+    #   end
+    #   ranked_places = Place.where(category_id: category_instance_id, city_id: @plan.city_id).order(rating: :desc)
+    #   times.times do |time|
+    #     # create_activity(,,ranked_places[time])
+    #     # how to give it the right slot and date? (iterate through slots and days of plan)
+    #   end
+    # end
 
+    # return
 
     # duration.times do |index|
     #   date = @plan.start_date + index.days
@@ -99,14 +113,11 @@ class ActivityGenerator
     #   end
     # end
 
-    category_id = '52e81612bcbc57f1066b7a14'
-
+    # category_id = '52e81612bcbc57f1066b7a14'
 
     # until duration == act1 do
     #   if
     # end
-
-
 
     # if Place.find_by(category_id: 11, city_id: 1).present?
     #   create_places(category_id)
@@ -118,12 +129,6 @@ class ActivityGenerator
     # number of days
     # preferences
     # weather
-
-
-
-
-
-
 
     # ranked_places = Place.sort_by { |place| place.rating }
     # category_instance = Category.find_by(foursquare_category_id: category_id)
@@ -148,39 +153,40 @@ class ActivityGenerator
     slot.sample
   end
 
-  # def create_places(category_id)
-  #   city_id = @plan.city_id
-  #   url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{v}&near=#{location}&radius=5000&limit=8&categoryId=#{category_id}"
-  #       items = []
-  #   json = RequestCache.get(url)
-  #   groups = json.dig(:response, :groups)
-  #   items = groups.first[:items]
-  #   items.each do |item|
-  #     venue_id = item.dig(:venue, :id)
-  #     url2 = "https://api.foursquare.com/v2/venues/#{venue_id}?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{v}"
-  #     json = RequestCache.get(url2)
+  def create_places(category_id)
+    city_id = @plan.city_id
+    location = City.find(@plan.city_id).name
+    url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&near=#{location}&radius=5000&limit=8&categoryId=#{category_id}"
+    items = []
+    json = RequestCache.get(url)
+    groups = json.dig(:response, :groups)
+    items = groups.first[:items]
+    items.each do |item|
+      venue_id = item.dig(:venue, :id)
+      url2 = "https://api.foursquare.com/v2/venues/#{venue_id}?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}"
+      json = RequestCache.get(url2)
 
-  #     venue = json.dig(:response, :venue)
-  #     name = venue[:name]
-  #     address = venue.dig(:location, :address)
-  #     image = "#{venue.dig(:photos, :groups).first[:items].first[:prefix]}720x434#{venue.dig(:photos, :groups).first[:items].first[:suffix]}"
-  #     rating = venue[:rating]
-  #     description = []
-  #     venue.dig(:listed, :groups)[0][:items].each do |x|
-  #       if x[:description].present?
-  #         description << x[:description]
-  #       end
-  #     end
-  #     if venue.dig(:popular, :timeframes).present?
-  #       opening_hours = venue.dig(:popular, :timeframes).first
-  #     else
-  #       opening_hours = ""
-  #     end
-  #     latitude = venue.dig(:location, :labeledLatLngs).first[:lat]
-  #     longitude = venue.dig(:location, :labeledLatLngs).first[:lng]
-  #     categoryid = Category.find_by(foursquare_category_id: category_id).id
-  #     new_place = Place.new(name: name, address: address, images: image, opening_hours: opening_hours, latitude: latitude, longitude: longitude, city_id: city_id, category_id: categoryid, rating: rating, description: description)
-  #     new_place.save!
-  #   end
-  # end
+      venue = json.dig(:response, :venue)
+      name = venue[:name]
+      address = venue.dig(:location, :address)
+      image = "#{venue.dig(:photos, :groups).first[:items].first[:prefix]}720x434#{venue.dig(:photos, :groups).first[:items].first[:suffix]}"
+      rating = venue[:rating]
+      description = []
+      venue.dig(:listed, :groups)[0][:items].each do |x|
+        if x[:description].present?
+          description << x[:description]
+        end
+      end
+      if venue.dig(:popular, :timeframes).present?
+        opening_hours = venue.dig(:popular, :timeframes).first
+      else
+        opening_hours = ""
+      end
+      latitude = venue.dig(:location, :labeledLatLngs).first[:lat]
+      longitude = venue.dig(:location, :labeledLatLngs).first[:lng]
+      categoryid = Category.find_by(foursquare_category_id: category_id).id
+      new_place = Place.new(name: name, address: address, images: image, opening_hours: opening_hours, latitude: latitude, longitude: longitude, city_id: city_id, category_id: categoryid, rating: rating, description: description)
+      new_place.save!
+    end
+  end
 end
