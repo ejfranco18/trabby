@@ -2,7 +2,16 @@ import ScrollMagic from 'scrollmagic'
 
 
 // init controller
-var controller = new ScrollMagic.Controller();
+const homeScroll = () => {
+  let controller = new ScrollMagic.Controller();
+  let scene = new ScrollMagic.Scene({triggerElement: "#trigger1"})
+        // trigger animation by adding a css class
+        .setClassToggle(".justify-content-between", "visible")
+        .addTo(controller);
+};
+
+
+export { homeScroll }
 
 // // create a scene
 // new ScrollMagic.Scene({
@@ -14,10 +23,7 @@ var controller = new ScrollMagic.Controller();
 
 
 
-var scene = new ScrollMagic.Scene({triggerElement: "#trigger1"})
-        // trigger animation by adding a css class
-        .setClassToggle(".justify-content-between", "visible")
-        .addTo(controller);
+
 
 // new ScrollMagic.Scene({
 //           triggerElement: "#trigger1",
