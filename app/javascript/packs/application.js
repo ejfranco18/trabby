@@ -1,11 +1,11 @@
 import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css';
+import '../plugins/user_category';
 import { initMapbox } from '../plugins/init_mapbox';
 import { flkty } from '../plugins/flickity';
 import 'flickity/dist/flickity.css';
 import '../plugins/scrollmagic'
 import { initAutocomplete } from '../plugins/init_autocomplete';
-import { closeCard } from '../plugins/init_closeTripCard';
 import "../plugins/category_choice";
 import "../plugins/flatpickr"
 import { load } from '../plugins/loader';
@@ -13,6 +13,8 @@ import { initSortableDay1 } from '../plugins/init_sortable';
 import { initSortableDay2 } from '../plugins/init_sortable';
 import { initSortableAddAnEvent } from '../plugins/init_sortable';
 import { TxtType } from '../plugins/typewriterEffect';
+
+
 
 const showModal = () => {
   $('#myModal').on('shown.bs.modal', function () {
@@ -46,7 +48,7 @@ animForm.addEventListener("submit", (event) => {
 // })
 
 
-closeCard();
-
+initSortable();
+const list = document.querySelector("#activities");
 
 TxtType();
