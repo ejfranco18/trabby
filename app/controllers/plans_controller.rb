@@ -1,6 +1,16 @@
 class PlansController < ApplicationController
+  require 'date'
   def show
     @plan = Plan.find(params[:id])
+
+    # Do this for every day of the plan -> The time is the DT variable
+    city = @plan.city.name
+    dt =  @plan.start_date.to_time.to_i
+    url = "https://api.openweathermap.org/data/2.5/weather?q=#{city}&dt=#{dt}&appid=d7b02ef83c8bf77d8373bef160d151be"
+    response = RequestCache.get(url)
+    @plan_weather_img = "http://openweathermap.org/img/w/#{response['weather'][0]['icon']}.png"
+    @plan_weather_temp = response['weather'][0]['description']
+
     @resource = User.new
   end
 
@@ -13,7 +23,7 @@ class PlansController < ApplicationController
     @resource = User.new
     @plan = Plan.new(plan_params)
     @plan.user = current_user
-    if @plan.save!
+    if @plan.save
       ActivityGenerator.new(@plan).select_activities
       redirect_to plan_path(@plan)
     else

@@ -1,5 +1,5 @@
 .footer {
-    background: #2c3e50;
+    background: #1A252F;
     display: -webkit-box;
     -webkit-box-align: center;
     -webkit-box-pack: justify;
@@ -80,4 +80,9 @@
   &:hover {
     color: #E5E5E5;
   }
+}
+
+.lead {
+    font-size: 1rem;
+    font-weight: 300;
 }

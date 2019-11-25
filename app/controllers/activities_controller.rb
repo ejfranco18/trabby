@@ -13,7 +13,7 @@ class ActivitiesController < ApplicationController
 
   def create
     @activity = Activity.find(params[:id])
-    if @activity.save
+    if @activity.save!
       redirect_to activity_path(@activity)
     else
       render :new

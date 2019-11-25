@@ -11,7 +11,7 @@
         <div class= "<%= style[counter-1] %>">
           <%= link_to places_path(query: city.name), class: "animTrigger" do %>
             <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= city.image %>)">
-                <%= city.name %>
+                <%= city.name.split(',').first %>
             </div>
           <% end %>
         </div>
@@ -19,7 +19,7 @@
         <div class="<%= style[counter-1]%>">
           <%= link_to places_path(query: city.name), class: "animTrigger" do %>
             <div class="card-category animTrigger" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= city.image %>)">
-                <%= city.name %>
+                <%= city.name.split(',').first %>
             </div>
           <% end %>
         </div>
