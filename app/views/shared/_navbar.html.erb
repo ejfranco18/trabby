@@ -1,4 +1,5 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon ">
+  <div class="container">
 
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "https://res.cloudinary.com/dc40q0fon/image/upload/v1574160988/Trabby_ievekp.png" %>
@@ -15,6 +16,7 @@
       <% if user_signed_in? %>
 
         <!-- temporary sign out -->
+        <li class="nav-item mx-0 mx-lg-1">
           <button class="button_class" type="button">
               <span class="first_span_class">
                   <!-- The path gives the house button -->
@@ -25,8 +27,10 @@
                 </span>
               </span>
             </button>
+            </li>
 
         <!-- Only the menu -->
+        <li class="nav-item mx-0 mx-lg-1">
           <button class="button_class" type="button">
             <span class="first_span_class">
                 <!-- The path gives the three bars -->
@@ -37,15 +41,16 @@
               </span>
             </span>
           </button>
+          </li>
       <% else %>
         <!-- Log in -->
-          <button class="button_class" type="button">
+          <button class="button_class" type="button" data-toggle="modal" data-target="#myModal2">
               <span class="first_span_class">
                   <!-- The path gives the house button -->
                   <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-0f084ffde1637b39"><path d="M3 10L5 8.44444V5H9.42857L12 3L21 10V21H3V10ZM14 19H19V10.9782L12 5.53372L5 10.9782V19H10V14H14V19Z"></path></svg>
                     <path d="M2 13V11H22V13H2ZM2 19V17H22V19H2ZM2 7V5H22V7H2Z"></path>
                   </svg>
-                  <span><%= link_to "Log in", new_user_session_path%></span>
+                  <span>Log in</span>
                 </span>
               </span>
             </button>
@@ -65,5 +70,8 @@
 
     </ul>
   </div>
-
+  </div>
 </div>
+
+<%= render 'components/modal' %>
+

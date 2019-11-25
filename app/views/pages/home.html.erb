@@ -1,8 +1,7 @@
 <%= render 'components/loader' %>
 <%= render 'components/banner' %>
-<%= link_to "create plan", new_plan_path(city: 'Paris') %>
 <div class="container p-3">
-  <h1 class="center">Cities to visit</h1>
+  <h1 class="center" id="trigger1">Cities to visit</h1>
   <% counter = 0 %>
   <% @cities.each do |city| %>
     <% counter == 4 ? counter = 1 : counter += 1  %>
@@ -28,7 +27,6 @@
     <% end %>
   <% end %>
 </div>
-
 <div class="pink-container">
   <h1 class="center">Activities loved by you, organized with us</h1>
   <div class="container p-3">
@@ -56,7 +54,6 @@
         Music allows us to connect with people; concerts allow us so connect with people intimately.</p>
       </div>
     </div>
-
     <div class="card-row">
       <div class="cards-1">
         <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);">
@@ -80,7 +77,6 @@
         </div>
       </div>
     </div>
-
     <div class="card-row">
       <div class="cards-1">
         <div class="images-1" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1564694202728-17dd7584bd58?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80);">
@@ -104,10 +100,22 @@
   </div>
 </div>
 
-<div class="white-container">
-  <div class="center">
-      <h1>Try the Trabby app that makes your planning super simple</h1>
-      <p>So many trips, so little time. Let Trabby help you!</p>
-      <a class="btn btn-flat" href="#">Sign up!</a>
-  </div>
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2">
+          <div class="p-5">
+            <img style= "width:300px; height:300px; object-fit:cover; border-radius:50%;" src="https://res.cloudinary.com/dc40q0fon/image/upload/v1574510794/guilherme-stecanella-_dH-oQF9w-Y-unsplash_u3leit.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="p-5">
+            <h1>Make the most of your time ... Quick and easy!</h1>
+            <p>Don't try to see everything, but experience the things you will enjoy the most. Save time and stress from knowing where to go. Trabby has you covered.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </div>
