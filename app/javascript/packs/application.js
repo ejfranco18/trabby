@@ -9,9 +9,7 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 import "../plugins/category_choice";
 import "../plugins/flatpickr"
 import { load } from '../plugins/loader';
-import { initSortableDay1 } from '../plugins/init_sortable';
-import { initSortableDay2 } from '../plugins/init_sortable';
-import { initSortableAddAnEvent } from '../plugins/init_sortable';
+import { initSortableDay1, initSortableDay2, initSortableDay3, initSortableDay4, initSortableDay5, initSortableDay6, initSortableDay7, initSortableDay8 } from '../plugins/init_sortable';
 import { TxtType } from '../plugins/typewriterEffect';
 
 
@@ -27,7 +25,12 @@ initMapbox();
 const animForm = document.querySelector("#animTrigger");
 initSortableDay1();
 initSortableDay2();
-initSortableAddAnEvent();
+initSortableDay3();
+initSortableDay4();
+initSortableDay5();
+initSortableDay6();
+initSortableDay7();
+initSortableDay8();
 
 animForm.addEventListener("submit", (event) => {
   event.preventDefault()
