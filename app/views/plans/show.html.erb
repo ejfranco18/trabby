@@ -1,60 +1,45 @@
 <section class="py-5">
 
   <div class="container">
-
-
     <br>
 
     <div class="row scrolling-wrapper-flexbox">
-
-      <% number_of_days = (@plan[:end_date].mjd - @plan[:start_date].mjd) + 1 %>
-      <% add_one_day = 0 %>
-
-      <% until number_of_days == 0%>
-        <!-- Day -->
-        <% add_one_day += 1 %>
-          <div class="col-lg-6">
-            <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
-              <div class="card-body">
-                <!-- weather -->
-                <div class="weather">
-                <h4 class="weather-text"><%=  @plan_weather_temp %></h4>
-                <img src="<%= @plan_weather_img %>" alt="Weather Icon">
+      <% (@plan.start_date..@plan.end_date).each_with_index do |date, index| %>
+        <div class="col-lg-6">
+          <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
+            <div class="card-body">
+              <!-- weather -->
+              <div class="weather">
+                <h4 class="weather-text"><%= @weather[date][:temp] %></h4>
+                <img src="<%= @weather[date][:img] %>" alt="Weather Icon">
               </div>
 
-                <h5 class="card-title text-muted text-uppercase text-center"><%= @plan[:start_date] + add_one_day %></h5>
-                <hr>
-                <ul class="fa-ul" id="activitiesDay<%= add_one_day %>">
-                  <% @plan.activities.each do |activity| %>
-                    <li>
-                      <div class="container" style="background: #fff; border-radius: 5px;">
-                        <!-- Adding X button -->
-                        <div class="activity-remove js-remove">
-                          <a href="javascript:void(0)" onclick="removeChild(21)">
-                            <i class="fa fa-times"></i>
-                          </a>
-                        </div>
-                        <!-- Information -->
-                        <div>
-                          <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.name%></h2>
-                          <p style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.description%></p>
-                        </div>
-                        <h2 style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.address%></h2>
+              <h5 class="card-title text-muted text-uppercase text-center"><%= date %></h5>
+              <hr>
+              <ul class="fa-ul" id="activitiesDay<%= index %>">
+                <% @plan.activities.where(date: date).each do |activity| %>
+                  <li>
+                    <div class="container" style="background: #fff; border-radius: 5px;">
+                      <!-- Adding X button -->
+                      <div class="activity-remove js-remove">
+                        <a href="javascript:void(0)" onclick="removeChild(21)">
+                          <i class="fa fa-times"></i>
+                        </a>
                       </div>
-                    </li>
-
-                  <% break if activity.slot == 8 %>
-                  <% end %>
-
-                </ul>
-
-              </div>
+                      <!-- Information -->
+                      <div>
+                        <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.name%></h2>
+                        <p style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.description%></p>
+                      </div>
+                      <h2 style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.address%></h2>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
             </div>
           </div>
-
-        <% number_of_days -= 1 %>
+        </div>
       <% end %>
-
     </div>
   </div>
 </section>
@@ -78,7 +63,7 @@
   <div id="scroll1">
     <h3>Arts</h3>
 
-                <ul class="fa-ul" id="activitiesDay<%= add_one_day %>">
+                <ul class="fa-ul" id="activitiesDay<%#= add_one_day %>">
                   <% @plan.activities.each do |activity| %>
                     <li>
                       <div class="container" style="background: #fff; border-radius: 5px;">
