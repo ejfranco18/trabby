@@ -3,6 +3,5 @@ class PagesController < ApplicationController
 
   def home
     @cities = City.where.not(name: 'default')
-    @resource = User.new
   end
 end

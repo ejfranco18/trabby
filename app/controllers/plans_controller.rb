@@ -1,5 +1,4 @@
 class PlansController < ApplicationController
-  before_action :set_resource
 
   def show
     @plan = Plan.find(params[:id])
@@ -36,10 +35,6 @@ class PlansController < ApplicationController
   end
 
   private
-
-  def set_resource
-    @resource = User.new
-  end
 
   def plan_params
     params.require(:plan).permit(:start_date, :end_date, :user_id, :city_id, category_ids: [])

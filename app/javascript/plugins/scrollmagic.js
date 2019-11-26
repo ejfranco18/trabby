@@ -2,16 +2,17 @@ import ScrollMagic from 'scrollmagic'
 
 
 // init controller
-const homeScroll = () => {
+// const homeScroll = () => {
   let controller = new ScrollMagic.Controller();
   let scene = new ScrollMagic.Scene({triggerElement: "#trigger1"})
         // trigger animation by adding a css class
         .setClassToggle(".justify-content-between", "visible")
+        .reverse(false)
         .addTo(controller);
-};
+// };
 
 
-export { homeScroll }
+// export { homeScroll }
 
 // // create a scene
 // new ScrollMagic.Scene({
