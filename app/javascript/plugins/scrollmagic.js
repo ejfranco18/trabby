@@ -7,6 +7,7 @@ import ScrollMagic from 'scrollmagic'
   let scene = new ScrollMagic.Scene({triggerElement: "#trigger1"})
         // trigger animation by adding a css class
         .setClassToggle(".justify-content-between", "visible")
+        .reverse(false)
         .addTo(controller);
 // };
 

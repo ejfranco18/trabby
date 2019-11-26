@@ -10,6 +10,14 @@ import { load } from '../plugins/loader';
 import { initSortableDay1, initSortableDay2, initSortableDay3, initSortableDay4, initSortableDay5, initSortableDay6, initSortableDay7, initSortableDay8 } from '../plugins/init_sortable';
 import { TxtType } from '../plugins/typewriterEffect';
 
+animForm.addEventListener("submit", (event) => {
+  event.preventDefault()
+  load();
+  setTimeout((event) => {
+    animForm.submit();
+  }, 3000)
+})
+
 
 // if (document.body.id.match('pages_home')) {
 //   homeScroll();
@@ -34,13 +42,7 @@ initSortableDay6();
 initSortableDay7();
 initSortableDay8();
 
-animForm.addEventListener("submit", (event) => {
-  event.preventDefault()
-  load();
-  setTimeout((event) => {
-    animForm.submit();
-  }, 3000)
-})
+
 
 // const animLink = document.querySelector(".animTrigger");
 
