@@ -155,6 +155,7 @@ class ActivityGenerator
     slot.sample
   end
 
+
   # def create_places(category_id)
   #   city_id = @plan.city_id
   #   location = City.find(@plan.city_id).name

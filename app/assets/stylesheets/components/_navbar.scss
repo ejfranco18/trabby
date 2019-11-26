@@ -15,15 +15,45 @@
 }
 
 .button_class {
+  transition: ease .5s all;
   margin-right: 5px;
-  background: #fff;
-  border-radius: 4px;
+  background: transparent;
   display: flex;
   cursor: pointer;
-  padding: 8px 16px;
   line-height: 24px;
-  border: 1px solid #e8ebeb;
+  border: 1px solid;
   transition-timing-function: ease-out;
+  color: #00CCBC;
+  margin-right: 15px;
+  height: 38px;
+  align-items: center;
+  padding: 1px 25px;
+  border-radius: 4px;
+  &:hover, &:focus {
+    border-color: #00ffeb;
+    background: #00ffeb2b;
+    transform: translateY(-4px);
+    transform: scale(1.05);
+  }
+}
+
+.show > .btn-secondary.dropdown-toggle {
+    color: #fff;
+    border-color: #00ffeb;
+    background: #00ffeb2b;
+}
+
+.dropdown-menu.dropdown-menu-right.show {
+  button {
+    text-align: center;
+    color: #fff;
+  }
+    border-color: #00ffeb;
+    background: #00ffeb2b;
+}
+
+.button_text {
+  color: white;
 }
 
 
