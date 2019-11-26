@@ -4,20 +4,23 @@
     <br>
 
     <div class="row scrolling-wrapper-flexbox">
-      <% (@plan.start_date..@plan.end_date).each_with_index do |date, index| %>
+      <% @plan.plan_days.each do |plan_day| %>
         <div class="col-lg-6">
           <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
             <div class="card-body">
               <!-- weather -->
               <div class="weather">
-                <h4 class="weather-text"><%= @weather[date][:temp] %></h4>
-                <img src="<%= @weather[date][:img] %>" alt="Weather Icon">
+                <h4 class="weather-text">
+                  <%= plan_day.weather_info['description'] %>
+                  <%= plan_day.weather_info['temp'] %>ºC
+                </h4>
+                <img src="<%= plan_day.weather_info['icon'] %>" alt="Weather Icon">
               </div>
 
-              <h5 class="card-title text-muted text-uppercase text-center"><%= date %></h5>
+              <h5 class="card-title text-muted text-uppercase text-center"><%= plan_day.date %></h5>
               <hr>
-              <ul class="fa-ul" id="activitiesDay<%= index %>">
-                <% @plan.activities.where(date: date).each do |activity| %>
+              <ul class="fa-ul" id="activitiesDay<%= plan_day.id %>">
+                <% plan_day.activities.each do |activity| %>
                   <li>
                     <div class="container" style="background: #fff; border-radius: 5px;">
                       <!-- Adding X button -->
@@ -28,10 +31,10 @@
                       </div>
                       <!-- Information -->
                       <div>
-                        <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.name%></h2>
-                        <p style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.description%></p>
+                        <div style="background: #333"><%= image_tag activity.place.category.icon_url %></div>
+                        <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;"><%= activity.place.name.capitalize %></h2>
                       </div>
-                      <h2 style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.address%></h2>
+                      <h2 style="font-size: 12px;line-height: 14px;color: #000000;"><%= activity.place.address %></h2>
                     </div>
                   </li>
                 <% end %>
@@ -78,7 +81,6 @@
                         <!-- Information -->
                         <div>
                           <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.name%></h2>
-                          <p style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.description%></p>
                         </div>
                         <h2 style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.address%></h2>
                       </div>
