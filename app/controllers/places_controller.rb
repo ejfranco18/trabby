@@ -26,9 +26,7 @@ class PlacesController < ApplicationController
       # end
 
       @picked_places << {json: place[:venue], image: ""}
-
     end
-
 
     else
       # pending dinamic current location
@@ -59,11 +57,11 @@ class PlacesController < ApplicationController
     # by word
     # url = "https://api.foursquare.com/v2/venues/search?client_id=#{@client_id}&client_secret=#{@client_secret}&v=#{@v}&intent=global&query=tattoo&limit=5"
 
-        @markers = @picked_places.map do |place|
-    {
+    @markers = @picked_places.map do |place|
+      {
         lat: place[:json][:location][:lat],
         lng: place[:json][:location][:lng]
-    }
+      }
     end
   end
 

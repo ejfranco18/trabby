@@ -15,42 +15,39 @@
 
       <% if user_signed_in? %>
 
-        <!-- temporary sign out -->
-        <li class="nav-item mx-0 mx-lg-1">
-          <button class="button_class" type="button">
-              <span class="first_span_class">
-                  <!-- The path gives the house button -->
-                  <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-0f084ffde1637b39"><path d="M3 10L5 8.44444V5H9.42857L12 3L21 10V21H3V10ZM14 19H19V10.9782L12 5.53372L5 10.9782V19H10V14H14V19Z"></path></svg>
-                    <path d="M2 13V11H22V13H2ZM2 19V17H22V19H2ZM2 7V5H22V7H2Z"></path>
-                  </svg>
-                  <span><%= link_to "Log out", destroy_user_session_path, method: :delete%></span>
-                </span>
-              </span>
-            </button>
-            </li>
-
-        <!-- Only the menu -->
-        <li class="nav-item mx-0 mx-lg-1">
-          <button class="button_class" type="button">
-            <span class="first_span_class">
-                <!-- The path gives the three bars -->
-                <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-0f084ffde1637b39">
-                  <path d="M2 13V11H22V13H2ZM2 19V17H22V19H2ZM2 7V5H22V7H2Z"></path>
-                </svg>
-                <span>Menu</span>
-              </span>
-            </span>
+        <div class="btn-group">
+          <button type="button" class="btn btn-secondary button_class dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Menu
           </button>
-          </li>
+          <div class="dropdown-menu dropdown-menu-right">
+            <button class="dropdown-item" type="button">
+              <%= link_to user_path(current_user) do%>
+                <p class="button_text">Profile</p>
+              <% end %>
+            </button>
+            <button class="dropdown-item" type="button">
+              <%= link_to plans_path do%>
+                <p class="button_text">Plans</p>
+              <% end %>
+            </button>
+            <button class="dropdown-item" type="button">
+              <%= link_to destroy_user_session_path do%>
+                <p class="button_text">Logout</p>
+              <% end %>
+            </button>
+          </div>
+        </div>
+
       <% else %>
         <!-- Log in -->
           <button class="button_class" type="button" data-toggle="modal" data-target="#myModal2">
               <span class="first_span_class">
                   <!-- The path gives the house button -->
-                  <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-0f084ffde1637b39"><path d="M3 10L5 8.44444V5H9.42857L12 3L21 10V21H3V10ZM14 19H19V10.9782L12 5.53372L5 10.9782V19H10V14H14V19Z"></path></svg>
+                  <!-- <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-0f084ffde1637b39"><path d="M3 10L5 8.44444V5H9.42857L12 3L21 10V21H3V10ZM14 19H19V10.9782L12 5.53372L5 10.9782V19H10V14H14V19Z"></path></svg>
                     <path d="M2 13V11H22V13H2ZM2 19V17H22V19H2ZM2 7V5H22V7H2Z"></path>
-                  </svg>
-                  <span>Log in</span>
+                  </svg> -->
+
+                  <span>Sign in</span>
                 </span>
               </span>
             </button>
@@ -59,10 +56,11 @@
           <button class="button_class" type="button">
             <span class="first_span_class">
                 <!-- The path gives the three bars -->
-                <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-0f084ffde1637b39">
+        <!--         <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-0f084ffde1637b39">
                   <path d="M2 13V11H22V13H2ZM2 19V17H22V19H2ZM2 7V5H22V7H2Z"></path>
-                </svg>
-                <span>Menu</span>
+                </svg> -->
+                <!-- <span><a href="<%= new_user_registration_path %>" data-role="button" data-icon="info" data-mini="true">Forgotten password?</a></span> -->
+                <span><%= link_to 'Sign up', new_user_registration_path %></span>
               </span>
             </span>
           </button>
@@ -73,5 +71,5 @@
   </div>
 </div>
 
-<%= render 'components/modal' %>
+
 
