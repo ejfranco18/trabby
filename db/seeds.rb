@@ -5,12 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.destroy_all
+
+Place.destroy_all
+Category.destroy_all
 Activity.destroy_all
 Plan.destroy_all
 City.destroy_all
-Category.destroy_all
-Place.destroy_all
+User.destroy_all
+
+
 
 puts "About to create users"
 puts ""
@@ -306,9 +309,8 @@ place16 = Place.create!(
   rating: 8.7)
 puts "Places created!!!!!!!!!!!!!!!"
 puts ""
+puts "Places created!!!!!!!!!!!"
 puts ""
-puts ""
-
 puts "About to create activities"
 puts ""
 
