@@ -48,3 +48,25 @@
   padding-bottom: 30px;
 }
 
+.banner_top {
+  background-size: cover;
+  background-position: center;
+  max-height: 380px;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 3em;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.icon_card {
+  display: flex;
+  color: #17EBDB;
+  // justify-content: center;
+  // align-items: center;
+}
+

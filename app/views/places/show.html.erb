@@ -1,3 +1,21 @@
+<% image = @place['bestPhoto']['prefix'] + 'original' + @place['bestPhoto']['suffix'] %>
+<div class="banner_top" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image %>)">
+  <%= @place["name"] %>
+</div>
+
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <div class="icon_card">
+      <i class="fas fa-map-pin"></i>
+      <p><%= @place["location"]["address"] %></p>
+    </div>
+
+  </div>
+</div>
+
+
+
+
 <div class="container">
 <h3 div class="title1"><%= @place["name"] %></h3>
 <div class="place_info_wrapper">

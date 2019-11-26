@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @resource = User.new
-    @user = User.find(params[:id])
+    @user = current_user
     # @categories = []
     # @user.preference[:category_ids].each do |category|
     #   @categories << Category.find(category).category
@@ -23,7 +23,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
     if @user.update(user_params)
       redirect_to @user
     end
