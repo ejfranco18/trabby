@@ -16,6 +16,7 @@
     <br>
 
     <div class="row">
+
       <% number_of_days = (@plan[:end_date].mjd - @plan[:start_date].mjd) + 1 %>
       <% add_one_day = 0 %>
 
@@ -25,6 +26,12 @@
           <div class="col-lg-6">
             <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
               <div class="card-body">
+                <!-- weather -->
+                <div class="weather">
+                <h4 class="weather-text"><%=  @plan_weather_temp %></h4>
+                <img src="<%= @plan_weather_img %>" alt="Weather Icon">
+              </div>
+
                 <h5 class="card-title text-muted text-uppercase text-center"><%= @plan[:start_date] + add_one_day %></h5>
                 <hr>
                 <ul class="fa-ul" id="activitiesDay<%= add_one_day %>">
@@ -57,7 +64,6 @@
 
         <% number_of_days -= 1 %>
       <% end %>
-      <!-- Day -->
 
     </div>
   </div>
