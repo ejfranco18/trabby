@@ -2,3 +2,25 @@
   float: right;
   margin-top: 2px;
 }
+
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.scrolling-wrapper-flexbox {
+  height: 800px;
+  margin-bottom: 10px;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.scrollspy-example {
+  position: relative;
+  height: 250px;
+  overflow: auto;
+}
