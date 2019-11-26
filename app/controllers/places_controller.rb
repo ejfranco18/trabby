@@ -10,8 +10,10 @@ class PlacesController < ApplicationController
       url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&ll=#{location}&limit=8"
       response = RequestCache.get(url)
       @places = response[:response][:groups].first[:items]
-    @city = City.where(name: params[:query]).first
-    @city = City.where(name: "default").first if @city.nil?
+    @city = City.where(name: params[:query].split(',').first).first
+    if @city.nil?
+      @city = City.where(name: "default").first
+    end
     @picked_places = []
     @places.each do |place|
       name = place["venue"]["name"]
