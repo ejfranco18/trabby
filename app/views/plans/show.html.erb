@@ -1,21 +1,11 @@
 <section class="py-5">
 
-    <!-- Export buttons -->
-    <div class="container center" style="height: 100px;">
-      <div class="btn btn-flat">
-        Export to Calendar
-      </div>
-      <div class="btn btn-flat" style="background: #00CCBC;">
-        Export to E-mail
-      </div>
-    </div>
-
   <div class="container">
 
 
     <br>
 
-    <div class="row">
+    <div class="row scrolling-wrapper-flexbox">
 
       <% number_of_days = (@plan[:end_date].mjd - @plan[:start_date].mjd) + 1 %>
       <% add_one_day = 0 %>
@@ -70,12 +60,81 @@
 </section>
 
 
-<h1 class="center">Add an event</h1>
+<h1 class="center" style="padding-top: 0">Add an event</h1>
 
-<ul class="fa-ul" id="activitiesDay8">
+<body>
+<div class="row">
+<div class="col-sm-2" id="spy">
+  <ul class="nav nav-pills flex-column">
+    <li class="nav-item"><a class="nav-link active" href="#scroll1">Arts</a></li>
+    <li class="nav-item"><a class="nav-link" href="#scroll2">Entertainment</a></li>
+    <li class="nav-item"><a class="nav-link" href="#scroll3">Food</a></li>
+    <li class="nav-item"><a class="nav-link" href="#scroll4">Event</a></li>
+    <li class="nav-item"><a class="nav-link" href="#scroll5">Nightlife Spot</a></li>
+    <li class="nav-item"><a class="nav-link" href="#scroll6">Outdoors & Recreation</a></li>
+  </ul>
+</div>
+<div class="col-sm-9 scrollspy-example" data-spy="scroll" data-target="#spy">
+  <div id="scroll1">
+    <h3>Arts</h3>
+
+                <ul class="fa-ul" id="activitiesDay<%= add_one_day %>">
+                  <% @plan.activities.each do |activity| %>
+                    <li>
+                      <div class="container" style="background: #fff; border-radius: 5px;">
+                        <!-- Adding X button -->
+                        <div class="activity-remove js-remove">
+                          <a href="javascript:void(0)" onclick="removeChild(21)">
+                            <i class="fa fa-times"></i>
+                          </a>
+                        </div>
+                        <!-- Information -->
+                        <div>
+                          <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.name%></h2>
+                          <p style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.description%></p>
+                        </div>
+                        <h2 style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.address%></h2>
+                      </div>
+                    </li>
+
+                  <% break if activity.slot == 8 %>
+                  <% end %>
+
+                </ul>
+
+  </div>
+  <div id="scroll2">
+    <h3>Entertainment</h3>
+
+  </div>
+  <div id="scroll3">
+    <h3>Food</h3>
+
+  </div>
+  <div id="scroll4">
+    <h3>Event</h3>
+
+  </div>
+  <div id="scroll4">
+    <h3>Nightlife Spot</h3>
+
+  </div>
+  <div id="scroll4">
+    <h3>Outdoors & Recreation</h3>
+
+  </div>
+</div>
+</div>
+</body>
 
 
-
-</ul>
-
+    <!-- Export buttons -->
+    <div class="container center" style="height: 100px;">
+      <div class="btn btn-flat">
+        Export to Calendar
+      </div>
+      <div class="btn btn-flat" style="background: #00CCBC;">
+        Export to E-mail
+      </div>
+    </div>
 
