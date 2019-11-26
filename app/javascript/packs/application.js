@@ -2,7 +2,8 @@ import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '../plugins/user_category';
 import { initMapbox } from '../plugins/init_mapbox';
-import '../plugins/scrollmagic'
+import { homeScroll } from '../plugins/scrollmagic'
+>>>>>>> master
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import "../plugins/category_choice";
 import "../plugins/flatpickr"
@@ -18,11 +19,9 @@ animForm.addEventListener("submit", (event) => {
   }, 3000)
 })
 
-
-// if (document.body.id.match('pages_home')) {
-//   homeScroll();
-// }
-
+if (document.body.id === 'pages_home') {
+  homeScroll();
+}
 
 // const showModal = () => {
 //   $('#myModal').on('shown.bs.modal', function () {
