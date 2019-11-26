@@ -2,7 +2,6 @@ class PlacesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @resource = User.new
     @v = "20190425"
     if params[:query].present?
       coordinates = Geocoder.search(params[:query])
@@ -90,11 +89,8 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @resource = User.new
     @v = "20190425"
-
     url = "https://api.foursquare.com/v2/venues/#{params[:id]}?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}"
-
     response = RequestCache.get(url)
 
     @place = response["response"]["venue"]
@@ -105,7 +101,6 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @resource = User.new
     @place = Place.new(place_params)
     if @place.save
       redirect_to place_path(@place)

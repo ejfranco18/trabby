@@ -1,60 +1,80 @@
-<section class="py-5">
+<section class="py-3">
 
-  <div class="container">
-
-
+  <div class="container" style="margin-left: 30px; margin-right: 30px">
+    <div class="row"></div>
     <br>
-
+    <% add_one_day = 0 %>
     <div class="row scrolling-wrapper-flexbox">
+      <% @plan.plan_days.each do |plan_day| %>
+      <% add_one_day += 1 %>
 
-      <% number_of_days = (@plan[:end_date].mjd - @plan[:start_date].mjd) + 1 %>
-      <% add_one_day = 0 %>
-
-      <% until number_of_days == 0%>
-        <!-- Day -->
-        <% add_one_day += 1 %>
-          <div class="col-lg-6">
-            <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
-              <div class="card-body">
-                <!-- weather -->
-                <div class="weather">
-                <h4 class="weather-text"><%=  @plan_weather_temp %></h4>
-                <img src="<%= @plan_weather_img %>" alt="Weather Icon">
+        <div class="col-lg-5">
+          <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
+            <div class="card-body">
+              <!-- weather -->
+              <div class="weather">
+                <h4 class="weather-text">
+                  <%= plan_day.weather_info['description'] %>
+                  <%= plan_day.weather_info['temp'] %>ºC
+                </h4>
+                <img src="<%= plan_day.weather_info['icon'] %>" alt="Weather Icon">
               </div>
 
-                <h5 class="card-title text-muted text-uppercase text-center"><%= @plan[:start_date] + add_one_day %></h5>
-                <hr>
-                <ul class="fa-ul" id="activitiesDay<%= add_one_day %>">
-                  <% @plan.activities.each do |activity| %>
-                    <li>
-                      <div class="container" style="background: #fff; border-radius: 5px;">
-                        <!-- Adding X button -->
-                        <div class="activity-remove js-remove">
-                          <a href="javascript:void(0)" onclick="removeChild(21)">
-                            <i class="fa fa-times"></i>
-                          </a>
+              <h5 class="card-title text-muted text-uppercase text-center"><%= plan_day.date %></h5>
+              <hr>
+              <ul class="fa-ul" id="activitiesDay<%= add_one_day %>">
+                <% plan_day.activities.each do |activity| %>
+                  <li>
+
+                    <div class="container" style="background: #fff; border-radius: 5px;">
+
+                      <div class="information">
+                        <div class="avatar-large" style="background: #333"><%= image_tag activity.place.category.icon_url %></div>
+                        <div class="information-content">
+                          <p><strong><%= activity.place.name.capitalize %></strong></p>
+                          <p><small><%= activity.place.address %></small></p>
                         </div>
-                        <!-- Information -->
-                        <div>
-                          <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.name%></h2>
-                          <p style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.description%></p>
+
+                        <div class="information-actions">
+<!--                           <a href="javascript:void(0)">Edit <i class="fas fa-pencil-alt"></i></a> -->                          <!-- <a href="javascript:void(0)">Delete <i class="far fa-trash-alt js-remove"></i></a> -->
+                            <div class="activity-remove js-remove">
+                              <a href="javascript:void(0)" onclick="removeChild(21)">
+                                <i class="fa fa-times"></i>
+                              </a>
+                            </div>
                         </div>
-                        <h2 style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.address%></h2>
                       </div>
-                    </li>
 
-                  <% break if activity.slot == 8 %>
-                  <% end %>
-
-                </ul>
-
-              </div>
+                  </li>
+                <% end %>
+              </ul>
             </div>
           </div>
 
+          </div>
+        <% end %>
+    </div>
 
-        <% number_of_days -= 1 %>
-      <% end %>
+    <div class="col-md-4">
+
+        <!-- Images -->
+        <div class="card my-4">
+
+        </div>
+
+        <!-- Export buttons -->
+        <div class="card my-4">
+          <div class="btn btn-flat">
+            Export to Calendar
+          </div>
+          <br>
+          <div class="btn btn-flat" style="background: #00CCBC;">
+            Export to E-mail
+          </div>
+        </div>
+
+      </div>
+
 
     </div>
   </div>
@@ -79,7 +99,7 @@
   <div id="scroll1">
     <h3>Arts</h3>
 
-                <ul class="fa-ul" id="activitiesDay<%= add_one_day %>">
+                <ul class="fa-ul" id="activitiesDay<%#= add_one_day %>">
                   <% @plan.activities.each do |activity| %>
                     <li>
                       <div class="container" style="background: #fff; border-radius: 5px;">
@@ -92,7 +112,6 @@
                         <!-- Information -->
                         <div>
                           <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.name%></h2>
-                          <p style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.description%></p>
                         </div>
                         <h2 style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.address%></h2>
                       </div>
@@ -128,17 +147,5 @@
 </div>
 </div>
 </body>
-
-
-
-    <!-- Export buttons -->
-    <div class="container center" style="height: 100px;">
-      <div class="btn btn-flat">
-        Export to Calendar
-      </div>
-      <div class="btn btn-flat" style="background: #00CCBC;">
-        Export to E-mail
-      </div>
-    </div>
 
 

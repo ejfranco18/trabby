@@ -1,26 +1,27 @@
+<div class="container">
+  <p><strong>Name:</strong> <%= @user[:first_name] %></p>
+  <p><strong>Last Name:</strong> <%= @user[:last_name] %></p>
 
-<p><strong>Name:</strong> <%= @user[:first_name] %></p>
-<p><strong>Last Name:</strong> <%= @user[:last_name] %></p>
-
-<p><strong>Selected categories:</strong></p>
-
-
-<div class="form-row">
-  <%= simple_form_for @user do |f| %>
-      <%= f.simple_fields_for :preference do |pf| %>
+  <p><strong>Selected categories:</strong></p>
 
 
-    <div class="category-choices">
-        <%= pf.input :category_ids, as: :check_boxes, collection: Category.all,
-          label_method: :category, value_method: :id, include_blank: false,
-          include_hidden: false,
-          item_label_class: 'category-choice',
-          input_html: { class: 'hidden' } %>
-    </div>
-      <% end %>
+  <div class="user-show form-row">
+    <%= simple_form_for @user do |f| %>
+        <%= f.simple_fields_for :preference do |pf| %>
 
-    <%= f.submit %>
-  <% end %>
+
+      <div class="user-category-choices">
+          <%= pf.input :category_ids, as: :check_boxes, collection: Category.all,
+            label_method: :category, value_method: :id, include_blank: false,
+            include_hidden: false,
+            item_label_class: 'user-category-choice',
+            input_html: { class: 'hidden' } %>
+      </div>
+        <% end %>
+
+      <%= f.submit %>
+    <% end %>
+  </div>
 </div>
 
 

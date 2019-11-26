@@ -10,25 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_092334) do
+ActiveRecord::Schema.define(version: 2019_11_26_111550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
-    t.bigint "plan_id"
     t.bigint "place_id"
     t.integer "slot"
-    t.date "date"
+    t.bigint "plan_day_id"
     t.index ["place_id"], name: "index_activities_on_place_id"
-    t.index ["plan_id"], name: "index_activities_on_plan_id"
+    t.index ["plan_day_id"], name: "index_activities_on_plan_day_id"
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "category"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "foursquare_category_id"
+    t.string "foursquare_id"
+    t.string "icon_url"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -44,21 +44,24 @@ ActiveRecord::Schema.define(version: 2019_11_25_092334) do
   create_table "places", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.string "images"
-    t.string "description", default: [], array: true
-    t.string "opening_hours"
     t.float "latitude"
     t.float "longitude"
     t.integer "duration"
-    t.string "link"
-    t.string "type"
+    t.string "foursquare_id"
     t.bigint "city_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "rating"
     t.index ["category_id"], name: "index_places_on_category_id"
     t.index ["city_id"], name: "index_places_on_city_id"
+  end
+
+  create_table "plan_days", force: :cascade do |t|
+    t.bigint "plan_id"
+    t.date "date"
+    t.json "weather_info", default: {}
+    t.datetime "updated_at"
+    t.index ["plan_id"], name: "index_plan_days_on_plan_id"
   end
 
   create_table "plans", force: :cascade do |t|
@@ -68,7 +71,7 @@ ActiveRecord::Schema.define(version: 2019_11_25_092334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "city_id"
-    t.string "search_items", default: [], array: true
+    t.integer "category_ids", default: [], array: true
     t.index ["user_id"], name: "index_plans_on_user_id"
   end
 
@@ -102,9 +105,10 @@ ActiveRecord::Schema.define(version: 2019_11_25_092334) do
   end
 
   add_foreign_key "activities", "places"
-  add_foreign_key "activities", "plans"
+  add_foreign_key "activities", "plan_days"
   add_foreign_key "places", "categories"
   add_foreign_key "places", "cities"
+  add_foreign_key "plan_days", "plans"
   add_foreign_key "plans", "users"
   add_foreign_key "preferences", "users"
 end

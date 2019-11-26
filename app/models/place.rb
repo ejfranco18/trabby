@@ -4,5 +4,5 @@ class Place < ApplicationRecord
 
   belongs_to :city
   belongs_to :category
-  has_many :activities
+  has_many :activities, dependent: :destroy
 end
