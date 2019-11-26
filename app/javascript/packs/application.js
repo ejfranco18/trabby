@@ -4,7 +4,7 @@ import '../plugins/user_category';
 import { initMapbox } from '../plugins/init_mapbox';
 // import { flkty } from '../plugins/flickity';
 // import 'flickity/dist/flickity.css';
-import homeScroll from '../plugins/scrollmagic'
+import { homeScroll } from '../plugins/scrollmagic'
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import "../plugins/category_choice";
 import "../plugins/flatpickr"
@@ -13,7 +13,7 @@ import { initSortableDay1, initSortableDay2, initSortableDay3, initSortableDay4,
 import { TxtType } from '../plugins/typewriterEffect';
 
 
-if (document.body.id.match('pages_home')) {
+if (document.body.id === 'pages_home') {
   homeScroll();
 }
 
