@@ -5,11 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 Place.destroy_all
 Category.destroy_all
 Activity.destroy_all
 Plan.destroy_all
-
 City.destroy_all
 User.destroy_all
 
@@ -307,12 +307,13 @@ place16 = Place.create!(
   city_id: city_madrid.id,
   category_id: category8.id,
   rating: 8.7)
-puts "Places created!!!!!!!!!!!"
+puts "Places created!!!!!!!!!!!!!!!"
 puts ""
 puts "Places created!!!!!!!!!!!"
 puts ""
 puts "About to create activities"
 puts ""
+
 activity1 = Activity.create!(plan_id: plan1.id, place_id: place1.id, slot: "1", date: "2019-11-30")
 activity2 = Activity.create!(plan_id: plan1.id, place_id: place2.id, slot: "2", date: "2019-11-30")
 activity3 = Activity.create!(plan_id: plan1.id, place_id: place3.id, slot: "3", date: "2019-11-30")
@@ -334,4 +335,3 @@ puts "Activities created!!!!!!!!!!"
 puts ""
 puts ""
 puts ""
-

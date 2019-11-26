@@ -1,5 +1,136 @@
 <section class="py-5">
 
+  <div class="container">
+
+
+    <br>
+
+    <div class="row scrolling-wrapper-flexbox">
+
+      <% number_of_days = (@plan[:end_date].mjd - @plan[:start_date].mjd) + 1 %>
+      <% add_one_day = 0 %>
+
+      <% until number_of_days == 0%>
+        <!-- Day -->
+        <% add_one_day += 1 %>
+          <div class="col-lg-6">
+            <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
+              <div class="card-body">
+                <!-- weather -->
+                <div class="weather">
+                <h4 class="weather-text"><%=  @plan_weather_temp %></h4>
+                <img src="<%= @plan_weather_img %>" alt="Weather Icon">
+              </div>
+
+                <h5 class="card-title text-muted text-uppercase text-center"><%= @plan[:start_date] + add_one_day %></h5>
+                <hr>
+                <ul class="fa-ul" id="activitiesDay<%= add_one_day %>">
+                  <% @plan.activities.each do |activity| %>
+                    <li>
+                      <div class="container" style="background: #fff; border-radius: 5px;">
+                        <!-- Adding X button -->
+                        <div class="activity-remove js-remove">
+                          <a href="javascript:void(0)" onclick="removeChild(21)">
+                            <i class="fa fa-times"></i>
+                          </a>
+                        </div>
+                        <!-- Information -->
+                        <div>
+                          <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.name%></h2>
+                          <p style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.description%></p>
+                        </div>
+                        <h2 style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.address%></h2>
+                      </div>
+                    </li>
+
+                  <% break if activity.slot == 8 %>
+                  <% end %>
+
+                </ul>
+
+              </div>
+            </div>
+          </div>
+
+
+        <% number_of_days -= 1 %>
+      <% end %>
+
+    </div>
+  </div>
+</section>
+
+
+<h1 class="center" style="padding-top: 0">Add an event</h1>
+
+<body>
+<div class="row">
+<div class="col-sm-2" id="spy">
+  <ul class="nav nav-pills flex-column">
+    <li class="nav-item"><a class="nav-link active" href="#scroll1">Arts</a></li>
+    <li class="nav-item"><a class="nav-link" href="#scroll2">Entertainment</a></li>
+    <li class="nav-item"><a class="nav-link" href="#scroll3">Food</a></li>
+    <li class="nav-item"><a class="nav-link" href="#scroll4">Event</a></li>
+    <li class="nav-item"><a class="nav-link" href="#scroll5">Nightlife Spot</a></li>
+    <li class="nav-item"><a class="nav-link" href="#scroll6">Outdoors & Recreation</a></li>
+  </ul>
+</div>
+<div class="col-sm-9 scrollspy-example" data-spy="scroll" data-target="#spy">
+  <div id="scroll1">
+    <h3>Arts</h3>
+
+                <ul class="fa-ul" id="activitiesDay<%= add_one_day %>">
+                  <% @plan.activities.each do |activity| %>
+                    <li>
+                      <div class="container" style="background: #fff; border-radius: 5px;">
+                        <!-- Adding X button -->
+                        <div class="activity-remove js-remove">
+                          <a href="javascript:void(0)" onclick="removeChild(21)">
+                            <i class="fa fa-times"></i>
+                          </a>
+                        </div>
+                        <!-- Information -->
+                        <div>
+                          <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.name%></h2>
+                          <p style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.description%></p>
+                        </div>
+                        <h2 style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.address%></h2>
+                      </div>
+                    </li>
+
+                  <% break if activity.slot == 8 %>
+                  <% end %>
+
+                </ul>
+
+  </div>
+  <div id="scroll2">
+    <h3>Entertainment</h3>
+
+
+  </div>
+  <div id="scroll3">
+    <h3>Food</h3>
+
+  </div>
+  <div id="scroll4">
+    <h3>Event</h3>
+
+  </div>
+  <div id="scroll4">
+    <h3>Nightlife Spot</h3>
+
+  </div>
+  <div id="scroll4">
+    <h3>Outdoors & Recreation</h3>
+
+  </div>
+</div>
+</div>
+</body>
+
+
+
     <!-- Export buttons -->
     <div class="container center" style="height: 100px;">
       <div class="btn btn-flat">
@@ -10,127 +141,4 @@
       </div>
     </div>
 
-  <div class="container">
-
-
-    <br>
-
-
-
-
-    <div class="row">
-      <% number_of_days = (@plan[:end_date].mjd - @plan[:start_date].mjd) + 1 %>
-      <% add_one_day = 0 %>
-
-      <!-- Day 1 -->
-      <div class="col-lg-6">
-        <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
-          <div class="card-body">
-
-
-            <div class="weather">
-              <h4 class="weather-text"><%=  @plan_weather_temp %></h4>
-              <img src="<%= @plan_weather_img %>" alt="Weather Icon">
-            </div>
-
-
-
-            <h5 class="card-title text-muted text-uppercase text-center">Saturday 30 November</h5>
-
-            <hr>
-
-            <ul class="fa-ul" id="activitiesDay1">
-              <li>
-
-                <div class="container" style="background: #fff; border-radius: 5px;">
-                  <div>
-                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Musée du Louvre</h2>
-                      <p style="font-size: 12px;line-height: 14px;color: #000000;">The Louvre Museum is the world's largest art museum and a historic monument in Paris, France. In 2018, the Louvre was the world's most visited art museum, receiving 10.2 million visitors.</p>
-                    </div>
-                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">Rue de Rivoli , 75001 Paris</h2>
-                </div>
-              </li>
-
-              <li>
-                <div class="container" style="background: #fff; border-radius: 5px;">
-                  <div>
-                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Pizza Hut</h2>
-                      <p style="font-size: 12px;line-height: 14px;color: #000000;">Pizza Hut is an American restaurant chain and international franchise. The company is known for its Italian-American cuisine menu, including pizza and pasta, as well as side dishes and desserts.</p>
-                    </div>
-                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">29 Boulevard des Italiens, 75002 Paris</h2>
-                </div>
-              </li>
-
-              <li>
-                <div class="container" style="background: #fff; border-radius: 5px;">
-                  <div>
-                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Opéra de Paris</h2>
-                      <p style="font-size: 12px;line-height: 14px;color: #000000;">The Paris Opera is the primary opera and ballet company of France. It was founded in 1669 by Louis XIV as the Académie d'Opéra.</p>
-                    </div>
-                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">86 Rue de Provence, 75009 Paris</h2>
-                </div>
-              </li>
-
-              <li>
-                <div class="container" style="background: #fff; border-radius: 5px;">
-                  <div>
-                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">La Bellevilloise</h2>
-                      <p style="font-size: 12px;line-height: 14px;color: #000000;">Arts & cultural centre for exhibitions, film screenings, concerts & events, with a bright cafe.</p>
-                    </div>
-                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">19-21 Rue Boyer, 75020 Paris</h2>
-                </div>
-              </li>
-
-            </ul>
-
-
-      <% until number_of_days == 0%>
-        <!-- Day -->
-          <div class="col-lg-6">
-            <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
-              <div class="card-body">
-                <h5 class="card-title text-muted text-uppercase text-center"><%= @plan[:start_date] + add_one_day %></h5>
-
-                <hr>
-
-                <ul class="fa-ul" id="activitiesDay1">
-
-                  <% @plan.activities.each do |activity| %>
-
-                    <li>
-                      <div class="container" style="background: #fff; border-radius: 5px;">
-                        <div>
-                          <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.name%></h2>
-                            <p style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.description%></p>
-                          </div>
-                          <h2 style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.address%></h2>
-                      </div>
-                    </li>
-
-                    <% break if activity.slot == 8 %>
-                  <% end %>
-
-                </ul>
-
-              </div>
-            </div>
-          </div>
-
-        <% add_one_day += 1 %>
-        <% number_of_days -= 1 %>
-      <% end %>
-      <!-- Day -->
-
-    </div>
-  </div>
-</section>
-
-
-<h3 class="center">Add an event</h3>
-
-<ul class="fa-ul" id="activitiesAddAnEvent">
-
-
-
-</ul>
 
