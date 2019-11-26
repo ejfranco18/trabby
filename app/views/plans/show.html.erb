@@ -1,11 +1,14 @@
-<section class="py-5">
+<section class="py-3">
 
-  <div class="container">
+  <div class="container" style="margin-left: 30px; margin-right: 30px">
+    <div class="row"></div>
     <br>
-
+    <% add_one_day = 0 %>
     <div class="row scrolling-wrapper-flexbox">
       <% @plan.plan_days.each do |plan_day| %>
-        <div class="col-lg-6">
+      <% add_one_day += 1 %>
+
+        <div class="col-lg-5">
           <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
             <div class="card-body">
               <!-- weather -->
@@ -19,32 +22,60 @@
 
               <h5 class="card-title text-muted text-uppercase text-center"><%= plan_day.date %></h5>
               <hr>
-              <ul class="fa-ul" id="activitiesDay<%= plan_day.id %>">
+              <ul class="fa-ul" id="activitiesDay<%= add_one_day %>">
                 <% plan_day.activities.each do |activity| %>
                   <li>
+
                     <div class="container" style="background: #fff; border-radius: 5px;">
-                      <!-- Adding X button -->
-                      <div class="activity-remove js-remove">
-                        <a href="javascript:void(0)" onclick="removeChild(21)">
-                          <i class="fa fa-times"></i>
-                        </a>
+
+                      <div class="information">
+                        <div class="avatar-large" style="background: #333"><%= image_tag activity.place.category.icon_url %></div>
+                        <div class="information-content">
+                          <p><strong><%= activity.place.name.capitalize %></strong></p>
+                          <p><small><%= activity.place.address %></small></p>
+                        </div>
+
+                        <div class="information-actions">
+<!--                           <a href="javascript:void(0)">Edit <i class="fas fa-pencil-alt"></i></a> -->                          <!-- <a href="javascript:void(0)">Delete <i class="far fa-trash-alt js-remove"></i></a> -->
+                            <div class="activity-remove js-remove">
+                              <a href="javascript:void(0)" onclick="removeChild(21)">
+                                <i class="fa fa-times"></i>
+                              </a>
+                            </div>
+                        </div>
                       </div>
-                      <!-- Information -->
-                      <div>
-                        <div style="background: #333"><%= image_tag activity.place.category.icon_url %></div>
-                        <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;"><%= activity.place.name.capitalize %></h2>
-                      </div>
-                      <h2 style="font-size: 12px;line-height: 14px;color: #000000;"><%= activity.place.address %></h2>
-                    </div>
+
                   </li>
                 <% end %>
               </ul>
             </div>
           </div>
 
+          </div>
+        <% end %>
+    </div>
+
+    <div class="col-md-4">
+
+        <!-- Images -->
+        <div class="card my-4">
+
         </div>
 
-      <% end %>
+        <!-- Export buttons -->
+        <div class="card my-4">
+          <div class="btn btn-flat">
+            Export to Calendar
+          </div>
+          <br>
+          <div class="btn btn-flat" style="background: #00CCBC;">
+            Export to E-mail
+          </div>
+        </div>
+
+      </div>
+
+
     </div>
   </div>
 </section>
@@ -116,17 +147,5 @@
 </div>
 </div>
 </body>
-
-
-
-    <!-- Export buttons -->
-    <div class="container center" style="height: 100px;">
-      <div class="btn btn-flat">
-        Export to Calendar
-      </div>
-      <div class="btn btn-flat" style="background: #00CCBC;">
-        Export to E-mail
-      </div>
-    </div>
 
 
