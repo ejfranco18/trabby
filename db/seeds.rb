@@ -38,6 +38,7 @@ city_ljubljana = City.create!(name:"Ljubljana", country:"Slovenia", continent: "
 city_newyork = City.create!(name:"New York", country:"United States", continent: "North America", image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80")
 city_seoul = City.create!(name:"Seoul", country:"South Korea", continent: "Asia", image: "https://images.unsplash.com/photo-1536315238512-4c8cebdaaf93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3156&q=80")
 city_brussels = City.create!(name:"Brussels", country:"Belgium", continent: "Europe", image: "https://images.unsplash.com/photo-1559113202-c916b8e44373?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80")
+city_default = City.create!(name:"default", country:"default", continent: "default", image: "https://images.unsplash.com/Ys-DBJeX0nE.JPG?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80")
 puts "Cities created!!!!!!!!"
 puts ""
 puts ""
