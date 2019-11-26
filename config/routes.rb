@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :plans
   resources :activities
   resources :users, only: [:show, :update]
+  get 'test', to: 'pages#test'
 end
