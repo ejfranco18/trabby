@@ -16,169 +16,66 @@
     <br>
 
     <div class="row">
-      <!-- Day 1 -->
-      <div class="col-lg-6">
-        <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
-          <div class="card-body">
 
+      <% number_of_days = (@plan[:end_date].mjd - @plan[:start_date].mjd) + 1 %>
+      <% add_one_day = 0 %>
 
-            <div class="weather">
-              <h4 class="weather-text"><%=  @plan_weather_temp %></h4>
-              <img src="<%= @plan_weather_img %>" alt="Weather Icon">
+      <% until number_of_days == 0%>
+        <!-- Day -->
+        <% add_one_day += 1 %>
+          <div class="col-lg-6">
+            <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
+              <div class="card-body">
+                <!-- weather -->
+                <div class="weather">
+                <h4 class="weather-text"><%=  @plan_weather_temp %></h4>
+                <img src="<%= @plan_weather_img %>" alt="Weather Icon">
+              </div>
+
+                <h5 class="card-title text-muted text-uppercase text-center"><%= @plan[:start_date] + add_one_day %></h5>
+                <hr>
+                <ul class="fa-ul" id="activitiesDay<%= add_one_day %>">
+                  <% @plan.activities.each do |activity| %>
+                    <li>
+                      <div class="container" style="background: #fff; border-radius: 5px;">
+                        <!-- Adding X button -->
+                        <div class="activity-remove js-remove">
+                          <a href="javascript:void(0)" onclick="removeChild(21)">
+                            <i class="fa fa-times"></i>
+                          </a>
+                        </div>
+                        <!-- Information -->
+                        <div>
+                          <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.name%></h2>
+                          <p style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.description%></p>
+                        </div>
+                        <h2 style="font-size: 12px;line-height: 14px;color: #000000;"><%=activity.place.address%></h2>
+                      </div>
+                    </li>
+
+                  <% break if activity.slot == 8 %>
+                  <% end %>
+
+                </ul>
+
+              </div>
             </div>
-
-
-
-            <h5 class="card-title text-muted text-uppercase text-center">Saturday 30 November</h5>
-
-            <hr>
-
-            <ul class="fa-ul" id="activitiesDay1">
-              <li>
-
-                <div class="container" style="background: #fff; border-radius: 5px;">
-                  <div>
-                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Musée du Louvre</h2>
-                      <p style="font-size: 12px;line-height: 14px;color: #000000;">The Louvre Museum is the world's largest art museum and a historic monument in Paris, France. In 2018, the Louvre was the world's most visited art museum, receiving 10.2 million visitors.</p>
-                    </div>
-                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">Rue de Rivoli , 75001 Paris</h2>
-                </div>
-              </li>
-
-              <li>
-                <div class="container" style="background: #fff; border-radius: 5px;">
-                  <div>
-                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Pizza Hut</h2>
-                      <p style="font-size: 12px;line-height: 14px;color: #000000;">Pizza Hut is an American restaurant chain and international franchise. The company is known for its Italian-American cuisine menu, including pizza and pasta, as well as side dishes and desserts.</p>
-                    </div>
-                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">29 Boulevard des Italiens, 75002 Paris</h2>
-                </div>
-              </li>
-
-              <li>
-                <div class="container" style="background: #fff; border-radius: 5px;">
-                  <div>
-                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Opéra de Paris</h2>
-                      <p style="font-size: 12px;line-height: 14px;color: #000000;">The Paris Opera is the primary opera and ballet company of France. It was founded in 1669 by Louis XIV as the Académie d'Opéra.</p>
-                    </div>
-                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">86 Rue de Provence, 75009 Paris</h2>
-                </div>
-              </li>
-
-              <li>
-                <div class="container" style="background: #fff; border-radius: 5px;">
-                  <div>
-                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">La Bellevilloise</h2>
-                      <p style="font-size: 12px;line-height: 14px;color: #000000;">Arts & cultural centre for exhibitions, film screenings, concerts & events, with a bright cafe.</p>
-                    </div>
-                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">19-21 Rue Boyer, 75020 Paris</h2>
-                </div>
-              </li>
-
-            </ul>
-
           </div>
-        </div>
-      </div>
-      <!-- Day 2 -->
-      <div class="col-lg-6">
-        <div class="card mb-5 mb-lg-0" style="background-color: #E5E5E5; border-radius: 5px;">
-          <div class="card-body">
-            <h5 class="card-title text-muted text-uppercase text-center">Sunday 1 December</h5>
 
-            <hr>
+        <% number_of_days -= 1 %>
+      <% end %>
 
-            <ul class="fa-ul" id="activitiesDay2">
-              <li>
-                <div class="container" style="background: #fff; border-radius: 5px;">
-                  <div>
-                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Musée d'Orsay</h2>
-                      <p style="font-size: 12px;line-height: 14px;color: #000000;">The Musée d'Orsay is a museum in Paris, France, on the Left Bank of the Seine. It is housed in the former Gare d'Orsay, a Beaux-Arts railway station built between 1898 and 1900. The museum holds mainly French art dating from 1848 to 1914, including paintings, sculptures, furniture, and photography.</p>
-                    </div>
-                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">1 Rue de la Légion d'Honneur, 75007 Paris</h2>
-                </div>
-              </li>
-
-              <li>
-                <div class="container" style="background: #fff; border-radius: 5px;">
-                  <div>
-                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Le Poulpry</h2>
-                      <p style="font-size: 12px;line-height: 14px;color: #000000;">Great french cuisine!</p>
-                    </div>
-                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">12 Rue de Poitiers, 75007 Paris</h2>
-                </div>
-              </li>
-
-              <li>
-                <div class="container" style="background: #fff; border-radius: 5px;">
-                  <div>
-                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Musée de l'Orangerie</h2>
-                      <p style="font-size: 12px;line-height: 14px;color: #000000;">The Musée de l'Orangerie is an art gallery of impressionist and post-impressionist paintings located in the west corner of the Tuileries Gardens next to the Place de la Concorde in Paris.</p>
-                    </div>
-                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">Jardin Tuileries, 75001 Paris</h2>
-                </div>
-              </li>
-
-              <li>
-                <div class="container" style="background: #fff; border-radius: 5px;">
-                  <div>
-                    <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">Flottes</h2>
-                      <p style="font-size: 12px;line-height: 14px;color: #000000;">Great french restaurant</p>
-                    </div>
-                    <h2 style="font-size: 12px;line-height: 14px;color: #000000;">2 Rue Cambon, 75001 Paris</h2>
-                </div>
-              </li>
-
-            </ul>
-    <!-- Day 2 over-->
     </div>
   </div>
 </section>
 
 
-<h3 class="center">Add an event</h3>
+<h1 class="center">Add an event</h1>
 
-<ul class="fa-ul" id="activitiesAddAnEvent">
+<ul class="fa-ul" id="activitiesDay8">
 
-  <li>
-    <div class="container" style="background: #fff; border-radius: 5px;">
-      <div>
-        <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">La Bellevilloise</h2>
-          <p style="font-size: 12px;line-height: 14px;color: #000000;">Arts & cultural centre for exhibitions, film screenings, concerts & events, with a bright cafe.</p>
-        </div>
-        <h2 style="font-size: 12px;line-height: 14px;color: #000000;">19-21 Rue Boyer, 75020 Paris</h2>
-     </div>
-  </li>
 
-  <li>
-    <div class="container" style="background: #fff; border-radius: 5px;">
-      <div>
-        <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">La Bellevilloise</h2>
-          <p style="font-size: 12px;line-height: 14px;color: #000000;">Arts & cultural centre for exhibitions, film screenings, concerts & events, with a bright cafe.</p>
-        </div>
-        <h2 style="font-size: 12px;line-height: 14px;color: #000000;">19-21 Rue Boyer, 75020 Paris</h2>
-     </div>
-  </li>
-
-  <li>
-    <div class="container" style="background: #fff; border-radius: 5px;">
-      <div>
-        <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">La Bellevilloise</h2>
-          <p style="font-size: 12px;line-height: 14px;color: #000000;">Arts & cultural centre for exhibitions, film screenings, concerts & events, with a bright cafe.</p>
-        </div>
-        <h2 style="font-size: 12px;line-height: 14px;color: #000000;">19-21 Rue Boyer, 75020 Paris</h2>
-     </div>
-  </li>
-
-  <li>
-    <div class="container" style="background: #fff; border-radius: 5px;">
-      <div>
-        <h2 style="font-weight: 500;font-size: 12px;line-height: 14px;color: #000000;">La Bellevilloise</h2>
-          <p style="font-size: 12px;line-height: 14px;color: #000000;">Arts & cultural centre for exhibitions, film screenings, concerts & events, with a bright cafe.</p>
-        </div>
-        <h2 style="font-size: 12px;line-height: 14px;color: #000000;">19-21 Rue Boyer, 75020 Paris</h2>
-     </div>
-  </li>
 
 </ul>
+
 
