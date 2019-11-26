@@ -1,0 +1,2 @@
+class ImageCache < ApplicationRecord
+end

@@ -3,65 +3,24 @@ class PlacesController < ApplicationController
 
   def index
     @v = "20190425"
-    if params[:query].present?
-      coordinates = Geocoder.search(params[:query])
-      location = "#{coordinates.first.coordinates[0]},#{coordinates.first.coordinates[1]}"
-      url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&ll=#{location}&limit=8"
-      response = RequestCache.get(url)
-      @places = response[:response][:groups].first[:items]
-    @city = City.where(name: params[:query].split(',').first).first
-    if @city.nil?
-      @city = City.where(name: "default").first
-    end
-    @picked_places = []
-    @places.each do |place|
-      name = place["venue"]["name"]
-      # request_google = URI.parse(URI.escape(url_google_search)).read
-      # response_google = JSON.parse(request_google)
 
-      # if response_google["candidates"][0]["photos"][0]["photo_reference"].nil?
-      #   @image = ""
-      # else
-      #   @reference = response_google["candidates"][0]["photos"][0]["photo_reference"]
-      #   @image = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{@reference}&key=#{ENV['GOOGLE_KEY']}"
-      # end
+    coordinates = Geocoder.search(params[:query])
+    location = "#{coordinates.first.coordinates[0]},#{coordinates.first.coordinates[1]}"
+    url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&ll=#{location}&limit=8"
+    response = RequestCache.get(url)
 
-      @picked_places << {json: place[:venue], image: ""}
-    end
+    @places = response[:response][:groups].first[:items]
 
-    else
-      # pending dinamic current location
-      url = "https://api.foursquare.com/v2/venues/search?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&ll=40.7099,-73.9622&radius=200"
-          response = RequestCache.get(url)
-    @places = response[:response][:venues]
-    #pending based on location
-    @city = ""
-    @picked_places = []
-    @places.each do |place|
-      name = place["name"]
-      id = place[:id]
-
-      # request_google = URI.parse(URI.escape(url_google_search)).read
-      # response_google = JSON.parse(request_google)
-
-      # if response_google["candidates"][0]["photos"][0]["photo_reference"].nil?
-      #   @image = ""
-      # else
-      #   @reference = response_google["candidates"][0]["photos"][0]["photo_reference"]
-      #   @image = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{@reference}&key=#{ENV['GOOGLE_KEY']}"
-      # end
-
-      @picked_places << {json: place, image: ""}
-    end
-    end
+    @city = City.find_by(name: params[:query].split(',').first)
+    @city ||= City.find_by(name: "default")
 
     # by word
     # url = "https://api.foursquare.com/v2/venues/search?client_id=#{@client_id}&client_secret=#{@client_secret}&v=#{@v}&intent=global&query=tattoo&limit=5"
 
-    @markers = @picked_places.map do |place|
+    @markers = @places.map do |place|
       {
-        lat: place[:json][:location][:lat],
-        lng: place[:json][:location][:lng]
+        lat: place.dig(:venue, :location, :lat),
+        lng: place.dig(:venue, :location, :lng)
       }
     end
   end
@@ -93,10 +52,11 @@ class PlacesController < ApplicationController
     url = "https://api.foursquare.com/v2/venues/#{params[:id]}?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}"
     response = RequestCache.get(url)
 
-    @place = response["response"]["venue"]
+    @place = response.dig(:response)
+
     @markers = [{
-      lat: @place["location"]["lat"],
-      lng: @place["location"]["lng"]
+      lat: @place.dig(:venue, :location, :lat),
+      lng: @place.dig(:venue, :location, :lng)
     }]
   end
 

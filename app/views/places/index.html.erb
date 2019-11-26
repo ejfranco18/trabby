@@ -22,10 +22,10 @@
         quibusdam consequatur suscipit iusto esse illum velit harum enim aut.</p>
     </div>
     <div class="places">
-    <% @picked_places.each do |place| %>
-      <%= link_to place_path(place[:json]["id"]) do %>
-        <div class="card-place" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= place[:image] %>)">
-          <%= place[:json]["name"] %>
+    <% @places.each do |place| %>
+      <%= link_to place_path(place.dig(:venue, :id)) do %>
+        <div class="card-place" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= smart_image(place) %>)">
+          <%= place.dig(:venue, :name) %>
         </div>
       <% end %>
     <% end %>
