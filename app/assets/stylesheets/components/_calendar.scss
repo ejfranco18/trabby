@@ -24,3 +24,50 @@
   height: 250px;
   overflow: auto;
 }
+
+.information {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+}
+
+.information .information-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.information p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.information small {
+  color: #999999;
+  font-weight: bold;
+}
+.information .information-actions {
+  opacity: 0;
+  display: flex;
+  transition: ease .3s;
+}
+
+.information:hover .information-actions {
+  opacity: 1;
+}
+
+.information .information-actions a {
+  color: #999999;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.information .information-actions a:hover {
+  color: #555555;
+}
+
+.avatar-large {
+  width: 64px;
+  border-radius: 50%;
+}

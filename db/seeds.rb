@@ -28,6 +28,10 @@ City.create!(name: "New York", country:"United States", continent: "North Americ
 City.create!(name: "Seoul", country:"South Korea", continent: "Asia", image: "https://images.unsplash.com/photo-1536315238512-4c8cebdaaf93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3156&q=80")
 City.create!(name: "Brussels", country:"Belgium", continent: "Europe", image: "https://images.unsplash.com/photo-1559113202-c916b8e44373?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80")
 City.create!(name: "default", country:"default", continent: "default", image: "https://images.unsplash.com/Ys-DBJeX0nE.JPG?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80")
+puts "Cities created!!!!!!!!!!"
+puts ""
+puts ""
+puts ""
 
 
 puts "About to create categories"
@@ -44,3 +48,7 @@ Category.create(name: 'Bar', foursquare_id: '4bf58dd8d48988d116941735', icon_url
 Category.create(name: 'Night Club', foursquare_id: '4bf58dd8d48988d11f941735', icon_url: 'https://ss3.4sqi.net/img/categories_v2/nightlife/nightclub_64.png')
 Category.create(name: 'Palace', foursquare_id: '52e81612bcbc57f1066b7a14', icon_url: 'https://ss3.4sqi.net/img/categories_v2/parks_outdoors/default_64.png')
 Category.create(name: 'Park', foursquare_id: '4bf58dd8d48988d163941735', icon_url: 'https://ss3.4sqi.net/img/categories_v2/parks_outdoors/park_64.png')
+puts "Categories created!!!!!!!!!!"
+puts ""
+puts ""
+puts ""
