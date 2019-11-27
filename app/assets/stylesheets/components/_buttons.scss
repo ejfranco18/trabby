@@ -48,9 +48,24 @@ label.category-choice.active {
 }
 
 .btn-lg, .btn-group-lg > .btn {
-    color: #3f4458;
     padding: 0.5rem 1rem;
-    font-size: 1.25rem;
+    font-size: 1.0rem;
+    line-height: 1.5;
+    border-radius: 5px;
+    color: white;
+    margin: 0 auto;
+    background-color: #1edd88;
+    border: none;
+    width:20%;
+}
+
+.btn-lg:hover{
+  background-color:#26bd7a;
+}
+.btn-sm, .btn-group-sm > .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 1.0rem;
     line-height: 1.5;
     border-radius: 5px;
 }
+
