@@ -15,9 +15,14 @@
           <h2>From: <%= plan.start_date.strftime("%d of %B") %> to <%= plan.end_date.strftime("%d of %B") %></h2>
           <p><%= (plan.end_date - plan.start_date).to_i + 1 %> Days</p>
         </div>
-        <div>
-          <a href="" target="_blank"><button class="button_class mr-2" id="white" ><%= City.find(plan.city_id).name %></button></a>
+        <div class="d-flex">
+          <% plan.category_ids.each do |catID| %>
+            <div><a href="" target="_blank"><button class="button_class mt-2 mr-2" id="category-btn" ><%= Category.find(catID).name %></button></a></div>
+          <% end %>
         </div>
+        <!-- <div>
+          <a href="" target="_blank"><button class="button_class mr-2" id="white" ><%#= City.find(plan.city_id).name %></button></a>
+        </div> -->
         <!-- <h2 class="card-trip-pricing">£99.99</h2> -->
         <!-- <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> -->
       </div>

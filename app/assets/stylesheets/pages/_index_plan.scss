@@ -56,6 +56,14 @@
   h2 {
     color: black;
   }
+  #category-btn {
+    color: #0e00004d;
+    background-color: transparent;
+    &:hover, &:focus {
+      background-color: transparent;
+      color: #00ffeb;
+    }
+  }
 }
 
 // .card-trip-infos .card-trip-user {
