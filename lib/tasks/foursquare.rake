@@ -1,7 +1,7 @@
 namespace :foursquare do
   desc 'Cache all foursquare categories in the DB'
   task cache_places: :environment do
-    City.where(name: %w[Madrid Paris]).each do |city|
+    City.where(name: ['Madrid', 'Paris', 'Berlin', 'Oslo', 'Stockholm', 'New York', 'Brussels', 'Amsterdam', 'Seoul', 'Ljubljana']).each do |city|
       puts "-----------------------------------"
       puts "GETING PLACES FOR #{city.name}"
       puts "-----------------------------------"
@@ -9,7 +9,7 @@ namespace :foursquare do
       Category.find_each do |category|
         puts "Creating places for #{category.name}"
 
-        create_places(city, category, 8)
+        create_places(city, category, 15)
       end
     end
   end
@@ -17,7 +17,7 @@ namespace :foursquare do
   def create_places(city, category, limit)
     version = 20190425
     category_id = category.foursquare_id
-    url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{version}&near=#{city.name}&radius=5000&limit=#{limit}&categoryId=#{category_id}"
+    url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{version}&near=#{city.name}&sortByPopularity=true&limit=#{limit}&categoryId=#{category_id}"
 
     json = RequestCache.get(url)
     groups = json.dig(:response, :groups)
