@@ -7,7 +7,7 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 import "../plugins/category_choice";
 import "../plugins/flatpickr"
 import { load } from '../plugins/loader';
-import { initSortableDay1, initSortableDay2, initSortableDay3, initSortableDay4, initSortableDay5, initSortableDay6, initSortableDay7, initSortableDay8 } from '../plugins/init_sortable';
+import { initSortableDay } from '../plugins/init_sortable';
 import { TxtType } from '../plugins/typewriterEffect';
 
 if (document.body.id === 'pages_home') {
@@ -21,19 +21,11 @@ if (document.body.id === 'pages_home') {
   })
 }
 
-
-
 initAutocomplete();
 initMapbox();
 
-initSortableDay1();
-initSortableDay2();
-initSortableDay3();
-initSortableDay4();
-initSortableDay5();
-initSortableDay6();
-initSortableDay7();
-initSortableDay8();
+initSortableDay();
+
 TxtType();
 
 

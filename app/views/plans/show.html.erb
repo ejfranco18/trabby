@@ -29,14 +29,14 @@
               <div class="weather mt-1">
                 <h4 class="weather-text">
                   <%= plan_day.weather_info['description'] %>
-                  <%= plan_day.weather_info['temp'] %>ºC
+                  <%= plan_day.weather_info['temp'].round() %>ºC
                 </h4>
 
                 <img src="<%= plan_day.weather_info['icon'] %>" alt="Weather Icon">
               </div>
 
 
-              <ul class="fa-ul" id="activitiesDay<%= add_one_day %>">
+              <ul class="fa-ul activity-column" id="activitiesDay<%= add_one_day %>">
                 <% plan_day.activities.each do |activity| %>
                   <li class="mb-2">
 
