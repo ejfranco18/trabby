@@ -25,16 +25,16 @@
     <script>
       if (document.body.id === 'pages_home') {
         var controller = new ScrollMagic.Controller();
-          var revealElements = document.getElementsByClassName("justify-content-between");
-          for (var i=0; i<revealElements.length; i++) {
-            new ScrollMagic.Scene({
-                      triggerElement: revealElements[i],
-                      offset: 50,
-                      triggerHook: 0.9,
-                    })
-                    .setClassToggle(revealElements[i], "visible")
-                    .reverse(false)
-                    .addTo(controller);
+        var revealElements = document.getElementsByClassName("justify-content-between");
+        for (var i=0; i<revealElements.length; i++) {
+          new ScrollMagic.Scene({
+                    triggerElement: revealElements[i],
+                    offset: 50,
+                    triggerHook: 0.9,
+                  })
+                  .setClassToggle(revealElements[i], "visible")
+                  .reverse(false)
+                  .addTo(controller);
         }
       }
 
