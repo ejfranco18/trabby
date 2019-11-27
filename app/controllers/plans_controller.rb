@@ -1,4 +1,7 @@
 class PlansController < ApplicationController
+  def index
+    @user = current_user
+  end
 
   def show
     @plan = Plan.find(params[:id])
@@ -11,7 +14,6 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     @plan.user = current_user
-
     (@plan.start_date..@plan.end_date).each do |date|
       @plan.plan_days.build(date: date)
     end
