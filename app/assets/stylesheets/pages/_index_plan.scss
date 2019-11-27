@@ -12,6 +12,28 @@
   object-fit: cover;
 }
 
+.plan-banner {
+  height: 200px;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  &:hover, &:focus {
+    // background: #af48753d;
+    h2 {
+      color: #00ffe7;
+      transition: ease .5s all;
+      transform: scale(1.07);
+    }
+  }
+  #city-name {
+    font-size: 35px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .card-trip h2 {
   font-size: 16px;
   font-weight: bold;
