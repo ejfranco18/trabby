@@ -75,6 +75,12 @@
   margin-left: -50px;;
 }
 
+.dropdown-item {
+  &:active {
+    background-color: #f8f9fa;
+  }
+}
+
 a:hover{
   text-decoration: none;
   color:#B7EAE6;
