@@ -10,8 +10,7 @@
 }
 
 .scrolling-wrapper-flexbox {
-  height: 900px;
-  margin-bottom: 10px;
+  height: 950px;
   width: 100%;
   -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar {
@@ -70,4 +69,14 @@
 .avatar-large {
   width: 64px;
   border-radius: 50%;
+}
+
+.overlay {
+  opacity:0;
+  background-color:black;
+  height:100%;
+  width:100%;
+  position:absolute;
+  top:0;
+  left:0;
 }
