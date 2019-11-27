@@ -48,11 +48,11 @@ Category.create(name: 'Bar', foursquare_id: '4bf58dd8d48988d116941735', icon_url
 Category.create(name: 'Night Club', foursquare_id: '4bf58dd8d48988d11f941735', icon_url: 'https://ss3.4sqi.net/img/categories_v2/nightlife/nightclub_64.png')
 Category.create(name: 'Palace', foursquare_id: '52e81612bcbc57f1066b7a14', icon_url: 'https://ss3.4sqi.net/img/categories_v2/parks_outdoors/default_64.png')
 Category.create(name: 'Park', foursquare_id: '4bf58dd8d48988d163941735', icon_url: 'https://ss3.4sqi.net/img/categories_v2/parks_outdoors/park_64.png')
-Category.create(name: 'Breakfast Spot', foursquare_id: '4bf58dd8d48988d143941735', icon_url: 'https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/breakfast_64.png')
-Category.create(name: 'Juice Bar', foursquare_id: '4bf58dd8d48988d112941735', icon_url: 'https:\/\/ss3.4sqi.net\/img\/categories_v2\/food\/juicebar_64.png')
-Category.create(name: 'Cafeteria', foursquare_id: '4bf58dd8d48988d128941735', icon_url: 'https:\/\/ss3.4sqi.net\/img\/categories_v2\/education\/cafeteria_64.png')
-Category.create(name: 'Outdoors & Recreation', foursquare_id: '4d4b7105d754a06377d81259', icon_url: 'https:\/\/ss3.4sqi.net\/img\/categories_v2\/parks_outdoors\/default_64.png')
-Category.create(name: 'Event', foursquare_id: '4d4b7105d754a06373d81259', icon_url: 'https:\/\/ss3.4sqi.net\/img\/categories_v2\/event\/default_64.png')
+Category.create(name: 'Breakfast Spot', foursquare_id: '4bf58dd8d48988d143941735', icon_url: 'https://ss3.4sqi.net/img/categories_v2/food/breakfast_64.png')
+Category.create(name: 'Juice Bar', foursquare_id: '4bf58dd8d48988d112941735', icon_url: 'https://ss3.4sqi.net/img/categories_v2/food/juicebar_64.png')
+Category.create(name: 'Cafeteria', foursquare_id: '4bf58dd8d48988d128941735', icon_url: 'https://ss3.4sqi.net/img/categories_v2/education/cafeteria_64.png')
+Category.create(name: 'Outdoors & Recreation', foursquare_id: '4d4b7105d754a06377d81259', icon_url: 'https://ss3.4sqi.net/img/categories_v2/parks_outdoors/default_64.png')
+Category.create(name: 'Event', foursquare_id: '4d4b7105d754a06373d81259', icon_url: 'https://ss3.4sqi.net/img/categories_v2/event/default_64.png')
 
 puts "Categories created!!!!!!!!!!"
 puts ""
