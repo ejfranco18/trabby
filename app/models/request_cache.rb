@@ -5,7 +5,7 @@ class RequestCache < ApplicationRecord
     cached = find_by(url: url)
 
     return cached.response.with_indifferent_access if cached.present?
-    response = RestClient.get.get(URI.escape(url))
+    response = RestClient.get(URI.escape(url))
 
     json = JSON.parse(response.body).with_indifferent_access
 

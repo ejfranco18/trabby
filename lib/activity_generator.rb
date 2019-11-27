@@ -10,13 +10,13 @@ class ActivityGenerator
   end
 
   def create
-    slot1 = Category.where(name: %w[Bakery Bistro])
-    slot2 = Category.where(name: %w[Exhibit Museum Zoo])
-    slot3 = Category.where(name: ['Restaurant', 'Spanish Restaurant'])
-    slot4 = Category.where(name: %w[Exhibit Museum Palace])
-    slot5 = Category.where(name: %w[Park])
-    slot6 = Category.where(name: ['Restaurant', 'Spanish Restaurant'])
-    slot7 = Category.where(name: ['Performing Arts', 'Bar'])
+    slot1 = Category.where(name: ['Bakery', 'Bistro', 'Breakfast Spot', 'Juice Bar', 'Cafeteria'])
+    slot2 = Category.where(name: ['Exhibit', 'Museum', 'Outdoors & Recreation'])
+    slot3 = Category.where(name: ['Exhibit', 'Museum', 'Palace'])
+    slot4 = Category.where(name: ['Restaurant'])
+    slot5 = Category.where(name: ['Park', 'Outdoors & Recreation'])
+    slot6 = Category.where(name: ['Restaurant'])
+    slot7 = Category.where(name: ['Event', 'Bar'])
     slot8 = Category.where(name: ['Night Club'])
 
     day_slots = [slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8]
