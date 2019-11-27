@@ -2,7 +2,7 @@ import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '../plugins/user_category';
 import { initMapbox } from '../plugins/init_mapbox';
-import { homeScroll } from '../plugins/scrollmagic'
+// import { homeScroll } from '../plugins/scrollmagic'
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import "../plugins/category_choice";
 import "../plugins/flatpickr"
