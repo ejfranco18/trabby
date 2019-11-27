@@ -23,7 +23,7 @@ module ApplicationHelper
       json = RequestCache.get(URI.escape(url_google_search))
 
 
-      if json[:candidates]&.first[:photos].nil?
+      if json['status'] == "ZERO_RESULTS" || json[:candidates]&.first[:photos].nil?
         return ''
       else
         reference = json[:candidates]&.first[:photos]&.first[:photo_reference]

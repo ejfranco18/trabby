@@ -3,10 +3,8 @@ class PlacesController < ApplicationController
 
   def index
     @v = "20190425"
-
     coordinates = Geocoder.search(params[:query])
-    location = "#{coordinates.first.coordinates[0]},#{coordinates.first.coordinates[1]}"
-    url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&ll=#{location}&limit=8"
+    url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&near=#{params[:query]}&sortByPopularity=true&limit=9"
     response = RequestCache.get(url)
 
     @places = response[:response][:groups].first[:items]
@@ -20,7 +18,8 @@ class PlacesController < ApplicationController
     @markers = @places.map do |place|
       {
         lat: place.dig(:venue, :location, :lat),
-        lng: place.dig(:venue, :location, :lng)
+        lng: place.dig(:venue, :location, :lng),
+        infoWindow: render_to_string(partial: "info_window", locals: { place: place })
       }
     end
   end
@@ -32,16 +31,6 @@ class PlacesController < ApplicationController
     @picked_places = []
     @places.each do |place|
       name = place["venue"]["name"]
-      # request_google = URI.parse(URI.escape(url_google_search)).read
-      # response_google = JSON.parse(request_google)
-
-      # if response_google["candidates"][0]["photos"][0]["photo_reference"].nil?
-      #   @image = ""
-      # else
-      #   @reference = response_google["candidates"][0]["photos"][0]["photo_reference"]
-      #   @image = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{@reference}&key=#{ENV['GOOGLE_KEY']}"
-      # end
-
       @picked_places << {json: place, image: ""}
     end
 

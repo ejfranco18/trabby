@@ -1,4 +1,2 @@
-
-<h2><%= place %></h2>
-<p>eeeee</p>
-
+<h2><%= place.dig(:venue, :name) %></h2>
+<p><%= place.dig(:venue, :location, :address) %></p>
