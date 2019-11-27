@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-center">
       <% if @place["categories"].present? %>
         <% @place["categories"].each do |categorie| %>
-          <a href="" target="_blank"><button class="button_class mt-2 mr-2 font17" id="white" ><%= categorie["shortName"] %></button></a>
+          <a href="" target="_blank"><button class="button_class mt-2 mr-2" id="white" ><%= categorie["shortName"] %></button></a>
         <% end %>
     <% end %>
     </div>
@@ -18,7 +18,7 @@
 
 
 <div class="container">
-  <div class="d-flex justify-content-between mb-4 mt-2">
+  <div class="d-flex justify-content-between mb-4 mt-4">
     <% if @place["contact"]["phone"].present? %>
       <div class="icon_card">
         <i class="fas fa-map-pin"></i>
@@ -41,22 +41,14 @@
     <% end %>
   </div>
 
-  <div class="d-flex justify-content-between db-5">
-    <div class="w-25" id="font17">
-      <p>Categories:</p>
-      <% if @place["categories"].present? %>
-        <% @place["categories"].each do |categorie| %>
-          <a href="" target="_blank"><button class="button_class mt-2 mr-2" id="purple" ><%= categorie["shortName"] %></button></a>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="w-75">
+  <div class="d-flex justify-content-center db-5">
+    <div class="text-center">
       <% if @place["description"].present? %>
         <p><%= @place["description"] %></p>
       <% else %>
         <p></p>
       <% end %>
-      <a href="<%= @place['url']%>" target="_blank"><button class="button_class mt-2 mr-2" href="<%= @place['url']%>" id="purple" >Go to venue homepage</button></a>
+      <a href="<%= @place['url']%>" target="_blank"><button class="button_class mt-4 mb-2 mx-auto" href="<%= @place['url']%>" id="purple" >Go to venue homepage</button></a>
     </div>
   </div>
 </div>
