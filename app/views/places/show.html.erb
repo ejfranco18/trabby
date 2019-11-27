@@ -1,10 +1,21 @@
 <% image = smart_image(@place) %>
 <div class="banner_top" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image %>)">
-  <%= @place["name"] %>
+  <div>
+    <div class="header"><%= @place['venue']["name"] %></div>
+    <div class="d-flex justify-content-center">
+      <% if @place['venue']["categories"].present? %>
+        <% @place['venue']["categories"].each do |categorie| %>
+          <a href="" target="_blank"><button class="button_class mt-2 mr-2" id="white" ><%= categorie["shortName"] %></button></a>
+        <% end %>
+    <% end %>
+    </div>
+  </div>
 </div>
-
+<!-- to do:
+ - center text and website button
+- get categories aligned -->
 <div class="container">
-  <div class="d-flex justify-content-between mb-4 mt-2">
+  <div class="d-flex justify-content-between mb-4 mt-4">
     <% if @place['venue']["contact"]["phone"].present? %>
       <div class="icon_card">
         <i class="fas fa-map-pin"></i>
@@ -17,7 +28,6 @@
         <p><%= @place['venue']["contact"]["phone"] %></p>
       </div>
     <% end %>
-
     <% if @place['venue']["rating"].present? %>
       <div class="icon_card">
         <i class="fas fa-star"></i>
@@ -25,39 +35,29 @@
       </div>
     <% end %>
   </div>
-
-  <div class="d-flex justify-content-between pb-5">
-    <div class="flex-fill" id="font17">
-      <p>Categories:</p>
-      <% if @place['venue']["categories"].present? %>
-        <% @place['venue']["categories"].each do |categorie| %>
-          <a href="" target="_blank"><button class="button_class mt-2 mr-2" id="purple" ><%= categorie["shortName"] %></button></a>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="flex-grow-1">
+  <div class="d-flex justify-content-center db-5">
+    <div class="text-center">
       <% if @place['venue']["description"].present? %>
         <p><%= @place['venue']["description"] %></p>
+      <% else %>
+        <p></p>
       <% end %>
-      <a href="<%= @place['venue']['url']%>" target="_blank"><button class="button_class mt-2 mr-2" href="<%= @place['url']%>" id="purple" >Go to venue homepage</button></a>
+      <a href="<%= @place['venue']['url']%>" target="_blank"><button class="button_class mt-4 mb-2 mx-auto" href="<%= @place['venue']['url']%>" id="purple" >Go to venue homepage</button></a>
     </div>
   </div>
 </div>
 <div
+  class="mt-4"
   id="map"
   style="width: 100%;
   height: 600px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
-
-
-
 <!-- <div class="container">
 <h3 div class="title1"><%#= @place["name"] %></h3>
 <div class="place_info_wrapper">
   <div class="place_main_info">
-
    <p><span class="title" >Address: </span><%#= @place["location"]["address"] %></p>
     <p><span class="title">Phone: </span><%#= @place["contact"]["phone"] %></p>
     <p><span class="title">Rating: </span><%#= @place["rating"]%></p>
@@ -78,5 +78,4 @@
   </div>
 </div>
 </div> -->
-
 
