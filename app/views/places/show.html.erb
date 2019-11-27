@@ -1,7 +1,21 @@
 <% image = @place['bestPhoto']['prefix'] + 'original' + @place['bestPhoto']['suffix'] %>
 <div class="banner_top" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image %>)">
-  <%= @place["name"] %>
+  <div>
+    <div class="header"><%= @place["name"] %></div>
+    <div class="d-flex justify-content-center">
+      <% if @place["categories"].present? %>
+        <% @place["categories"].each do |categorie| %>
+          <a href="" target="_blank"><button class="button_class mt-2 mr-2 font17" id="white" ><%= categorie["shortName"] %></button></a>
+        <% end %>
+    <% end %>
+    </div>
+  </div>
 </div>
+
+<!-- to do:
+ - center text and website button
+- get categories aligned -->
+
 
 <div class="container">
   <div class="d-flex justify-content-between mb-4 mt-2">
@@ -28,7 +42,7 @@
   </div>
 
   <div class="d-flex justify-content-between db-5">
-    <div class="" id="font17">
+    <div class="w-25" id="font17">
       <p>Categories:</p>
       <% if @place["categories"].present? %>
         <% @place["categories"].each do |categorie| %>
@@ -36,7 +50,7 @@
         <% end %>
       <% end %>
     </div>
-    <div class="">
+    <div class="w-75">
       <% if @place["description"].present? %>
         <p><%= @place["description"] %></p>
       <% else %>

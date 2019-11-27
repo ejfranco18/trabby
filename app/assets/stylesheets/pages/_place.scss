@@ -53,6 +53,8 @@
   background-position: center;
   max-height: 380px;
   height: 40vh;
+  text-align: center;
+  vertical-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,6 +63,9 @@
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  .header {
+    display: flex;
+  }
 }
 
 .icon_card {
@@ -85,6 +90,13 @@
   }
 }
 
+#white {
+  color: white;
+  background: #00000078;
+  font-weight: bold;
+  font-size: 16px;
+}
+
 p {
   color: #6c757d
 }
@@ -92,5 +104,9 @@ p {
 .font17 p {
   color: #6c757d;
   font-size: 17px;
+  &:hover, &:focus {
+    border-color: #a51e59c7;
+    background: #af48753d;
+  }
 }
 
