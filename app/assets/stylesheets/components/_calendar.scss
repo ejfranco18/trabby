@@ -12,6 +12,7 @@
 .scrolling-wrapper-flexbox {
   height: 950px;
   width: 100%;
+  padding: 20px 140px;
   -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar {
     display: none;
@@ -29,7 +30,16 @@
   align-items: center;
   margin-bottom: 8px;
   background: white;
-  padding: 8px 16px;
+  padding: 16px 0;
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.avatar-large {
+    background: #2c3e509e;
+    border: solid 2px #2c3e50
 }
 
 .information .information-content {
@@ -44,7 +54,7 @@
 
 .information small {
   color: #999999;
-  font-weight: bold;
+  font-weight: 400;
 }
 .information .information-actions {
   opacity: 0;
@@ -62,12 +72,25 @@
   font-size: 14px;
 }
 
+.information {
+  .menu-burger {
+    position: absolute;
+    right: 14px;
+    opacity: .3;
+  }
+  &:hover {
+    .menu-burger {
+      display: none;
+    }
+  }
+}
+
 .information .information-actions a:hover {
   color: #555555;
 }
 
 .avatar-large {
-  width: 64px;
+  width: 39px;
   border-radius: 50%;
 }
 

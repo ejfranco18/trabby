@@ -16,7 +16,6 @@
 
 .button_class {
   transition: ease .5s all;
-  margin-right: 5px;
   background: transparent;
   display: flex;
   cursor: pointer;
@@ -49,11 +48,11 @@
     color: #fff;
   }
     border-color: #00ffeb;
-    background: #00ffeb2b;
+    background: white;
 }
 
 .button_text {
-  color: white;
+  color: #2c3e50;
 }
 
 
@@ -69,6 +68,11 @@
   background-color: rgba(0,0,0,0.5); /* Black background with opacity */
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
+}
+
+
+.navbar-brand {
+  margin-left: -50px;;
 }
 
 a:hover{

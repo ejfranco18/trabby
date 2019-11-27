@@ -1,6 +1,6 @@
 <div class="container">
   <div class="form-post">
-    <h1>Lets plan you trip to <i class="highlighted highlighted-green"><%= params[:city] %></i> </h1>
+    <h1>Lets plan you trip to <%= params[:city] %> </h1>
     <div class="form-wrapper">
       <%= simple_form_for(@plan) do |f| %>
           <div class="d-flex">
@@ -25,7 +25,7 @@
             </div>
       </div>
 
-      <%= f.submit "Save your plan", class: "m-4 btn btn-primary"  %>
+      <%= f.submit "Save your plan", class: "mb-5 mt-4 btn btn-primary"  %>
       <% end %>
     </div>
   </div>
