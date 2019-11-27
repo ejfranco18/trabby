@@ -1,12 +1,19 @@
 <div class="container">
   <div class="form-post">
-    <h1>Plan</h1>
-    <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+    <h1>Lets plan you trip to <i class="highlighted highlighted-green"><%= params[:city] %></i> </h1>
+    <div class="form-wrapper">
       <%= simple_form_for(@plan) do |f| %>
-          <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-          <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <div class="d-flex">
+            <div class="p-2 w-50">
+              <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+           </div>
+            <div class="p-2 w-50">
+             <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            </div>
+          </div>
           <%= f.hidden_field :city_id, value: City.find_by(name: params[:city].split(',').first)&.id %>
       <div class="row">
+            <h1 class="w-100 m-4 sub-text category-st text-center">Select some categories...</h1>
             <!-- Inject categories here -->
             <div class="category-choices">
               <% Category.all.each do |category| %>
@@ -17,7 +24,8 @@
               <% end %>
             </div>
       </div>
-      <%= f.submit "Save your plan", class: "btn btn-primary"  %>
+
+      <%= f.submit "Save your plan", class: "m-4 btn btn-primary"  %>
       <% end %>
     </div>
   </div>

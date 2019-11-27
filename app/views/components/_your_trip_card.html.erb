@@ -1,20 +1,20 @@
     <!-- Call to plan the trip -->
-    <div class="row mb-4">
-      <div class="col-md-8">
-        <h3>Tell us about your trip</h3>
-        <p>You will see personalised ideas from other travellers like you.</p>
-      </div>
+    <div class="">
+
+        <h3 style="    margin-bottom: 14px;font-size: 35px;">Tell us about your trip to, <i class="highlighted highlighted-red"><%= @city.name %></i></h3>
+        <h1 style="font-size: 22px; font-weight: 200;" class="sub-text">You will see personalised ideas from other travellers like you.</p>
+
 
       <% if current_user %>
-        <div class="col-md-4">
+
           <%=link_to new_plan_path(city: params[:query]), method: :get do %>
             <button class="btn btn-lg btn-secondary btn-success">Plan your trip!</button>
           <% end %>
-        </div>
+
       <% else %>
-        <div class="col-md-4">
-          <button class="btn btn-lg btn-primary btn-block" type="button" data-toggle="modal" data-target="#myModal2">Get started - Sign up!</button>
-        </div>
+
+          <button style="margin-top: 23px;" class="btn btn-lg btn-primary btn-block" type="button" data-toggle="modal" data-target="#myModal2">Get started - Sign up!</button>
+
       <% end %>
 
     </div>

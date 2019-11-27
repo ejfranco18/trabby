@@ -1,4 +1,4 @@
-<% image = @place['bestPhoto']['prefix'] + 'original' + @place['bestPhoto']['suffix'] %>
+<% image = smart_image(@place) %>
 <div class="banner_top" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image %>)">
   <div>
     <div class="header"><%= @place["name"] %></div>
@@ -10,11 +10,6 @@
     <% end %>
     </div>
   </div>
-</div>
-
-<!-- to do:
- - center text and website button
-- get categories aligned -->
 
 
 <div class="container">
@@ -22,21 +17,20 @@
     <% if @place["contact"]["phone"].present? %>
       <div class="icon_card">
         <i class="fas fa-map-pin"></i>
-        <p><%= @place["location"]["address"] %></p>
+        <p><%= @place['venue']["location"]["address"] %></p>
       </div>
     <% end %>
-
-    <% if @place["contact"]["phone"].present? %>
+    <% if @place['venue']["contact"]["phone"].present? %>
       <div class="icon_card">
         <i class="fas fa-phone"></i>
-        <p><%= @place["contact"]["phone"] %></p>
+        <p><%= @place['venue']["contact"]["phone"] %></p>
       </div>
     <% end %>
 
-    <% if @place["rating"].present? %>
+    <% if @place['venue']["rating"].present? %>
       <div class="icon_card">
         <i class="fas fa-star"></i>
-        <p><%= @place["rating"] %>/10</p>
+        <p><%= @place['venue']["rating"] %>/10</p>
       </div>
     <% end %>
   </div>
