@@ -9,11 +9,30 @@
       font-size: 32px;
       font-weight: bold;
       text-align: center;
-      text-shadow: 1px 3px 4px #000;
+      text-shadow: 1px 3px 12px #000;
     }
 }
 
 .wrapper_city_banner {
-  padding: 140px;
+  padding: 90px;
+}
+
+.highlighted {
+  padding: 2px 15px 4px;
+    font-style: normal;
+    border-radius: 3px;
+    text-shadow: none;
+}
+
+.highlighted-red {
+       color: #f4f4f4;
+    background: #f4f4f400;
+    border: solid 1px #f4f4f4;
+}
+
+.highlighted-green {
+        color: #2c3e50;
+    background: #f4f4f4;
+    border: solid 1px #2c3e50;
 }
 

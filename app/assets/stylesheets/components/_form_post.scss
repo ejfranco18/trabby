@@ -1,6 +1,5 @@
 // Form design
 .form-post {
-  background: white;
   margin-top: 50px;
   padding: 10px;
   border-radius: 5px;
@@ -25,11 +24,14 @@
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 20px 0;
+  max-width: 894px;
+  margin: auto;
+
 }
 
 .category-choice {
-  background: #b7b7b7;
   padding: 20px;
+  border: solid 1px #2c3e50;
   border-radius: 5px;
   opacity: .4;
   flex: 0 0 30%;

@@ -7,7 +7,7 @@ url(<%= params[:query].present? ? @city.image :
       <% elsif @city.name == "default" %>
         <%= params[:query].split(',').first %>
       <% else %>
-        <%= @city.name %>
+         <%= render 'components/your_trip_card', name: @city.name %>
       <% end %>
       </h1>
   </div>
