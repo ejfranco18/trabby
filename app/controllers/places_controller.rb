@@ -57,7 +57,7 @@ class PlacesController < ApplicationController
     @markers = [{
       lat: @place.dig(:venue, :location, :lat),
       lng: @place.dig(:venue, :location, :lng),
-      infoWindow: render_to_string(partial: "info_windoww", locals: { place: @place })
+      infoWindow: render_to_string(partial: "info_window", locals: { place: @place })
     }]
   end
 

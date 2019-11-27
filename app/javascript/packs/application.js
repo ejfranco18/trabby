@@ -19,9 +19,9 @@ if (document.body.id === 'pages_home') {
       animForm.submit();
     }, 4000)
   })
-
-  TxtType();
 }
+
+
 
 initAutocomplete();
 initMapbox();
@@ -34,7 +34,7 @@ initSortableDay5();
 initSortableDay6();
 initSortableDay7();
 initSortableDay8();
-
+TxtType();
 
 
 // const animLink = document.querySelector(".animTrigger");

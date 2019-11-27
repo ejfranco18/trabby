@@ -1,22 +1,19 @@
 <%= render 'components/banner_places' %>
 <div class="container_places">
     <div class="side_places_data">
-      <div class="filter_places">
-      </div>
       <div
         id="map"
         style="width: 100%;
-        height: 600px;"
+        height: 100%;"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       ></div>
     </div>
     <div class="main_places_data">
-    <%= render 'components/your_trip_card' %>
-
     <div class="info">
-      <h3>Description</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, minima dolorum provident pariatur ullam quam officia
+      <h3 class="mb-3 dark-blue">Description</h3>
+
+      <p class="light-blue mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, minima dolorum provident pariatur ullam quam officia
         dipisci ipsa sapiente a quibusdam consequatur suscipit iusto esse illum velit harum enim aut. Lorem ipsum dolor sit amet,
         consectetur adipisicing elit. Eveniet, minima dolorum provident pariatur ullam quam officia adipisci ipsa sapiente a
         quibusdam consequatur suscipit iusto esse illum velit harum enim aut.</p>
