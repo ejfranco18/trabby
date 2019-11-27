@@ -20,7 +20,7 @@ module ApplicationHelper
 
     unless ImageCache.exists?(foursquare_id: id)
       url_google_search = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=#{name} #{city}&inputtype=textquery&fields=photos&key=#{ENV['GOOGLE_KEY']}"
-      json = RequestCache.get(URI.escape(url_google_search))
+      json = RequestCache.get(url_google_search)
 
 
       if json['status'] == "ZERO_RESULTS" || json[:candidates]&.first[:photos].nil?
