@@ -16,7 +16,6 @@
 
 .button_class {
   transition: ease .5s all;
-  margin-right: 5px;
   background: transparent;
   display: flex;
   cursor: pointer;
@@ -53,7 +52,7 @@
 }
 
 .button_text {
-  color: white;
+  color: #2c3e50;
 }
 
 
@@ -72,7 +71,7 @@
 }
 
 img{
-  margin-left: 5px;
+  margin-left: -50px;;
 }
 
 a:hover{

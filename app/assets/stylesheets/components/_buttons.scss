@@ -35,7 +35,7 @@ input.btn{
 }
 
 label.category-choice.active {
-    background: #24292E;
+    background: #2C3D50;
     color: white;
     opacity: 1;
 }
@@ -47,3 +47,10 @@ label.category-choice.active {
     background-color: #1edd88;
 }
 
+.btn-lg, .btn-group-lg > .btn {
+    color: #3f4458;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 5px;
+}
