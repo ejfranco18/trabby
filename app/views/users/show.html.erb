@@ -1,5 +1,5 @@
 <div class="container profile">
-  <p><strong>Name:</strong> <%= "#{@user[:first_name]} #{@user[:last_name]}" %></p>
+  <p><strong>Name:</strong> <span id="name-color"><%= "#{@user[:first_name]} #{@user[:last_name]}" %></span></p>
 
   <% if @user.preference %>
     <p><strong>Selected categories:</strong></p>
