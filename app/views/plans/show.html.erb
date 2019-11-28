@@ -2,7 +2,7 @@
   <div class="container">
     <div class="mt-4 mb-1 justify-content-center row">
       <h5 class="mb-3 w-100 text-center dark-blue plan-show-title">Your Itinerary to <%= @plan.city.name %></h5>
-        <a href="/plans" style="color: white;" class="w-50 btn btn-primary btn-lg" role="button"><i class="mr-1 far fa-calendar-times"></i>Edit</a>
+        <a href="/plans" style="color: white;" class="w-50 btn btn-primary btn-lg" role="button"><i class="mr-1 far fa-calendar-times"></i>Save your calendar</a>
 <!--         <button style="color: white;" type="button" class="w-50 btn btn-secondary btn-sm" disabled><i class="mr-1 far fa-envelope"></i> Export to E-mail</button> -->
     </div>
   </div>
@@ -42,9 +42,12 @@
                       <div class="information" style="cursor: grab">
                         <%= image_tag activity.place.category.icon_url, class: "avatar-large", style: "background: #2c3e50a3; border: 0" %>
                         <div class="information-content">
-                          <p><strong class="dark-blue"><%= activity.place.name.capitalize %></strong></p>
+                          <a href="/places/<%= activity.place_id %>">
+                            <p><strong class="dark-blue"><%= activity.place.name.capitalize %></strong></p>
                           <p><small><%= activity.place.address %></small></p>
+                          </a>
                         </div>
+
                         <i class="menu-burger fas fa-bars"></i>
 
                         <div class="information-actions">
