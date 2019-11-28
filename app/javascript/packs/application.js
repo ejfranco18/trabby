@@ -21,6 +21,18 @@ if (document.body.id === 'pages_home') {
   })
 }
 
+if (document.body.id === 'places_index') {
+  const animCard = document.querySelector("#animTrigger");
+  animCard.addEventListener("click", (event) => {
+    event.preventDefault()
+    load();
+    setTimeout((event) => {
+      animCard.click();
+    }, 6000)
+  })
+}
+
+
 initAutocomplete();
 initMapbox();
 

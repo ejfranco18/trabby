@@ -4,7 +4,7 @@
   <h1 style="font-size: 22px; font-weight: 200;" class="sub-text">You will see personalised ideas from other travellers like you.</p>
   <% if current_user %>
     <%=link_to new_plan_path(city: params[:query]), method: :get do %>
-      <button class="btn btn-lg btn-secondary btn-success">Plan your trip!</button>
+      <button id="animTrigger" class="btn btn-lg btn-secondary btn-success">Plan your trip!</button>
     <% end %>
   <% else %>
     <button style="margin-top: 23px;" class="btn btn-lg btn-primary btn-block" type="button" data-toggle="modal" data-target="#myModal2">Get started - Sign up!</button>
