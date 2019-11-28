@@ -47,9 +47,15 @@
 //   margin: 0;
 // }
 
+.card-trip-infos {
+  span {
+    font-weight: bold;
+  }
+}
 
 .card-trip .card-trip-infos {
   padding: 16px;
+  position: relative;
   // display: flex;
   // justify-content: space-between;
   // align-items: flex-end;
@@ -63,7 +69,7 @@
     background-color: transparent;
     &:hover, &:focus {
       background-color: transparent;
-      color: #00ffeb;
+      color: #1edd88;
     }
   }
 }
@@ -82,4 +88,8 @@
   grid-row-gap:20px;
   grid-column-gap:40px;
   margin:0 200px;
+}
+
+#days{
+  color:#1edd88;
 }
