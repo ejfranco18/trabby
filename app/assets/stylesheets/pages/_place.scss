@@ -62,22 +62,25 @@
 }
 .icon_card {
   display: flex;
-  color: #92174D;
+  color: #00CCBC;
   font-size: 19px;
   margin-top: 20px;
   i {
     margin-right: 15px;
     font-size: 25px;
   }
-  // p {
-  //   color: #6c757d;
-  // }
 }
+
+.place-info {
+  display: flex;
+  justify-content: space-around;
+}
+
 #purple {
-  color: #92174D;
+  color: #00CCBC;
   &:hover, &:focus {
-    border-color: #a51e59c7;
-    background: #af48753d;
+    border-color: #00CCBC;
+    background: rgba(0,204,188,0.4);
   }
 }
 #white {
@@ -86,8 +89,8 @@
   font-weight: bold;
   font-size: 16px;
   &:hover, &:focus {
-    color: #92174D;
-    border-color: #a51e59c7;
+    color: #00CCBC;
+    border-color: #00CCBC;
   }
 }
 p {
@@ -97,3 +100,19 @@ p {
   color: #6c757d;
   font-size: 17px;
 }
+
+.map-place {
+  margin: 20px auto;
+}
+
+.info-header-place {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container.info-place {
+  margin: 30px auto;
+}
+

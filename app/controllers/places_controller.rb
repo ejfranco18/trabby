@@ -48,6 +48,7 @@ class PlacesController < ApplicationController
       lng: @place.dig(:venue, :location, :lng),
       infoWindow: render_to_string(partial: "info_window", locals: { place: @place })
     }]
+
   end
 
   def create
