@@ -5,4 +5,10 @@ class ApplicationController < ActionController::Base
   def set_resource
     @resource = User.new
   end
+
+  def default_url_options
+  { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 end
+
+# heroku config:set DOMAIN=www.my_product.com
