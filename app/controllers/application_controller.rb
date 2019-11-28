@@ -11,4 +11,4 @@ class ApplicationController < ActionController::Base
   end
 end
 
-# heroku config:set DOMAIN=www.my_product.com
+# heroku config:set DOMAIN=www.trabby.xyz
