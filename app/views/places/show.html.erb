@@ -1,6 +1,6 @@
 <% image = smart_image(@place) %>
 <div class="banner_top" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image %>)">
-  <div>
+  <div class="info-header-place">
     <div class="header"><%= @place['venue']["name"] %></div>
     <div class="d-flex justify-content-center">
       <% if @place['venue']["categories"].present? %>
@@ -14,8 +14,8 @@
 <!-- to do:
  - center text and website button
 - get categories aligned -->
-<div class="container">
-  <div class="d-flex justify-content-between mb-4 mt-4">
+<div class="container info-place">
+  <div class="place-info">
     <% if @place['venue']["contact"]["phone"].present? %>
       <div class="icon_card">
         <i class="fas fa-map-pin"></i>
@@ -47,35 +47,10 @@
   </div>
 </div>
 <div
-  class="mt-4"
+  class="map-place"
   id="map"
-  style="width: 100%;
-  height: 600px;"
+  style="width: 80%;
+  height: 400px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
-<!-- <div class="container">
-<h3 div class="title1"><%#= @place["name"] %></h3>
-<div class="place_info_wrapper">
-  <div class="place_main_info">
-   <p><span class="title" >Address: </span><%#= @place["location"]["address"] %></p>
-    <p><span class="title">Phone: </span><%#= @place["contact"]["phone"] %></p>
-    <p><span class="title">Rating: </span><%#= @place["rating"]%></p>
-    <p><span class="title">Url: </span><a href="<%#= @place['url']%>"><%#= @place["url"]%></a></p>
-    <p><span class="title">Categories: </span>
-      <ul>
-      <%# @place["categories"].each do |categorie| %>
-       <li><%#= categorie["shortName"] %></li>
-      <%# end %>
-      </ul>
-        <%# if @place["description"] %>
-          <p><%#= @place["description"] %></p>
-        <%# end %>
-    </p>
-  </div>
-  <div class="place_side_info">
-    <img src="<%#= @place['bestPhoto']['prefix'] + '300x500' + @place['bestPhoto']['suffix']%>" alt="">
-  </div>
-</div>
-</div> -->
-

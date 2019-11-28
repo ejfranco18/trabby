@@ -1,31 +1,26 @@
 <%= render 'components/banner_places' %>
 <div class="container_places">
-    <div class="side_places_data">
-      <div
-        id="map"
-        style="width: 100%;
-        height: 100%;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      ></div>
-    </div>
-    <div class="main_places_data">
+  <div class="side_places_data">
+    <div
+      id="map"
+      style="width: 100%;
+      height: 100%;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+  </div>
+  <div class="main_places_data">
     <div class="info">
-      <h3 class="mb-3 dark-blue">Description</h3>
-
-      <p class="light-blue mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, minima dolorum provident pariatur ullam quam officia
-        dipisci ipsa sapiente a quibusdam consequatur suscipit iusto esse illum velit harum enim aut. Lorem ipsum dolor sit amet,
-        consectetur adipisicing elit. Eveniet, minima dolorum provident pariatur ullam quam officia adipisci ipsa sapiente a
-        quibusdam consequatur suscipit iusto esse illum velit harum enim aut.</p>
-    </div>
-    <div class="places">
-    <% @places.each do |place| %>
-      <%= link_to place_path(place.dig(:venue, :id)) do %>
-        <div class="card-place" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= smart_image(place) %>)">
-          <%= place.dig(:venue, :name) %>
-        </div>
+      <h3 class="mb-3 dark-blue">What to do in <%= params[:query].split(',').first %></h3>
+      <div class="places">
+      <% @places.each do |place| %>
+        <%= link_to place_path(place.dig(:venue, :id)) do %>
+          <div class="card-place" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= smart_image(place) %>)">
+            <%= place.dig(:venue, :name) %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+      </div>
     </div>
   </div>
 </div>

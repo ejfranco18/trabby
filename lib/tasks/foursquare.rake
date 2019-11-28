@@ -9,7 +9,7 @@ namespace :foursquare do
       Category.find_each do |category|
         puts "Creating places for #{category.name}"
 
-        create_places(city, category, 15)
+        create_places(city, category, 10)
       end
     end
   end
