@@ -20,7 +20,7 @@ class PlansController < ApplicationController
     end
 
     if @plan.save
-      ActivityGenerator.create(@plan)
+      ActivityGenerator.create(@plan, current_user)
       redirect_to plan_path(@plan)
     else
       render :new
