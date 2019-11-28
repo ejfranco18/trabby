@@ -1,9 +1,11 @@
 .card-trip {
+
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 3px;
   margin-top: 32px;
+  border-radius:5px;
 }
 
 .card-trip > img {
@@ -19,14 +21,13 @@
   background-size: cover;
   &:hover, &:focus {
     // background: #af48753d;
-    h2 {
-      color: #00ffe7;
+    h3 {
+      color: #7a8098;
       transition: ease .5s all;
       transform: scale(1.07);
     }
   }
   #city-name {
-    font-size: 35px;
     display: flex;
     text-align: center;
     justify-content: center;
@@ -34,34 +35,41 @@
   }
 }
 
-.card-trip h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
+// .card-trip h2 {
+//   font-size: 16px;
+//   font-weight: bold;
+//   margin: 0;
+// }
 
-.card-trip p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
+// .card-trip p {
+//   font-size: 12px;
+//   opacity: .7;
+//   margin: 0;
+// }
 
+.card-trip-infos {
+  span {
+    font-weight: bold;
+  }
+}
 
 .card-trip .card-trip-infos {
   padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
   position: relative;
-  h2 {
-    color: black;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: flex-end;
+  // position: relative;
+  p {
+    color: #6c757d;
+    margin:0;
   }
   #category-btn {
     color: #0e00004d;
     background-color: transparent;
     &:hover, &:focus {
       background-color: transparent;
-      color: #00ffeb;
+      color: #1edd88;
     }
   }
 }
@@ -72,3 +80,16 @@
 //   top: -20px;
 //   width: 40px;
 // }
+
+
+.container-plan{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  grid-row-gap:20px;
+  grid-column-gap:40px;
+  margin:0 200px;
+}
+
+#days{
+  color:#1edd88;
+}
