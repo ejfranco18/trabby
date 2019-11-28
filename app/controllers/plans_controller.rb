@@ -10,6 +10,11 @@ class PlansController < ApplicationController
 
   def new
     @plan = Plan.new
+    @selected_city = params[:city].split(',').first
+
+    Category.find_each do |category|
+      Foursquare.create_places(city: @selected_city, category: category, limit: 2)
+    end
   end
 
   def create

@@ -42,7 +42,9 @@
       <% else %>
         <p></p>
       <% end %>
-      <a href="<%= @place['venue']['url']%>" target="_blank"><button class="button_class mt-4 mb-2 mx-auto" href="<%= @place['venue']['url']%>" id="purple" >Go to venue homepage</button></a>
+      <% if @place['venue']['url']%>.present? %>
+        <a href="<%= @place['venue']['url']%>" target="_blank"><button class="button_class mt-4 mb-2 mx-auto" href="<%= @place['venue']['url']%>" id="purple" >Go to venue homepage</button></a>
+      <% end %>
     </div>
   </div>
 </div>

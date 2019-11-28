@@ -31,9 +31,11 @@ class ActivityGenerator
           city: @plan.city
         ).where.not(id: picked_places).sample
 
-        picked_places << place
+        if place.present?
+          picked_places << place
 
-        plan_day.activities.build(place: place, slot: index)
+          plan_day.activities.build(place: place, slot: index)
+        end
       end
 
       plan_day.save!

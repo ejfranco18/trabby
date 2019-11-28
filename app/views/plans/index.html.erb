@@ -5,7 +5,7 @@
     <div class="card-trip">
       <!-- <div class="banner_top" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%#= image %>)"> -->
       <%= link_to plan_path(plan.id) do %>
-        <div class="plan-banner d-flex justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= plan.city.image %>)">
+        <div class="plan-banner d-flex justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= plan.city.image ? plan.city.image : 'https://images.unsplash.com/Ys-DBJeX0nE.JPG?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'%>)">
           <h2 id="city-name"><%= plan.city.name %></h2>
         </div>
         <!-- <img src="<%#= plan.city.image %>" /> -->

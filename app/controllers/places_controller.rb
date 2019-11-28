@@ -4,13 +4,15 @@ class PlacesController < ApplicationController
   def index
     @v = "20190425"
     coordinates = Geocoder.search(params[:query])
-    url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&near=#{params[:query]}&sortByPopularity=true&limit=9"
+    @city = City.where(name: params[:query].split(',').first).first_or_create!
+    #@city ||= City.find_by(name: "default")
+
+    url = "https://api.foursquare.com/v2/venues/explore?client_id=#{ENV['FOURSQUARE_API_KEY']}&client_secret=#{ENV['FOURSQUARE_SECRET_KEY']}&v=#{@v}&near=#{@city.name}&sortByPopularity=true&limit=9"
+
     response = RequestCache.get(url)
 
     @places = response[:response][:groups].first[:items]
 
-    @city = City.find_by(name: params[:query].split(',').first)
-    @city ||= City.find_by(name: "default")
 
     # by word
     # url = "https://api.foursquare.com/v2/venues/search?client_id=#{@client_id}&client_secret=#{@client_secret}&v=#{@v}&intent=global&query=tattoo&limit=5"

@@ -15,7 +15,7 @@
       <div class="places">
       <% @places.each do |place| %>
         <%= link_to place_path(place.dig(:venue, :id)) do %>
-          <div class="card-place" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= smart_image(place) %>)">
+          <div class="card-place" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= smart_image(place) ? smart_image(place) : 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1833&q=80' %>);">
             <%= place.dig(:venue, :name) %>
           </div>
         <% end %>
