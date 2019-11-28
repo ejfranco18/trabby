@@ -1,7 +1,7 @@
 class PlansController < ApplicationController
 
   def index
-    @user = current_user
+    @plans = current_user.plans
   end
 
   def show
@@ -35,6 +35,12 @@ class PlansController < ApplicationController
     @plan = Plan.find(params[:id])
     @plan.update(plan_params)
     redirect_to plan_path(@plan)
+  end
+
+  def destroy
+    @plan = Plan.find(params[:id])
+    @plan.destroy
+    redirect_to plans_path
   end
 
   private
