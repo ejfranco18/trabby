@@ -8,4 +8,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   accepts_nested_attributes_for :preference
+
+  before_save :create_preference
+
+  def create_preference
+    self.preference ||= build_preference
+  end
 end

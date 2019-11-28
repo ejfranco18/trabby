@@ -1,8 +1,9 @@
 class ActivityGenerator
-  def initialize(plan)
+  def initialize(plan, user)
     @plan = plan
     @v = "20190425"
     @user_categories = @plan.categories
+    @pref_categories = Category.where(id: user.preference.category_ids)
   end
 
   def self.create(plan)
@@ -40,8 +41,9 @@ class ActivityGenerator
   end
 
   def best_category(categories)
-    existing = categories.find { |cat| @user_categories.include?(cat) }
+    in_plan = categories.find { |cat| @user_categories.include?(cat) }
+    in_preference = categories.find { |cat| @pref_categories.include?(cat) }
 
-    existing || categories.sample
+    in_plan || in_preference || categories.sample
   end
 end
