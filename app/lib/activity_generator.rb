@@ -6,8 +6,8 @@ class ActivityGenerator
     @pref_categories = Category.where(id: user.preference.category_ids)
   end
 
-  def self.create(plan)
-    new(plan).create
+  def self.create(plan, user)
+    new(plan, user).create
   end
 
   def create
