@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-center">
       <% if @place['venue']["categories"].present? %>
         <% @place['venue']["categories"].each do |categorie| %>
-          <a href="" target="_blank"><button class="button_class mt-2 mr-2" id="white" ><%= categorie["shortName"] %></button></a>
+          <button class="button_class mt-2 mr-2" id="white" ><%= categorie["shortName"] %></button>
         <% end %>
     <% end %>
     </div>
