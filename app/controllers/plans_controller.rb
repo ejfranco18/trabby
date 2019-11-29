@@ -13,7 +13,7 @@ class PlansController < ApplicationController
     @selected_city = params[:city].split(',').first
 
     Category.find_each do |category|
-      Foursquare.create_places(city: @selected_city, category: category, limit: 2)
+      Foursquare.create_places(city: @selected_city, category: category, limit: 5)
     end
   end
 

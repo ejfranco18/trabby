@@ -3,7 +3,10 @@ import places from 'places.js';
 const initAutocomplete = () => {
   const addressInput = document.getElementById('search_location');
   if (addressInput) {
-    places({ container: addressInput });
+    places({ container: addressInput }).configure({
+      type: 'city',
+      language: 'en'
+    });
   }
 };
 
