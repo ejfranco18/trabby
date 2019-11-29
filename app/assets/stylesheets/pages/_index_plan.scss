@@ -69,7 +69,7 @@
     background-color: transparent;
     &:hover, &:focus {
       background-color: transparent;
-      color: #1edd88;
+      color: $btn-green;
     }
   }
 }
@@ -91,7 +91,7 @@
 }
 
 #days{
-  color:#1edd88;
+  color:$btn-green;
 }
 
 .title-card{
@@ -100,5 +100,5 @@
 }
 
 #name-color{
-  color:#1edd88;
+  color:$btn-green;
 }

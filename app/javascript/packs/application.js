@@ -21,7 +21,9 @@ if (document.body.id === 'pages_home') {
   })
 }
 
-if (document.body.id === 'places_index') {
+initMapbox();
+
+if (document.body.id === 'places_index' && document.querySelector("#animTrigger")) {
   const animCard = document.querySelector("#animTrigger");
   animCard.addEventListener("click", (event) => {
     event.preventDefault()
@@ -34,7 +36,7 @@ if (document.body.id === 'places_index') {
 
 
 initAutocomplete();
-initMapbox();
+
 
 initSortableDay();
 
