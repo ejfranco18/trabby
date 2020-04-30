@@ -7,7 +7,7 @@
     "bootstrap": "^4.3.1",
     "flatpickr": "^4.6.3",
     "flickity": "^2.2.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mapbox-gl": "^1.5.0",
     "places.js": "^1.17.0",
     "popper.js": "^1.16.0",
